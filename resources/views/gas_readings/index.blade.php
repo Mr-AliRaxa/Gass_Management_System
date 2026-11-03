@@ -725,7 +725,6 @@
             </div>
 
             <div class="pagination-wrap">
-                <div></div>
                 {!! $gasReadings->appends(request()->input())->links() !!}
             </div>
         </div>

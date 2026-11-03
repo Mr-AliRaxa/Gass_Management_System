@@ -260,7 +260,6 @@
         </div>
 
         <div class="pagination-wrap">
-            <div></div>
             {!! $expenseTypes->links() !!}
         </div>
     </div>

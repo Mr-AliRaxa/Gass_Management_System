@@ -300,7 +300,6 @@
         </div>
 
         <div class="pagination-wrap">
-            <div></div>
             {!! $data->links() !!}
         </div>
     </div>

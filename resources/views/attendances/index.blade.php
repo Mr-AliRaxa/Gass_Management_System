@@ -457,13 +457,13 @@
         {{-- Pagination --}}
         <div class="pagination-wrap">
             <div class="show-entries">
-                Show
+                {{ __('messages.show') }}
                 <select class="entries-select" onchange="window.location=window.location.pathname+'?per_page='+this.value">
                     @foreach([10, 20, 50, 100] as $n)
                     <option value="{{ $n }}" {{ $attendances->perPage() == $n ? 'selected' : '' }}>{{ $n }}</option>
                     @endforeach
                 </select>
-                records
+                {{ __('messages.records') }}
             </div>
             {{ $attendances->appends(request()->input())->links() }}
         </div>

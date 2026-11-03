@@ -97,3 +97,31 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/requests/{request}/reject', [App\Http\Controllers\SuperAdminController::class, 'reject'])->name('requests.reject');
     });
 });
+
+// ══════════════════════════════════════════════════════════════════════
+// HOSTINGER / SHARED HOSTING STORAGE SUPPORT
+// ══════════════════════════════════════════════════════════════════════
+
+// 1. One-click storage link creator (can be visited from browser: yoursite.com/create-symlink)
+Route::get('/create-symlink', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        return '<div style="font-family:sans-serif;padding:30px;text-align:center;"><h2 style="color:#16a34a;">Storage Link Created Successfully!</h2><p>Your symlink is now active.</p><a href="/home" style="display:inline-block;padding:10px 20px;background:#2563eb;color:#fff;border-radius:6px;text-decoration:none;">Go to Dashboard</a></div>';
+    } catch (\Exception $e) {
+        return '<div style="font-family:sans-serif;padding:30px;text-align:center;"><h2 style="color:#dc2626;">Error</h2><p>' . $e->getMessage() . '</p></div>';
+    }
+});
+
+// 2. Direct storage image serving fallback
+// Ensures images always display even if Hostinger symlinks fail, are missing, or blocked
+Route::get('/storage/{path}', function ($path) {
+    $basePath = realpath(storage_path('app/public'));
+    $targetPath = storage_path('app/public/' . $path);
+    $fullPath = realpath($targetPath);
+
+    if (!$fullPath || !str_starts_with($fullPath, $basePath) || !is_file($fullPath)) {
+        abort(404);
+    }
+
+    return response()->file($fullPath);
+})->where('path', '.*');

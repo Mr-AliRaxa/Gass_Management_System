@@ -677,7 +677,7 @@
         </div>
 
         @if($sales->hasPages())
-        <div class="p-3 border-top d-flex justify-content-center">
+        <div class="pagination-wrap">
             {{ $sales->links() }}
         </div>
         @endif

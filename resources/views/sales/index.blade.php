@@ -507,13 +507,13 @@
         {{-- Pagination --}}
         <div class="pagination-wrap d-print-none">
             <div class="show-entries">
-                Show
+                {{ __('messages.show') }}
                 <select class="entries-select" onchange="window.location=window.location.pathname+'?per_page='+this.value">
                     @foreach([25, 50, 100, 200] as $n)
                     <option value="{{ $n }}" {{ $sales->perPage() == $n ? 'selected' : '' }}>{{ $n }}</option>
                     @endforeach
                 </select>
-                invoices
+                {{ __('messages.invoices') }}
             </div>
             {{ $sales->appends(request()->input())->links() }}
         </div>

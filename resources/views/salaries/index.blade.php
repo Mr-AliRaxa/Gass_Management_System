@@ -422,7 +422,6 @@
         </div>
 
         <div class="pagination-wrap">
-            <div></div>
             {!! $salaries->appends(request()->input())->links() !!}
         </div>
     </div>

@@ -160,6 +160,132 @@
             max-width: 100% !important;
             min-height: 100vh !important;
         }
+
+        /* ══════════════════════════════════════════════════
+           GLOBAL MODERN PAGINATION
+        ══════════════════════════════════════════════════ */
+        .pagination-wrap {
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            background: #ffffff;
+            border-top: 1.5px solid #f1f5f9;
+        }
+        .pagination-wrap > nav,
+        .pagination-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            flex: 1 1 auto;
+            min-width: 0;
+            width: 100%;
+        }
+        .pagination-wrap .pagination-info,
+        .pagination-container .pagination-info {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .pagination-wrap .pagination-info span,
+        .pagination-container .pagination-info span {
+            color: #1e293b;
+            font-weight: 700;
+        }
+        ul.pagination.pagination-modern,
+        .pagination-wrap ul.pagination {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul.pagination.pagination-modern .page-item .page-link,
+        .pagination-wrap .page-item .page-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 36px;
+            height: 36px;
+            padding: 0 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px !important;
+            text-decoration: none;
+            transition: all 0.15s ease-in-out;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        }
+        ul.pagination.pagination-modern .page-item .page-link:hover,
+        .pagination-wrap .page-item .page-link:hover {
+            color: #2563eb;
+            background: #eff6ff;
+            border-color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        ul.pagination.pagination-modern .page-item.active .page-link,
+        .pagination-wrap .page-item.active .page-link {
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+            border-color: #2563eb !important;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+        }
+        ul.pagination.pagination-modern .page-item.disabled .page-link,
+        .pagination-wrap .page-item.disabled .page-link {
+            color: #cbd5e1 !important;
+            background: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            cursor: not-allowed;
+            pointer-events: none;
+            box-shadow: none;
+            opacity: 0.7;
+        }
+        ul.pagination.pagination-modern .page-item.disabled .page-link.dots,
+        .pagination-wrap .page-item.disabled .page-link.dots {
+            border: none;
+            background: transparent !important;
+            color: #94a3b8 !important;
+        }
+        .pagination-wrap .show-entries {
+            font-size: 13px;
+            color: #64748b;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+        .pagination-wrap .entries-select {
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 4px 8px;
+            font-size: 13px;
+            color: #334155;
+            background: #ffffff;
+            font-weight: 600;
+            outline: none;
+        }
+        .pagination-wrap .entries-select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        /* Defend against unstyled giant SVGs */
+        .pagination-wrap svg,
+        nav[role="navigation"] svg {
+            width: 14px !important;
+            height: 14px !important;
+            max-width: 14px !important;
+            max-height: 14px !important;
+            display: inline-block !important;
+            vertical-align: middle;
+        }
     </style>
     @stack('styles')
 </head>

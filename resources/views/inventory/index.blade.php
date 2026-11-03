@@ -819,7 +819,6 @@
         </div>
 
         <div class="pagination-wrap">
-            <span class="text-muted" style="font-size: 12px;">Purchases Pagination</span>
             {{ $purchasesList->appends(request()->query())->links() }}
         </div>
     </div>
@@ -962,7 +961,6 @@
         </div>
 
         <div class="pagination-wrap">
-            <span class="text-muted" style="font-size: 12px;">Sales Pagination</span>
             {{ $salesList->appends(request()->query())->links() }}
         </div>
     </div>

@@ -356,7 +356,6 @@
         </div>
 
         <div class="pagination-wrap">
-            <div></div>
             {!! $visaDetails->links() !!}
         </div>
     </div>

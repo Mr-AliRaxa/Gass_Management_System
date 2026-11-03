@@ -48,7 +48,9 @@
             </tr>
             @endforeach
         </table>
-        {!! $roles->links() !!}
+        <div class="pagination-wrap">
+            {!! $roles->links() !!}
+        </div>
     </div>
 </div>
 @endsection
