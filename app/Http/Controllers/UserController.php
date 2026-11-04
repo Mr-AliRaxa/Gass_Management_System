@@ -32,7 +32,8 @@ class UserController extends Controller
             $query->where('agency_id', auth()->user()->agency_id);
         }
 
-        $data = $query->paginate(10);
+        $perPage = $request->input('per_page', 10);
+        $data = $query->paginate($perPage)->withQueryString();
         return view('users.index',compact('data'));
     }
 

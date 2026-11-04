@@ -36,7 +36,8 @@ class GasReadingController extends Controller
             $query->whereDate('date', '<=', $request->to_date);
         }
 
-        $gasReadings = $query->latest()->paginate(10);
+        $perPage = $request->input('per_page', 10);
+        $gasReadings = $query->latest()->paginate($perPage)->withQueryString();
         return view('gas_readings.index', compact('gasReadings'));
     }
 

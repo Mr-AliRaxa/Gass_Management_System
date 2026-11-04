@@ -676,11 +676,9 @@
             </table>
         </div>
 
-        @if($sales->hasPages())
         <div class="pagination-wrap">
             {{ $sales->links() }}
         </div>
-        @endif
     </div>
 
 </div>

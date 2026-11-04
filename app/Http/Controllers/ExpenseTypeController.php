@@ -17,9 +17,10 @@ class ExpenseTypeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $expenseTypes = ExpenseType::latest()->paginate(10);
+        $perPage = $request->input('per_page', 10);
+        $expenseTypes = ExpenseType::latest()->paginate($perPage)->withQueryString();
         return view('expense_types.index', compact('expenseTypes'));
     }
 

@@ -1,4 +1,4 @@
-@if ($paginator->hasPages())
+@if ($paginator->total() > 0)
     @php
         $isRtl = app()->getLocale() === 'ar';
         $prevIcon = $isRtl ? 'fa-chevron-right' : 'fa-chevron-left';
@@ -16,6 +16,7 @@
             {{ __('messages.results') }}
         </div>
 
+        @if ($paginator->hasPages())
         {{-- Pagination Links --}}
         <ul class="pagination pagination-modern mb-0">
             {{-- Previous Page Link --}}
@@ -67,5 +68,6 @@
                 </li>
             @endif
         </ul>
+        @endif
     </nav>
 @endif

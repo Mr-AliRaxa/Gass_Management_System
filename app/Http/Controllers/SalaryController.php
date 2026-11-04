@@ -37,7 +37,8 @@ class SalaryController extends Controller
             $query->where('team_member_id', $request->team_member_id);
         }
 
-        $salaries = $query->latest()->paginate(20);
+        $perPage = $request->input('per_page', 20);
+        $salaries = $query->latest()->paginate($perPage)->withQueryString();
         $teamMembers = TeamMember::all();
 
         return view('salaries.index', compact('salaries', 'teamMembers'));

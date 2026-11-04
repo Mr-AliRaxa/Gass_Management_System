@@ -260,6 +260,15 @@
         </div>
 
         <div class="pagination-wrap">
+            <div class="show-entries">
+                {{ __('messages.show') }}
+                <select class="entries-select" onchange="window.location=window.location.pathname+'?per_page='+this.value">
+                    @foreach([10, 25, 50, 100] as $n)
+                    <option value="{{ $n }}" {{ $expenseTypes->perPage() == $n ? 'selected' : '' }}>{{ $n }}</option>
+                    @endforeach
+                </select>
+                {{ __('messages.entries') }}
+            </div>
             {!! $expenseTypes->links() !!}
         </div>
     </div>

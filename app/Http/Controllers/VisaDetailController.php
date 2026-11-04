@@ -21,9 +21,10 @@ class VisaDetailController extends Controller
      */
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $visaDetails = VisaDetail::with('teamMember')->latest()->paginate(10);
+        $perPage = $request->input('per_page', 10);
+        $visaDetails = VisaDetail::with('teamMember')->latest()->paginate($perPage)->withQueryString();
         return view('visa_details.index', compact('visaDetails'));
     }
 
