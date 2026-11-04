@@ -172,8 +172,8 @@
 
         <div class="stat-card stat-card-purple">
             <div>
-                <div class="stat-label">Active Status</div>
-                <div class="stat-value">Active</div>
+                <div class="stat-label"> {{ __('messages.active_status') }}  </div>
+                <div class="stat-value"> {{ __('messages.exp_active') }} </div>
             </div>
             <div class="stat-icon stat-icon-purple"><i class="fas fa-check-circle"></i></div>
             <i class="fas fa-shield-alt stat-bg-icon stat-bg-icon-purple"></i>
@@ -181,7 +181,7 @@
 
         <div class="stat-card stat-card-green">
             <div>
-                <div class="stat-label">Expense Slips Linked</div>
+                <div class="stat-label"> {{ __('messages.exp_sliplink') }} </div>
                 <div class="stat-value">{{ \App\Models\Expense::count() }}</div>
             </div>
             <div class="stat-icon stat-icon-green"><i class="fas fa-receipt"></i></div>
@@ -208,7 +208,7 @@
                 <thead>
                     <tr>
                         <th width="80px">#</th>
-                        <th>{{ __('messages.category_name') }}</th>
+                        <th>{{ __('messages.ex_type_list') }}</th>
                         <th width="160px" class="text-center">{{ __('messages.actions') }}</th>
                     </tr>
                 </thead>
@@ -241,7 +241,7 @@
                         <td colspan="3">
                             <div class="empty-state">
                                 <i class="fas fa-folder-open"></i>
-                                <p>No expense types found.</p>
+                                <p> {{ __('messages.ex_type_listfontno') }} </p>
                             </div>
                         </td>
                     </tr>
@@ -251,7 +251,7 @@
                         <td colspan="3">
                             <div class="empty-state">
                                 <i class="fas fa-search-minus"></i>
-                                <p>No matching categories found.</p>
+                                <p> {{ __('messages.ex_match_cata_fontno') }}       </p>
                             </div>
                         </td>
                     </tr>

@@ -339,7 +339,7 @@
                         <th>{{ __('messages.category_type') }}</th>
                         <th>{{ __('messages.date') }}</th>
                         <th>{{ __('messages.amount') }}</th>
-                        <th>{{ __('messages.notes_description') }}</th>
+                        <th>{{ __('messages.notes_description12') }}</th>
                         <th>{{ __('messages.actions') }}</th>
                     </tr>
                 </thead>

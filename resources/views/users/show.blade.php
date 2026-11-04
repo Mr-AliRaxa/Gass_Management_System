@@ -4,8 +4,8 @@
 <div class="row">
     <div class="col-lg-12 margin-tb mb-4">
         <div class="d-flex justify-content-between align-items-center">
-            <h2>Show User</h2>
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+            <h2> {{ __('messages.gasagencylouser') }}   </h2>
+            <a class="btn btn-primary" href="{{ route('users.index') }}">  {{ __('messages.back') }}    </a>
         </div>
     </div>
 </div>
@@ -15,19 +15,19 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                 <div class="form-group">
-                    <strong>Name:</strong>
+                    <strong> {{ __('messages.name') }} :  </strong>
                     {{ $user->name }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                 <div class="form-group">
-                    <strong>Email:</strong>
+                    <strong> {{ __('messages.email') }}  : </strong>
                     {{ $user->email }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                 <div class="form-group">
-                    <strong>Roles:</strong>
+                    <strong> {{ __('messages.roles') }} :</strong>
                     @if(!empty($user->getRoleNames()))
                         @foreach($user->getRoleNames() as $v)
                             <label class="badge bg-success">{{ $v }}</label>

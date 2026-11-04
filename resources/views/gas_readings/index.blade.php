@@ -584,7 +584,7 @@
 
             <div class="stat-card stat-card-purple">
                 <div>
-                    <div class="stat-label">Meter Logs Count</div>
+                    <div class="stat-label"> {{ __('messages.MeterLogsCount') }}</div>
                     <div class="stat-value">{{ $totalEntries }}</div>
                 </div>
                 <div class="stat-icon stat-icon-purple"><i class="fas fa-list-ol"></i></div>
@@ -652,7 +652,7 @@
                             <th>{{ __('messages.date') }}</th>
                             <th>{{ __('messages.start_meter_level') }}</th>
                             <th>{{ __('messages.end_meter_level') }}</th>
-                            <th>{{ __('messages.total_consumption') }}</th>
+                            <th>{{ __('messages.total_consumption12') }}</th>
                             <th width="180px">{{ __('messages.actions') }}</th>
                         </tr>
                     </thead>
@@ -681,7 +681,7 @@
                                 </td>
                                 <td>
                                     <span class="consumption-pill">
-                                        <i class="fas fa-burn"></i> {{ number_format($consumption, 2) }} Ton
+                                        <i class="fas fa-burn"></i>   {{ number_format($consumption, 2) }} {{ __('messages.GAS_TON') }}
                                     </span>
                                 </td>
                                 <td>

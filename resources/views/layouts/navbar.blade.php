@@ -272,11 +272,11 @@
                 <div class="lang-switcher-pill">
                     <a href="{{ route('lang.switch', 'en') }}"
                         class="lang-btn {{ app()->getLocale() == 'en' ? 'active' : '' }}">
-                        <i class="fas fa-globe"></i> English
+                        <i class="fas fa-globe"></i>  {{ __('messages.englishswbtn') }}
                     </a>
                     <a href="{{ route('lang.switch', 'ar') }}"
                         class="lang-btn {{ app()->getLocale() == 'ar' ? 'active' : '' }}">
-                        Arabic
+                          {{ __('messages.arabichswbtn') }}
                     </a>
                 </div>
 

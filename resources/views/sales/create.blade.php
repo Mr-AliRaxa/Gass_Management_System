@@ -67,12 +67,12 @@
                             <label class="form-label text-muted small mb-1">{{ $weight }} {{ __('messages.quantity_label') }}</label>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <input type="number" name="filled_{{ $weight }}_qty" class="form-control bg-light border-0 qty-input" value="0" min="0" data-weight="{{ $weight }}" data-cat="filled">
+                                    <input type="number" name="filled_{{ $weight }}_qty" class="form-control bg-light border-0 qty-input" value="" min="" data-weight="{{ $weight }}" data-cat="filled">
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light border-0 text-muted small">OMR</span>
-                                        <input type="number" step="0.01" name="filled_{{ $weight }}_price" class="form-control bg-light border-0 price-input" value="0" min="0">
+                                        <input type="number" step="0.01" name="filled_{{ $weight }}_price" class="form-control bg-light border-0 price-input" value="" min="">
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                             <label class="form-label text-muted small mb-1">{{ $weight }} {{ __('messages.quantity_label') }}</label>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <input type="number" name="new_{{ $weight }}_qty" class="form-control bg-light border-0 qty-input" value="0" min="0" data-weight="{{ $weight }}" data-cat="new">
+                                    <input type="number" name="new_{{ $weight }}_qty" class="form-control bg-light border-0 qty-input" value="" min="" data-weight="{{ $weight }}" data-cat="new">
                                     <div class="text-xs mt-1 {{ ($stockLevels[$stockType] ?? 0) <= 5 ? 'text-danger' : 'text-success' }}">
                                         {{ __('messages.stock_label') }}: {{ $stockLevels[$stockType] ?? 0 }}
                                     </div>
@@ -102,7 +102,7 @@
                                 <div class="col-6">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light border-0 text-muted small">OMR</span>
-                                        <input type="number" step="0.01" name="new_{{ $weight }}_price" class="form-control bg-light border-0 price-input" value="0" min="0">
+                                        <input type="number" step="0.01" name="new_{{ $weight }}_price" class="form-control bg-light border-0 price-input" value="" min="">
                                     </div>
                                 </div>
                             </div>

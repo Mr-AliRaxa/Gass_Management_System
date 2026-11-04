@@ -647,7 +647,7 @@
             {{-- Roles / Designations --}}
             <div class="stat-card stat-card-purple">
                 <div>
-                    <div class="stat-label">Designations</div>
+                    <div class="stat-label"> {{ __('messages.team_desi_member') }} </div>
                     <div class="stat-value">{{ $uniqueDesignations ?? 0 }}</div>
                 </div>
                 <div class="stat-icon stat-icon-purple"><i class="fas fa-briefcase"></i></div>
@@ -657,7 +657,7 @@
             {{-- Total Basic Payroll --}}
             <div class="stat-card stat-card-orange">
                 <div>
-                    <div class="stat-label">Basic Payroll</div>
+                    <div class="stat-label"> {{ __('messages.team_payroll') }} </div>
                     <div class="stat-value">{{ number_format($totalSalaryExpense ?? 0, 0) }} <span
                             style="font-size:14px;font-weight:600;">OMR</span></div>
                 </div>
@@ -671,12 +671,12 @@
             <div class="table-card-header">
                 <div class="table-card-title">
                     <i class="fas fa-users-cog"></i>
-                    <span>Team Members</span>
+                    <span> {{ __('messages.t_member') }} </span>
                 </div>
                 <div style="display:flex;align-items:center;gap:16px;">
                     <span class="showing-text" id="showingCount">
-                        Showing {{ $teamMembers->firstItem() ?? 0 }}–{{ $teamMembers->lastItem() ?? 0 }} of
-                        {{ $teamMembers->total() ?? 0 }} members
+                     {{ __('messages.t_membershow') }} {{ $teamMembers->firstItem() ?? 0 }}–{{ $teamMembers->lastItem() ?? 0 }}  {{ __('messages.t_of') }}
+                        {{ $teamMembers->total() ?? 0 }} {{ __('messages.t_memberss') }}
                     </span>
                     <div class="view-toggle">
                         <button class="view-btn active"><i class="fas fa-th"></i></button>
@@ -690,11 +690,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Member Name</th>
-                            <th>Mobile</th>
-                            <th>Designation</th>
-                            <th>Basic Salary</th>
-                            <th>Action</th>
+                            <th> {{ __('messages.t_memberssname') }} </th>
+                            <th> {{ __('messages.t_memberssmobile') }} </th>
+                            <th> {{ __('messages.t_memberssdesgination') }} </th>
+                            <th> {{ __('messages.t_memberssbsalary') }} </th>
+                            <th> {{ __('messages.t_memberssaction') }} </th>
                         </tr>
                     </thead>
                     <tbody>

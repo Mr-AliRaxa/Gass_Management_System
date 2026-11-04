@@ -338,7 +338,7 @@
                         <th>#</th>
                         <th>{{ __('messages.team_member') }}</th>
                         <th>{{ __('messages.disbursement_date') }}</th>
-                        <th>{{ __('messages.base_amount') }}</th>
+                        <th>{{ __('messages.base_amount12') }}</th>
                         <th>{{ __('messages.bonus') }}</th>
                         <th width="180px">{{ __('messages.actions') }}</th>
                     </tr>

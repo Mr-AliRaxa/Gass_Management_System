@@ -705,7 +705,7 @@
                         <th>{{ __('messages.buy_unit_price') }}</th>
                         <th>{{ __('messages.total_buy_cost') }}</th>
                         <th>{{ __('messages.supplier_details') }}</th>
-                        <th>{{ __('messages.action') }}</th>
+                        <th>{{ __('messages.action11') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -870,10 +870,10 @@
                     <tr>
                         <th>{{ __('messages.date') }}</th>
                         <th>{{ __('messages.cylinder_type') }}</th>
-                        <th>{{ __('messages.qty_sold') }}</th>
+                        <th>{{ __('messages.qty_sold12') }}</th>
                         <th>{{ __('messages.sale_unit_price') }}</th>
                         <th>{{ __('messages.total_sale_revenue') }}</th>
-                        <th>{{ __('messages.customer_name') }}</th>
+                        <th>{{ __('messages.customer_name12') }}</th>
                         <th>{{ __('messages.sale_invoice_no') }}</th>
                     </tr>
                 </thead>
