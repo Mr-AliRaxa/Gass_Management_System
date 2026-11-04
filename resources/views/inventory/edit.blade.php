@@ -32,12 +32,12 @@
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.cylinder_type') }}:</strong></label>
                         <select name="type" class="form-control">
-                            <option value="11kg_full" {{ $inventory->type == '11kg_full' ? 'selected' : '' }}>11kg Full</option>
-                            <option value="11kg_empty" {{ $inventory->type == '11kg_empty' ? 'selected' : '' }}>11kg Empty</option>
-                            <option value="22kg_full" {{ $inventory->type == '22kg_full' ? 'selected' : '' }}>22kg Full</option>
-                            <option value="22kg_empty" {{ $inventory->type == '22kg_empty' ? 'selected' : '' }}>22kg Empty</option>
-                            <option value="44kg_full" {{ $inventory->type == '44kg_full' ? 'selected' : '' }}>44kg Full</option>
-                            <option value="44kg_empty" {{ $inventory->type == '44kg_empty' ? 'selected' : '' }}>44kg Empty</option>
+                            <option value="11kg_full" {{ $inventory->type == '11kg_full' ? 'selected' : '' }}>{{ __('messages.cylinder_11kg_full') }}</option>
+                            <option value="11kg_empty" {{ $inventory->type == '11kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_11kg_empty') }}</option>
+                            <option value="22kg_full" {{ $inventory->type == '22kg_full' ? 'selected' : '' }}>{{ __('messages.cylinder_22kg_full') }}</option>
+                            <option value="22kg_empty" {{ $inventory->type == '22kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_22kg_empty') }}</option>
+                            <option value="44kg_full" {{ $inventory->type == '44kg_full' ? 'selected' : '' }}>{{ __('messages.cylinder_44kg_full') }}</option>
+                            <option value="44kg_empty" {{ $inventory->type == '44kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_44kg_empty') }}</option>
                         </select>
                     </div>
                 </div>

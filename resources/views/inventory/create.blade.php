@@ -117,9 +117,9 @@
                         <i class="fas fa-gas-pump text-primary"></i> {{ __('messages.cylinder_type_size') }}:
                     </label>
                     <select name="type" class="form-select" required>
-                        <option value="11kg_empty" {{ old('type') == '11kg_empty' ? 'selected' : '' }}>11kg Cylinder (Empty / New Pole)</option>
-                        <option value="22kg_empty" {{ old('type') == '22kg_empty' ? 'selected' : '' }}>22kg Cylinder (Empty / New Pole)</option>
-                        <option value="44kg_empty" {{ old('type') == '44kg_empty' ? 'selected' : '' }}>44kg Cylinder (Empty / New Pole)</option>
+                        <option value="11kg_empty" {{ old('type') == '11kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_11kg_new_desc') }}</option>
+                        <option value="22kg_empty" {{ old('type') == '22kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_22kg_new_desc') }}</option>
+                        <option value="44kg_empty" {{ old('type') == '44kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_44kg_new_desc') }}</option>
                     </select>
                 </div>
 

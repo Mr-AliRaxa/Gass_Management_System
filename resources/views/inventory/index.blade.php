@@ -266,7 +266,7 @@
             <div class="search-wrapper">
                 <i class="fas fa-search"></i>
                 <input type="text" id="liveSearch" class="search-input"
-                       placeholder="Search records..." autocomplete="off">
+                       placeholder="{{ __('messages.search_records') }}" autocomplete="off">
                 <span id="searchClearBtn" style="display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#94a3b8;font-size:13px;" onclick="clearSearch()">
                     <i class="fas fa-times"></i>
                 </span>
@@ -324,7 +324,7 @@
         <div class="stat-kpi-card stat-kpi-blue">
             <div>
                 <div class="stat-kpi-label">{{ __('messages.total_purchased_in') }}</div>
-                <div class="stat-kpi-value">{{ number_format($totalPurchasedQty) }} <span style="font-size:13px;font-weight:600;">Units</span></div>
+                <div class="stat-kpi-value">{{ number_format($totalPurchasedQty) }} <span style="font-size:13px;font-weight:600;">{{ __('messages.units') }}</span></div>
             </div>
             <div class="stat-kpi-icon stat-kpi-icon-blue"><i class="fas fa-arrow-down"></i></div>
             <i class="fas fa-dolly stat-kpi-bg-icon text-primary"></i>
@@ -334,7 +334,7 @@
         <div class="stat-kpi-card stat-kpi-green">
             <div>
                 <div class="stat-kpi-label">{{ __('messages.purchase_investment') }}</div>
-                <div class="stat-kpi-value">{{ number_format($totalPurchaseCost, 2) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
+                <div class="stat-kpi-value">{{ number_format($totalPurchaseCost, 2) }} <span style="font-size:13px;font-weight:600;">{{ __('messages.omr') }}</span></div>
             </div>
             <div class="stat-kpi-icon stat-kpi-icon-green"><i class="fas fa-money-bill-wave"></i></div>
             <i class="fas fa-coins stat-kpi-bg-icon text-success"></i>
@@ -343,8 +343,8 @@
         {{-- Total Cylinders Sold --}}
         <div class="stat-kpi-card stat-kpi-orange">
             <div>
-                <div class="stat-kpi-label">Total Cylinders Sold (Out)</div>
-                <div class="stat-kpi-value">{{ number_format($totalSoldCylinders) }} <span style="font-size:13px;font-weight:600;">Units</span></div>
+                <div class="stat-kpi-label">{{ __('messages.total_cylinders_sold_out') }}</div>
+                <div class="stat-kpi-value">{{ number_format($totalSoldCylinders) }} <span style="font-size:13px;font-weight:600;">{{ __('messages.units') }}</span></div>
             </div>
             <div class="stat-kpi-icon stat-kpi-icon-orange"><i class="fas fa-arrow-up"></i></div>
             <i class="fas fa-shopping-cart stat-kpi-bg-icon text-warning"></i>
@@ -368,9 +368,9 @@
     <div class="d-flex align-items-center justify-content-between mb-3">
         <div>
             <h5 class="font-weight-bold text-gray-800 m-0" style="font-size: 18px;">
-                <i class="fas fa-balance-scale text-primary me-2"></i> 11kg, 22kg &amp; 44kg Cylinder Size Wise: Purchase vs Sale Comparison
+                <i class="fas fa-balance-scale text-primary me-2"></i> {{ __('messages.cylinder_comparison_title') }}
             </h5>
-            <small class="text-muted">Separate pricing, sales revenue, buy cost, remaining balance and gross profit details per cylinder size.</small>
+            <small class="text-muted">{{ __('messages.cylinder_comparison_subtitle') }}</small>
         </div>
     </div>
 
@@ -386,6 +386,12 @@
         @foreach($cylinderSizeDetails as $sizeKey => $item)
         @php
             $theme = $sizeThemes[$sizeKey] ?? ['color' => '#2563eb', 'bg' => '#eff6ff', 'border' => '#bfdbfe', 'icon' => 'fa-gas-pump'];
+            $cylinderLocalizedName = match($sizeKey) {
+                '11kg' => __('messages.cylinder_11kg'),
+                '22kg' => __('messages.cylinder_22kg'),
+                '44kg' => __('messages.cylinder_44kg'),
+                default => $item['name']
+            };
         @endphp
         <div class="col-lg-4 col-md-6">
             <div class="card h-100 shadow-sm" style="border-radius: 20px; border: 1.5px solid {{ $theme['border'] }}; overflow: hidden; background: #ffffff;">
@@ -397,15 +403,15 @@
                             <i class="fas {{ $theme['icon'] }}"></i>
                         </div>
                         <div>
-                            <h5 class="m-0 font-weight-bold" style="color: #1e293b; font-size: 17px;">{{ $item['name'] }}</h5>
-                            <small style="color: {{ $theme['color'] }}; font-weight: 700;">New Pole Cylinder</small>
+                            <h5 class="m-0 font-weight-bold" style="color: #1e293b; font-size: 17px;">{{ $cylinderLocalizedName }}</h5>
+                            <small style="color: {{ $theme['color'] }}; font-weight: 700;">{{ __('messages.new_pole_cylinder') }}</small>
                         </div>
                     </div>
                     <div>
                         @if($item['remaining'] <= 5)
-                            <span class="stock-status-pill pill-low"><i class="fas fa-exclamation-triangle"></i> Low ({{ $item['remaining'] }})</span>
+                            <span class="stock-status-pill pill-low"><i class="fas fa-exclamation-triangle"></i> {{ __('messages.low_stock') }} ({{ $item['remaining'] }})</span>
                         @else
-                            <span class="stock-status-pill pill-healthy"><i class="fas fa-check-circle"></i> Stock: {{ $item['remaining'] }}</span>
+                            <span class="stock-status-pill pill-healthy"><i class="fas fa-check-circle"></i> {{ __('messages.stock_count', ['count' => $item['remaining']]) }}</span>
                         @endif
                     </div>
                 </div>
@@ -417,21 +423,21 @@
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-bottom: 12px;">
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <span style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px;">
-                                <i class="fas fa-cart-arrow-down text-primary me-1"></i> PURCHASE / BUY DETAILS
+                                <i class="fas fa-cart-arrow-down text-primary me-1"></i> {{ __('messages.purchase_buy_details') }}
                             </span>
-                            <span class="badge" style="background: #e2e8f0; color: #334155; font-size: 11px;">Stock In</span>
+                            <span class="badge" style="background: #e2e8f0; color: #334155; font-size: 11px;">{{ __('messages.stock_in') }}</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-1">
-                            <span class="text-muted" style="font-size: 13px;">Total Bought (Qty):</span>
-                            <strong style="font-size: 14px; color: #1e293b;">{{ number_format($item['purchased_qty']) }} Units</strong>
+                            <span class="text-muted" style="font-size: 13px;">{{ __('messages.total_bought_qty') }}:</span>
+                            <strong style="font-size: 14px; color: #1e293b;">{{ number_format($item['purchased_qty']) }} {{ __('messages.units') }}</strong>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-1">
-                            <span class="text-muted" style="font-size: 13px;">Buy Unit Price:</span>
-                            <strong style="font-size: 14px; color: #2563eb;">{{ number_format($item['purchase_price'], 2) }} OMR</strong>
+                            <span class="text-muted" style="font-size: 13px;">{{ __('messages.buy_unit_price') }}:</span>
+                            <strong style="font-size: 14px; color: #2563eb;">{{ number_format($item['purchase_price'], 2) }} {{ __('messages.omr') }}</strong>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pt-1" style="border-top: 1px dashed #cbd5e1;">
-                            <span class="text-muted" style="font-size: 13px; font-weight: 600;">Total Purchase Cost:</span>
-                            <strong style="font-size: 15px; color: #0f172a;">{{ number_format($item['total_purchase_cost'], 2) }} OMR</strong>
+                            <span class="text-muted" style="font-size: 13px; font-weight: 600;">{{ __('messages.total_purchase_cost') }}:</span>
+                            <strong style="font-size: 15px; color: #0f172a;">{{ number_format($item['total_purchase_cost'], 2) }} {{ __('messages.omr') }}</strong>
                         </div>
                     </div>
 
@@ -439,32 +445,32 @@
                     <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 14px; padding: 14px; margin-bottom: 12px;">
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <span style="font-size: 11px; font-weight: 800; color: #15803d; text-transform: uppercase; letter-spacing: 0.5px;">
-                                <i class="fas fa-hand-holding-usd me-1"></i> SALE DETAILS (New Cylinders)
+                                <i class="fas fa-hand-holding-usd me-1"></i> {{ __('messages.sale_details_new') }}
                             </span>
-                            <span class="badge" style="background: #dcfce7; color: #166534; font-size: 11px;">Sold Out</span>
+                            <span class="badge" style="background: #dcfce7; color: #166534; font-size: 11px;">{{ __('messages.sold_out') }}</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-1">
-                            <span class="text-muted" style="font-size: 13px;">Total Sold (Qty):</span>
-                            <strong style="font-size: 14px; color: #1e293b;">{{ number_format($item['sold_qty']) }} Units</strong>
+                            <span class="text-muted" style="font-size: 13px;">{{ __('messages.total_sold_qty') }}:</span>
+                            <strong style="font-size: 14px; color: #1e293b;">{{ number_format($item['sold_qty']) }} {{ __('messages.units') }}</strong>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-1">
-                            <span class="text-muted" style="font-size: 13px;">Sale Unit Price:</span>
-                            <strong style="font-size: 14px; color: #16a34a;">{{ number_format($item['sale_price'], 2) }} OMR</strong>
+                            <span class="text-muted" style="font-size: 13px;">{{ __('messages.sale_unit_price') }}:</span>
+                            <strong style="font-size: 14px; color: #16a34a;">{{ number_format($item['sale_price'], 2) }} {{ __('messages.omr') }}</strong>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pt-1" style="border-top: 1px dashed #86efac;">
-                            <span class="text-muted" style="font-size: 13px; font-weight: 600;">Total Sale Revenue:</span>
-                            <strong style="font-size: 15px; color: #15803d;">{{ number_format($item['total_sale_revenue'], 2) }} OMR</strong>
+                            <span class="text-muted" style="font-size: 13px; font-weight: 600;">{{ __('messages.total_sale_revenue') }}:</span>
+                            <strong style="font-size: 15px; color: #15803d;">{{ number_format($item['total_sale_revenue'], 2) }} {{ __('messages.omr') }}</strong>
                         </div>
                     </div>
 
                     {{-- Profit / Margin Summary Footer --}}
                     <div style="background: #fefce8; border: 1px solid #fef08a; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between;">
                         <div>
-                            <span style="font-size: 12px; font-weight: 700; color: #854d0e;">Est. Gross Profit on Sold:</span>
-                            <div style="font-size: 11px; color: #a16207;">(Sale Revenue - Buy Cost)</div>
+                            <span style="font-size: 12px; font-weight: 700; color: #854d0e;">{{ __('messages.est_gross_profit') }}:</span>
+                            <div style="font-size: 11px; color: #a16207;">{{ __('messages.revenue_minus_cost') }}</div>
                         </div>
                         <div style="font-size: 17px; font-weight: 800; color: {{ $item['estimated_profit'] >= 0 ? '#15803d' : '#dc2626' }};">
-                            {{ $item['estimated_profit'] >= 0 ? '+' : '' }}{{ number_format($item['estimated_profit'], 2) }} OMR
+                            {{ $item['estimated_profit'] >= 0 ? '+' : '' }}{{ number_format($item['estimated_profit'], 2) }} {{ __('messages.omr') }}
                         </div>
                     </div>
 
@@ -479,17 +485,17 @@
         <div class="monthly-insights-header">
             <div>
                 <span class="monthly-insights-title">
-                    <i class="fas fa-chart-bar text-primary"></i> Monthly Cylinder Movement & Purchase Cost (Last 6 Months)
+                    <i class="fas fa-chart-bar text-primary"></i> {{ __('messages.monthly_movement_title') }}
                 </span>
-                <small class="text-muted">Real-time monthly audit for cylinder purchases and sales deductions</small>
+                <small class="text-muted">{{ __('messages.monthly_movement_desc') }}</small>
             </div>
             <!-- Sub-tabs for Purchases / Sales -->
             <div class="inv-tab-pill-box">
                 <button type="button" class="inv-tab-pill-btn active" onclick="switchMonthlyTab('purchases', this)">
-                    <i class="fas fa-arrow-down text-success me-1"></i> Purchases (Stock In)
+                    <i class="fas fa-arrow-down text-success me-1"></i> {{ __('messages.purchases_stock_in') }}
                 </button>
                 <button type="button" class="inv-tab-pill-btn" onclick="switchMonthlyTab('sales', this)">
-                    <i class="fas fa-arrow-up text-danger me-1"></i> Sales (Stock Out)
+                    <i class="fas fa-arrow-up text-danger me-1"></i> {{ __('messages.sales_stock_out') }}
                 </button>
             </div>
         </div>
@@ -499,12 +505,12 @@
             <table class="monthly-table">
                 <thead>
                     <tr>
-                        <th>Month & Year</th>
-                        <th>11kg Bought</th>
-                        <th>22kg Bought</th>
-                        <th>44kg Bought</th>
-                        <th>Total Units In</th>
-                        <th>Purchase Cost (Investment)</th>
+                        <th>{{ __('messages.month_and_year') }}</th>
+                        <th>{{ __('messages.bought_11kg') }}</th>
+                        <th>{{ __('messages.bought_22kg') }}</th>
+                        <th>{{ __('messages.bought_44kg') }}</th>
+                        <th>{{ __('messages.total_units_in') }}</th>
+                        <th>{{ __('messages.purchase_cost_investment') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -535,7 +541,7 @@
                         <td>
                             @if(($m['bought_qty'] ?? 0) > 0)
                                 <span class="badge" style="background:#dcfce7; color:#15803d; font-size:12px; padding:5px 11px; border-radius:12px; font-weight:800;">
-                                    <i class="fas fa-arrow-down me-1"></i> +{{ $m['bought_qty'] }} Units
+                                    <i class="fas fa-arrow-down me-1"></i> +{{ $m['bought_qty'] }} {{ __('messages.units') }}
                                 </span>
                             @else
                                 <span class="text-muted">—</span>
@@ -543,7 +549,7 @@
                         </td>
                         <td>
                             @if(($m['bought_cost'] ?? 0) > 0)
-                                <strong style="color: #047857; font-size:14px;">{{ number_format($m['bought_cost'], 2) }} OMR</strong>
+                                <strong style="color: #047857; font-size:14px;">{{ number_format($m['bought_cost'], 2) }} {{ __('messages.omr') }}</strong>
                             @else
                                 <span class="text-muted">—</span>
                             @endif
@@ -559,12 +565,12 @@
             <table class="monthly-table">
                 <thead>
                     <tr>
-                        <th>Month & Year</th>
-                        <th>11kg Sold</th>
-                        <th>22kg Sold</th>
-                        <th>44kg Sold</th>
-                        <th>Total Units Sold</th>
-                        <th>Sales Revenue</th>
+                        <th>{{ __('messages.month_and_year') }}</th>
+                        <th>{{ __('messages.sold_11kg') }}</th>
+                        <th>{{ __('messages.sold_22kg') }}</th>
+                        <th>{{ __('messages.sold_44kg') }}</th>
+                        <th>{{ __('messages.total_units_sold') }}</th>
+                        <th>{{ __('messages.sales_revenue') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -595,7 +601,7 @@
                         <td>
                             @if(($m['sold_qty'] ?? 0) > 0)
                                 <span class="badge" style="background:#fee2e2; color:#b91c1c; font-size:12px; padding:5px 11px; border-radius:12px; font-weight:800;">
-                                    <i class="fas fa-arrow-up me-1"></i> {{ $m['sold_qty'] }} Sold
+                                    <i class="fas fa-arrow-up me-1"></i> {{ $m['sold_qty'] }} {{ __('messages.sold') }}
                                 </span>
                             @else
                                 <span class="text-muted">—</span>
@@ -603,7 +609,7 @@
                         </td>
                         <td>
                             @if(($m['sold_revenue'] ?? 0) > 0)
-                                <strong style="color: #15803d; font-size:14px;">{{ number_format($m['sold_revenue'], 2) }} OMR</strong>
+                                <strong style="color: #15803d; font-size:14px;">{{ number_format($m['sold_revenue'], 2) }} {{ __('messages.omr') }}</strong>
                             @else
                                 <span class="text-muted">—</span>
                             @endif
@@ -619,41 +625,41 @@
     <div class="collapse {{ (request('type') || request('action') || request('from_date') || request('to_date')) ? 'show' : '' }}" id="filterBox">
         <div class="filter-card">
             <div class="filter-header">
-                <span class="filter-title"><i class="fas fa-sliders-h text-primary"></i> Filter Stock History & Purchases</span>
+                <span class="filter-title"><i class="fas fa-sliders-h text-primary"></i> {{ __('messages.filter_stock_history') }}</span>
                 @if(request('type') || request('action') || request('from_date') || request('to_date'))
-                <a href="{{ route('inventory.index') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">Clear Filters</a>
+                <a href="{{ route('inventory.index') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">{{ __('messages.clear_filters') }}</a>
                 @endif
             </div>
             <form action="{{ route('inventory.index') }}" method="GET">
                 <div class="row g-3">
                     <div class="col-md-3">
-                        <div class="filter-label">Cylinder Type</div>
+                        <div class="filter-label">{{ __('messages.cylinder_type') }}</div>
                         <select name="type" class="filter-control">
-                            <option value="">All Types (11kg, 22kg, 44kg)</option>
-                            <option value="11kg_empty" {{ request('type') == '11kg_empty' ? 'selected' : '' }}>11kg Cylinder</option>
-                            <option value="22kg_empty" {{ request('type') == '22kg_empty' ? 'selected' : '' }}>22kg Cylinder</option>
-                            <option value="44kg_empty" {{ request('type') == '44kg_empty' ? 'selected' : '' }}>44kg Cylinder</option>
+                            <option value="">{{ __('messages.all_cylinder_types') }}</option>
+                            <option value="11kg_empty" {{ request('type') == '11kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_11kg') }}</option>
+                            <option value="22kg_empty" {{ request('type') == '22kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_22kg') }}</option>
+                            <option value="44kg_empty" {{ request('type') == '44kg_empty' ? 'selected' : '' }}>{{ __('messages.cylinder_44kg') }}</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <div class="filter-label">Action / Entry Type</div>
+                        <div class="filter-label">{{ __('messages.action_entry_type') }}</div>
                         <select name="action" class="filter-control">
-                            <option value="">All Actions</option>
-                            <option value="purchase" {{ request('action') == 'purchase' ? 'selected' : '' }}>Purchases (Stock In)</option>
-                            <option value="sale_deduction" {{ request('action') == 'sale_deduction' ? 'selected' : '' }}>Sales / Out</option>
+                            <option value="">{{ __('messages.all_actions') }}</option>
+                            <option value="purchase" {{ request('action') == 'purchase' ? 'selected' : '' }}>{{ __('messages.purchases_stock_in') }}</option>
+                            <option value="sale_deduction" {{ request('action') == 'sale_deduction' ? 'selected' : '' }}>{{ __('messages.sales_out') }}</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <div class="filter-label">From Date</div>
+                        <div class="filter-label">{{ __('messages.from_date') }}</div>
                         <input type="date" name="from_date" class="filter-control" value="{{ request('from_date') }}">
                     </div>
                     <div class="col-md-2">
-                        <div class="filter-label">To Date</div>
+                        <div class="filter-label">{{ __('messages.to_date') }}</div>
                         <input type="date" name="to_date" class="filter-control" value="{{ request('to_date') }}">
                     </div>
                     <div class="col-md-3 d-flex align-items-end">
                         <button type="submit" class="btn btn-primary w-100 rounded-3 font-weight-bold" style="padding:8px 16px;">
-                            <i class="fas fa-search me-1"></i> Apply Filters
+                            <i class="fas fa-search me-1"></i> {{ __('messages.apply_filters') }}
                         </button>
                     </div>
                 </div>
@@ -671,9 +677,9 @@
                     <i class="fas fa-cart-arrow-down" style="font-size: 16px; color: #fff;"></i>
                 </div>
                 <div>
-                    <span style="font-size: 17px; font-weight: 800; color: #1e293b;">Cylinder Purchases &amp; Stock In Log</span>
+                    <span style="font-size: 17px; font-weight: 800; color: #1e293b;">{{ __('messages.purchases_log_title') }}</span>
                     <span class="badge ms-2" style="background: #dcfce7; color: #15803d; font-size: 12px; font-weight: 700; border-radius: 12px; padding: 4px 10px;">
-                        {{ $purchasesList->total() }} Records
+                        {{ $purchasesList->total() }} {{ __('messages.records') }}
                     </span>
                 </div>
             </div>
@@ -681,10 +687,10 @@
                 <a href="{{ route('inventory.downloadPdf', array_merge(request()->all(), ['report_type' => 'purchases'])) }}" 
                    class="btn-pdf-sub shadow-sm" 
                    style="background: #15803d; color: #fff; border: none; padding: 7px 14px; border-radius: 10px;">
-                    <i class="fas fa-file-pdf"></i> Purchases PDF
+                    <i class="fas fa-file-pdf"></i> {{ __('messages.purchases_pdf') }}
                 </a>
                 <span class="showing-text" style="font-size: 12px;">
-                    Showing {{ $purchasesList->firstItem() ?? 0 }}–{{ $purchasesList->lastItem() ?? 0 }} of {{ $purchasesList->total() ?? 0 }}
+                    {{ __('messages.showing') }} {{ $purchasesList->firstItem() ?? 0 }}–{{ $purchasesList->lastItem() ?? 0 }} {{ __('messages.of') }} {{ $purchasesList->total() ?? 0 }}
                 </span>
             </div>
         </div>
@@ -693,19 +699,27 @@
             <table class="cust-table">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Cylinder Type</th>
-                        <th>Qty Purchased</th>
-                        <th>Buy Price (Unit)</th>
-                        <th>Total Buy Cost</th>
-                        <th>Supplier / Details</th>
-                        <th>Action</th>
+                        <th>{{ __('messages.date') }}</th>
+                        <th>{{ __('messages.cylinder_type') }}</th>
+                        <th>{{ __('messages.qty_purchased') }}</th>
+                        <th>{{ __('messages.buy_unit_price') }}</th>
+                        <th>{{ __('messages.total_buy_cost') }}</th>
+                        <th>{{ __('messages.supplier_details') }}</th>
+                        <th>{{ __('messages.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($purchasesList as $item)
                     @php
-                        $typeName = str_replace(['_empty', '_'], [' New Cylinder', ' '], ucfirst($item->type));
+                        $typeNamesMap = [
+                            '11kg_empty' => __('messages.cylinder_11kg_new'),
+                            '22kg_empty' => __('messages.cylinder_22kg_new'),
+                            '44kg_empty' => __('messages.cylinder_44kg_new'),
+                            '11kg_full' => __('messages.cylinder_11kg'),
+                            '22kg_full' => __('messages.cylinder_22kg'),
+                            '44kg_full' => __('messages.cylinder_44kg'),
+                        ];
+                        $typeName = $typeNamesMap[$item->type] ?? str_replace(['_empty', '_'], [' ' . __('messages.new_cylinder'), ' '], ucfirst($item->type));
                         $displayDate = $item->transaction_date ? \Carbon\Carbon::parse($item->transaction_date)->format('d M Y') : $item->created_at->format('d M Y');
                     @endphp
                     <tr class="history-row" data-search="{{ strtolower($displayDate . ' ' . $typeName . ' ' . $item->quantity . ' ' . ($item->supplier_name ?? '') . ' ' . ($item->note ?? '')) }}">
@@ -727,7 +741,7 @@
                         {{-- Qty Purchased --}}
                         <td>
                             <span class="qty-change-pill qty-positive">
-                                <i class="fas fa-arrow-down"></i> +{{ $item->quantity }} Units
+                                <i class="fas fa-arrow-down"></i> +{{ $item->quantity }} {{ __('messages.units') }}
                             </span>
                         </td>
 
@@ -735,7 +749,7 @@
                         <td>
                             @if($item->unit_price > 0)
                                 <span class="price-pill">
-                                    <i class="fas fa-tag text-muted"></i> {{ number_format($item->unit_price, 2) }} OMR
+                                    <i class="fas fa-tag text-muted"></i> {{ number_format($item->unit_price, 2) }} {{ __('messages.omr') }}
                                 </span>
                             @else
                                 <span class="text-muted">—</span>
@@ -746,7 +760,7 @@
                         <td>
                             @if($item->total_cost > 0)
                                 <span class="total-cost-pill">
-                                    <i class="fas fa-coins"></i> {{ number_format($item->total_cost, 2) }} OMR
+                                    <i class="fas fa-coins"></i> {{ number_format($item->total_cost, 2) }} {{ __('messages.omr') }}
                                 </span>
                             @else
                                 <span class="text-muted">—</span>
@@ -773,12 +787,12 @@
                         <td>
                             <div class="action-wrap">
                                 @can('inventory-edit')
-                                <a href="{{ route('inventory.edit', $item->id) }}" class="act-btn act-btn-edit" title="Edit Entry">
+                                <a href="{{ route('inventory.edit', $item->id) }}" class="act-btn act-btn-edit" title="{{ __('messages.edit') }}">
                                     <i class="fas fa-pen"></i>
                                 </a>
                                 @endcan
                                 @can('inventory-delete')
-                                <button class="act-btn act-btn-del" title="Delete Entry" onclick="confirmDelete('{{ route('inventory.destroy', $item->id) }}')">
+                                <button class="act-btn act-btn-del" title="{{ __('messages.delete') }}" onclick="confirmDelete('{{ route('inventory.destroy', $item->id) }}')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 @endcan
@@ -790,7 +804,7 @@
                         <td colspan="7">
                             <div class="empty-state" style="padding: 40px 20px;">
                                 <i class="fas fa-box-open text-muted"></i>
-                                <p class="mb-0">No cylinder purchase records found.</p>
+                                <p class="mb-0">{{ __('messages.no_purchases_found') }}</p>
                             </div>
                         </td>
                     </tr>
@@ -800,16 +814,16 @@
                 <tfoot>
                     <tr style="background: #f8fafc; font-weight: 700;">
                         <td colspan="2" class="text-end" style="padding: 12px 18px; font-size: 13px; color: #475569;">
-                            <strong>Total (Filtered):</strong>
+                            <strong>{{ __('messages.total_filtered') }}:</strong>
                         </td>
                         <td style="padding: 12px 18px;">
                             <span class="badge" style="background: #dcfce7; color: #15803d; font-size: 13px; padding: 5px 10px;">
-                                +{{ number_format($totalPurchasedFilteredQty) }} Units
+                                +{{ number_format($totalPurchasedFilteredQty) }} {{ __('messages.units') }}
                             </span>
                         </td>
                         <td></td>
                         <td style="padding: 12px 18px;">
-                            <strong style="color: #047857; font-size: 14px;">{{ number_format($totalPurchasedFilteredCost, 2) }} OMR</strong>
+                            <strong style="color: #047857; font-size: 14px;">{{ number_format($totalPurchasedFilteredCost, 2) }} {{ __('messages.omr') }}</strong>
                         </td>
                         <td colspan="2"></td>
                     </tr>
@@ -832,9 +846,9 @@
                     <i class="fas fa-shopping-cart" style="font-size: 16px; color: #fff;"></i>
                 </div>
                 <div>
-                    <span style="font-size: 17px; font-weight: 800; color: #1e293b;">New Cylinder Sales Log</span>
+                    <span style="font-size: 17px; font-weight: 800; color: #1e293b;">{{ __('messages.sales_log_title') }}</span>
                     <span class="badge ms-2" style="background: #fee2e2; color: #dc2626; font-size: 12px; font-weight: 700; border-radius: 12px; padding: 4px 10px;">
-                        {{ $salesList->total() }} Records
+                        {{ $salesList->total() }} {{ __('messages.records') }}
                     </span>
                 </div>
             </div>
@@ -842,10 +856,10 @@
                 <a href="{{ route('inventory.downloadPdf', array_merge(request()->all(), ['report_type' => 'sales'])) }}" 
                    class="btn-pdf-sub shadow-sm" 
                    style="background: #dc2626; color: #fff; border: none; padding: 7px 14px; border-radius: 10px;">
-                    <i class="fas fa-file-pdf"></i> Sales PDF
+                    <i class="fas fa-file-pdf"></i> {{ __('messages.sales_pdf') }}
                 </a>
                 <span class="showing-text" style="font-size: 12px;">
-                    Showing {{ $salesList->firstItem() ?? 0 }}–{{ $salesList->lastItem() ?? 0 }} of {{ $salesList->total() ?? 0 }}
+                    {{ __('messages.showing') }} {{ $salesList->firstItem() ?? 0 }}–{{ $salesList->lastItem() ?? 0 }} {{ __('messages.of') }} {{ $salesList->total() ?? 0 }}
                 </span>
             </div>
         </div>
@@ -854,21 +868,29 @@
             <table class="cust-table">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Cylinder Type</th>
-                        <th>Qty Sold</th>
-                        <th>Sale Price (Unit)</th>
-                        <th>Total Sale Revenue</th>
-                        <th>Customer Name</th>
-                        <th>Sale Invoice #</th>
+                        <th>{{ __('messages.date') }}</th>
+                        <th>{{ __('messages.cylinder_type') }}</th>
+                        <th>{{ __('messages.qty_sold') }}</th>
+                        <th>{{ __('messages.sale_unit_price') }}</th>
+                        <th>{{ __('messages.total_sale_revenue') }}</th>
+                        <th>{{ __('messages.customer_name') }}</th>
+                        <th>{{ __('messages.sale_invoice_no') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($salesList as $saleItem)
                     @php
-                        $typeName = str_replace(['_empty', '_'], [' New Cylinder', ' '], ucfirst($saleItem->type));
+                        $typeNamesMap = [
+                            '11kg_empty' => __('messages.cylinder_11kg_new'),
+                            '22kg_empty' => __('messages.cylinder_22kg_new'),
+                            '44kg_empty' => __('messages.cylinder_44kg_new'),
+                            '11kg_full' => __('messages.cylinder_11kg'),
+                            '22kg_full' => __('messages.cylinder_22kg'),
+                            '44kg_full' => __('messages.cylinder_44kg'),
+                        ];
+                        $typeName = $typeNamesMap[$saleItem->type] ?? str_replace(['_empty', '_'], [' ' . __('messages.new_cylinder'), ' '], ucfirst($saleItem->type));
                         $saleDate = $saleItem->sale && $saleItem->sale->date ? \Carbon\Carbon::parse($saleItem->sale->date)->format('d M Y') : $saleItem->created_at->format('d M Y');
-                        $custName = $saleItem->sale && $saleItem->sale->customer ? $saleItem->sale->customer->name : 'Walk-in / Cash';
+                        $custName = $saleItem->sale && $saleItem->sale->customer ? $saleItem->sale->customer->name : __('messages.walk_in_cash');
                         $invoiceNo = $saleItem->sale ? ($saleItem->sale->invoice_number ?? ('#' . $saleItem->sale_id)) : '—';
                         $itemTotal = $saleItem->quantity * $saleItem->price;
                     @endphp
@@ -891,21 +913,21 @@
                         {{-- Qty Sold --}}
                         <td>
                             <span class="qty-change-pill qty-negative">
-                                <i class="fas fa-arrow-up"></i> {{ $saleItem->quantity }} Sold
+                                <i class="fas fa-arrow-up"></i> {{ $saleItem->quantity }} {{ __('messages.sold') }}
                             </span>
                         </td>
 
                         {{-- Sale Unit Price --}}
                         <td>
                             <span class="price-pill">
-                                <i class="fas fa-tag text-muted"></i> {{ number_format($saleItem->price, 2) }} OMR
+                                <i class="fas fa-tag text-muted"></i> {{ number_format($saleItem->price, 2) }} {{ __('messages.omr') }}
                             </span>
                         </td>
 
                         {{-- Total Sale Revenue --}}
                         <td>
                             <span class="total-cost-pill" style="background: #fef2f2; color: #dc2626;">
-                                <i class="fas fa-coins"></i> {{ number_format($itemTotal, 2) }} OMR
+                                <i class="fas fa-coins"></i> {{ number_format($itemTotal, 2) }} {{ __('messages.omr') }}
                             </span>
                         </td>
 
@@ -932,7 +954,7 @@
                         <td colspan="7">
                             <div class="empty-state" style="padding: 40px 20px;">
                                 <i class="fas fa-box-open text-muted"></i>
-                                <p class="mb-0">No new cylinder sales records found.</p>
+                                <p class="mb-0">{{ __('messages.no_sales_found') }}</p>
                             </div>
                         </td>
                     </tr>
@@ -942,16 +964,16 @@
                 <tfoot>
                     <tr style="background: #fff5f5; font-weight: 700;">
                         <td colspan="2" class="text-end" style="padding: 12px 18px; font-size: 13px; color: #475569;">
-                            <strong>Total (Filtered):</strong>
+                            <strong>{{ __('messages.total_filtered') }}:</strong>
                         </td>
                         <td style="padding: 12px 18px;">
                             <span class="badge" style="background: #fee2e2; color: #dc2626; font-size: 13px; padding: 5px 10px;">
-                                {{ number_format($totalSoldFilteredQty) }} Units Sold
+                                {{ number_format($totalSoldFilteredQty) }} {{ __('messages.units_sold') }}
                             </span>
                         </td>
                         <td></td>
                         <td style="padding: 12px 18px;">
-                            <strong style="color: #dc2626; font-size: 14px;">{{ number_format($totalSoldFilteredRevenue, 2) }} OMR</strong>
+                            <strong style="color: #dc2626; font-size: 14px;">{{ number_format($totalSoldFilteredRevenue, 2) }} {{ __('messages.omr') }}</strong>
                         </td>
                         <td colspan="2"></td>
                     </tr>
