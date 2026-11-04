@@ -98,6 +98,7 @@ class SuperAdminController extends Controller
             'email' => $request->owner_email,
             'password' => Hash::make($request->owner_password),
             'agency_id' => $agency->id,
+            'is_owner' => true,
         ]);
 
         $role = Role::firstOrCreate(['name' => 'Admin']);
@@ -146,6 +147,7 @@ class SuperAdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'agency_id' => $agency->id,
+            'is_owner' => true,
         ]);
 
         $role = Role::firstOrCreate(['name' => 'Admin']);

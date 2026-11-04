@@ -23,11 +23,30 @@ class User extends Authenticatable
         'email',
         'password',
         'agency_id',
+        'is_owner',
     ];
 
     public function agency()
     {
         return $this->belongsTo(Agency::class);
+    }
+
+    /**
+     * Check if the user is the primary Agency Owner.
+     */
+    public function isAgencyOwner(): bool
+    {
+        if ($this->is_owner) {
+            return true;
+        }
+
+        // Fallback: the earliest user created for the agency is the owner
+        if ($this->agency_id) {
+            $firstUserId = static::where('agency_id', $this->agency_id)->orderBy('id', 'asc')->value('id');
+            return $firstUserId && (int) $this->id === (int) $firstUserId;
+        }
+
+        return false;
     }
 
     /**
@@ -50,6 +69,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_owner' => 'boolean',
         ];
     }
 }

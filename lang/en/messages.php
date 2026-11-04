@@ -511,4 +511,12 @@ return [
     'total_users' => 'Total Users',
     'active_logins' => 'Active Logins',
     'roles_configured' => 'Roles Configured',
+    'owner' => 'Agency Owner',
+    'owner_protected' => 'Owner Protected',
+    'owner_protected_tooltip' => 'Agency Owner account is protected and cannot be deleted.',
+    'cannot_delete_agency_owner' => 'Agency Owner account is protected and cannot be deleted.',
+    'cannot_delete_super_admin' => 'Super Admin user cannot be deleted.',
+    'cannot_delete_yourself' => 'You cannot delete your own active logged-in account.',
+    'user_deleted_successfully' => 'User deleted successfully.',
+    'system_protected' => 'System Protected',
 ];

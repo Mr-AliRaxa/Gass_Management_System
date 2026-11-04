@@ -511,4 +511,12 @@ return [
     'total_users' => 'إجمالي المستخدمين',
     'active_logins' => 'تسجيلات الدخول النشطة',
     'roles_configured' => 'الأدوار المهيأة',
+    'owner' => 'مالك الوكالة',
+    'owner_protected' => 'حساب المالك محمي',
+    'owner_protected_tooltip' => 'حساب مالك الوكالة محمي ولا يمكن حذفه.',
+    'cannot_delete_agency_owner' => 'حساب مالك الوكالة محمي ولا يمكن حذفه.',
+    'cannot_delete_super_admin' => 'لا يمكن حذف حساب المشرف العام (Super Admin).',
+    'cannot_delete_yourself' => 'لا يمكنك حذف حسابك الشخصي النشط.',
+    'user_deleted_successfully' => 'تم حذف المستخدم بنجاح.',
+    'system_protected' => 'محمي من النظام',
 ];

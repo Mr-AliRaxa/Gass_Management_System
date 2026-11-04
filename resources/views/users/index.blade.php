@@ -239,6 +239,11 @@
                                 <div>
                                     <div class="cust-name">
                                         <span class="cust-online-dot"></span>{{ $user->name }}
+                                        @if($user->isAgencyOwner())
+                                            <span class="badge ms-1" style="background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px;" title="{{ __('messages.owner_protected_tooltip') }}">
+                                                <i class="fas fa-crown text-warning me-1"></i>{{ __('messages.owner') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     <small class="text-muted">ID: #USR-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}</small>
                                 </div>
@@ -260,18 +265,30 @@
                         </td>
                         <td>
                             <div class="action-wrap">
-                                <a class="act-btn act-btn-view" href="{{ route('users.show',$user->id) }}" title="View"><i class="fas fa-eye"></i></a>
-                                @if(!$user->hasRole('Super Admin'))
+                                <a class="act-btn act-btn-view" href="{{ route('users.show',$user->id) }}" title="{{ __('messages.view') }}"><i class="fas fa-eye"></i></a>
+                                @if($user->hasRole('Super Admin'))
+                                    {{-- Super Admin: fully locked --}}
+                                    <span class="badge" style="background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0;font-size:11px;padding:6px 10px;border-radius:8px;">
+                                        <i class="fas fa-lock me-1"></i>{{ __('messages.system_protected') }}
+                                    </span>
+                                @elseif($user->isAgencyOwner())
+                                    {{-- Agency Owner: can be edited but NOT deleted --}}
                                     @can('user-edit')
-                                    <a class="act-btn act-btn-edit" href="{{ route('users.edit',$user->id) }}" title="Edit"><i class="fas fa-pen"></i></a>
+                                    <a class="act-btn act-btn-edit" href="{{ route('users.edit',$user->id) }}" title="{{ __('messages.edit') }}"><i class="fas fa-pen"></i></a>
+                                    @endcan
+                                    <span class="badge" title="{{ __('messages.owner_protected_tooltip') }}" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a;font-size:11px;padding:6px 10px;border-radius:8px;cursor:help;">
+                                        <i class="fas fa-crown me-1" style="color:#d97706;"></i>{{ __('messages.owner_protected') }}
+                                    </span>
+                                @else
+                                    {{-- Normal sub-user: edit & delete allowed --}}
+                                    @can('user-edit')
+                                    <a class="act-btn act-btn-edit" href="{{ route('users.edit',$user->id) }}" title="{{ __('messages.edit') }}"><i class="fas fa-pen"></i></a>
                                     @endcan
                                     @can('user-delete')
-                                    <button type="button" class="act-btn act-btn-del" title="Delete" onclick="confirmDelete('{{ route('users.destroy', $user->id) }}')">
+                                    <button type="button" class="act-btn act-btn-del" title="{{ __('messages.delete') }}" onclick="confirmDelete('{{ route('users.destroy', $user->id) }}')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                     @endcan
-                                @else
-                                    <span class="badge bg-secondary" style="font-size:11px;padding:6px 10px;border-radius:8px;">System Protected</span>
                                 @endif
                             </div>
                         </td>

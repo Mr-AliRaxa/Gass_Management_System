@@ -70,6 +70,9 @@ class UserController extends Controller
         if (!auth()->user()->hasRole('Super Admin')) {
             $input['agency_id'] = auth()->user()->agency_id;
         }
+
+        // Sub-users created inside agency should never be marked as primary agency owner
+        $input['is_owner'] = false;
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
@@ -142,14 +145,33 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $user = User::find($id);
-        if ($user && $user->hasRole('Super Admin')) {
+        $user = User::findOrFail($id);
+
+        // 1. Prevent deleting Super Admin
+        if ($user->hasRole('Super Admin')) {
             return redirect()->route('users.index')
-                            ->with('error', 'Super Admin user cannot be deleted.');
+                            ->with('error', __('messages.cannot_delete_super_admin'));
+        }
+
+        // 2. Prevent deleting Agency Owner / Primary Admin
+        if ($user->isAgencyOwner()) {
+            return redirect()->route('users.index')
+                            ->with('error', __('messages.cannot_delete_agency_owner'));
+        }
+
+        // 3. Prevent deleting own active logged-in account
+        if (auth()->id() === $user->id) {
+            return redirect()->route('users.index')
+                            ->with('error', __('messages.cannot_delete_yourself'));
+        }
+
+        // 4. Ensure non-super-admins cannot delete users outside their agency
+        if (!auth()->user()->hasRole('Super Admin') && (int) $user->agency_id !== (int) auth()->user()->agency_id) {
+            abort(403, 'Unauthorized action.');
         }
 
         $user->delete();
         return redirect()->route('users.index')
-                        ->with('success', 'User deleted successfully');
+                        ->with('success', __('messages.user_deleted_successfully'));
     }
 }
