@@ -616,4 +616,11 @@ return [
     'system_protected' => 'محمي من النظام',
     'description' => 'الوصف',
     'expense_type_description_placeholder' => 'أدخل وصفاً موجزاً لفئة المصروفات هذه (اختياري)...',
+    'out_of_stock' => 'نفدت الكمية',
+    'new_cylinder_not_in_stock' => 'الأسطوانة الجديدة غير متوفرة في المخزون',
+    'new_cylinder_not_in_stock_desc' => 'المخزون لأسطوانة :weight الجديدة حالياً 0. لا يمكنك البيع حتى يتم إضافة مخزون جديد.',
+    'insufficient_stock_title' => 'المخزون غير كافٍ',
+    'insufficient_stock_desc' => 'يتوفر فقط :stock أسطوانة من أسطوانات :weight الجديدة. تم تعديل الكمية إلى المخزون المتاح.',
+    'new_cylinder_not_in_stock_error' => 'الأسطوانة الجديدة (:weight) غير متوفرة في المخزون!',
+    'insufficient_stock_error' => 'المخزون غير كافٍ لأسطوانة :weight الجديدة. المتاح: :stock، المطلوب: :qty.',
 ];

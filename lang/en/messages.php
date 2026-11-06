@@ -613,4 +613,11 @@ return [
     'system_protected' => 'System Protected',
     'description' => 'Description',
     'expense_type_description_placeholder' => 'Enter a brief description for this expense category (optional)...',
+    'out_of_stock' => 'Out of Stock',
+    'new_cylinder_not_in_stock' => 'New Cylinder not in stock',
+    'new_cylinder_not_in_stock_desc' => 'Stock for :weight New Cylinder is currently 0. You cannot sell this cylinder until stock is added.',
+    'insufficient_stock_title' => 'Insufficient Stock',
+    'insufficient_stock_desc' => 'Only :stock units available for :weight New Cylinder. Quantity has been adjusted to available stock.',
+    'new_cylinder_not_in_stock_error' => ':weight New Cylinder is not in stock!',
+    'insufficient_stock_error' => 'Insufficient stock for :weight New Cylinder. Available: :stock, Requested: :qty.',
 ];

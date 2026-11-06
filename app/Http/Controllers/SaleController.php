@@ -105,10 +105,18 @@ class SaleController extends Controller
                         // IF NEW CYLINDER, CHECK STOCK
                         if ($cat == 'new') {
                             $stockType = "{$weight}_empty";
-                            $currentStock = CylinderStock::where('type', $stockType)->sum('quantity');
+                            $currentStock = (int) CylinderStock::where('type', $stockType)->sum('quantity');
                             
+                            if ($currentStock <= 0) {
+                                throw new \Exception(__('messages.new_cylinder_not_in_stock_error', ['weight' => $weight]));
+                            }
+
                             if ($currentStock < $qty) {
-                                throw new \Exception("Insufficient stock for $weight New Cylinder. Available: $currentStock");
+                                throw new \Exception(__('messages.insufficient_stock_error', [
+                                    'weight' => $weight,
+                                    'stock' => $currentStock,
+                                    'qty' => $qty,
+                                ]));
                             }
 
                             // Reduce Stock for New Cylinder
