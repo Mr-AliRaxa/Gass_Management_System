@@ -15,8 +15,14 @@
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                 <div class="form-group">
-                    <label class="form-label"><strong>Name:</strong></label>
-                    {{ $expenseType->name }}
+                    <label class="form-label"><strong>{{ __('messages.name') }}:</strong></label>
+                    <p class="fs-5 mb-0">{{ $expenseType->name }}</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                <div class="form-group">
+                    <label class="form-label"><strong>{{ __('messages.description') }}:</strong></label>
+                    <p class="text-muted">{{ $expenseType->description ?: '—' }}</p>
                 </div>
             </div>
         </div>

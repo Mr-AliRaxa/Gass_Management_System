@@ -38,6 +38,7 @@ class ExpenseTypeController extends Controller
                     return $query->where('agency_id', auth()->user()->agency_id);
                 }),
             ],
+            'description' => 'nullable|string',
         ]);
 
         ExpenseType::create($request->all());
@@ -65,6 +66,7 @@ class ExpenseTypeController extends Controller
                     return $query->where('agency_id', auth()->user()->agency_id);
                 }),
             ],
+            'description' => 'nullable|string',
         ]);
 
         $expenseType->update($request->all());

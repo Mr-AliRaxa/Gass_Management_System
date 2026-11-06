@@ -611,4 +611,6 @@ return [
     'cannot_delete_yourself' => 'You cannot delete your own active logged-in account.',
     'user_deleted_successfully' => 'User deleted successfully.',
     'system_protected' => 'System Protected',
+    'description' => 'Description',
+    'expense_type_description_placeholder' => 'Enter a brief description for this expense category (optional)...',
 ];

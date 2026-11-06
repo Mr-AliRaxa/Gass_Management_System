@@ -29,12 +29,18 @@
              <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                     <div class="form-group">
-                        <label class="form-label"><strong>{{ __('messages.name') }}:</strong></label>
-                        <input type="text" name="name" class="form-control" placeholder="{{ __('messages.name') }}">
+                        <label class="form-label"><strong>{{ __('messages.name') }}: <span class="text-danger">*</span></strong></label>
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="{{ __('messages.name') }}" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                    <div class="form-group">
+                        <label class="form-label"><strong>{{ __('messages.description') }}:</strong></label>
+                        <textarea name="description" class="form-control" rows="4" placeholder="{{ __('messages.expense_type_description_placeholder') }}">{{ old('description') }}</textarea>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                    <button type="submit" class="btn btn-primary">{{ __('messages.submit') }}</button>
+                    <button type="submit" class="btn btn-primary px-4 font-weight-bold">{{ __('messages.submit') }}</button>
                 </div>
             </div>
         </form>

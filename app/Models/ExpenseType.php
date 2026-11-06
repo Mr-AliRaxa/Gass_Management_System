@@ -11,7 +11,7 @@ class ExpenseType extends Model
 {
     use BelongsToAgency;
 
-    protected $fillable = ['name', 'agency_id'];
+    protected $fillable = ['name', 'description', 'agency_id'];
 
     public function expenses()
     {

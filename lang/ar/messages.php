@@ -614,4 +614,6 @@ return [
     'cannot_delete_yourself' => 'لا يمكنك حذف حسابك الشخصي النشط.',
     'user_deleted_successfully' => 'تم حذف المستخدم بنجاح.',
     'system_protected' => 'محمي من النظام',
+    'description' => 'الوصف',
+    'expense_type_description_placeholder' => 'أدخل وصفاً موجزاً لفئة المصروفات هذه (اختياري)...',
 ];

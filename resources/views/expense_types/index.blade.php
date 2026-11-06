@@ -209,17 +209,25 @@
                     <tr>
                         <th width="80px">#</th>
                         <th>{{ __('messages.ex_type_list') }}</th>
+                        <th>{{ __('messages.description') }}</th>
                         <th width="160px" class="text-center">{{ __('messages.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($expenseTypes as $expenseType)
-                    <tr class="type-row" data-search="{{ strtolower($expenseType->name) }}">
+                    <tr class="type-row" data-search="{{ strtolower($expenseType->name . ' ' . $expenseType->description) }}">
                         <td><span class="row-num">{{ $loop->iteration + ($expenseTypes->currentPage()-1) * $expenseTypes->perPage() }}</span></td>
                         <td>
                             <span class="type-pill">
                                 <i class="fas fa-tag"></i> {{ $expenseType->name }}
                             </span>
+                        </td>
+                        <td>
+                            @if($expenseType->description)
+                                <span class="text-secondary small">{{ Str::limit($expenseType->description, 70) }}</span>
+                            @else
+                                <span class="text-muted small">—</span>
+                            @endif
                         </td>
                         <td class="text-center">
                             <div class="action-wrap justify-content-center">
@@ -238,7 +246,7 @@
                     </tr>
                     @empty
                     <tr id="initialEmptyRow">
-                        <td colspan="3">
+                        <td colspan="4">
                             <div class="empty-state">
                                 <i class="fas fa-folder-open"></i>
                                 <p> {{ __('messages.ex_type_listfontno') }} </p>
@@ -248,7 +256,7 @@
                     @endforelse
 
                     <tr id="noResultsRow" style="display:none;">
-                        <td colspan="3">
+                        <td colspan="4">
                             <div class="empty-state">
                                 <i class="fas fa-search-minus"></i>
                                 <p> {{ __('messages.ex_match_cata_fontno') }}       </p>
