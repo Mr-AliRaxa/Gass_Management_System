@@ -28,12 +28,43 @@
         </div>
     </div>
 
+
+
+
     <div style="margin-bottom: 20px;">
-        <strong>Bill To:</strong><br>
-        {{ $sale->customer->name }}<br>
-        {{ $sale->customer->address }}<br>
-        {{ $sale->customer->mobile }}
-    </div>
+    <div style="text-align:center;">Customer Gas Sale Report</div>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="width: 30%; padding-left: 15px 0; font-weight: bold;">
+                Customer Name
+            </td>
+           
+            <td style="padding-left: 15px 0;">
+                {{ $sale->customer->name }}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 30%; padding-left: 15px 0; font-weight: bold;">
+                Address
+            </td>
+           
+            <td style="padding-left: 15px 0;">
+                {{ $sale->customer->address }}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 30%; padding-left: 15px 0; font-weight: bold;">
+                Mobile
+            </td>
+            
+            <td style="padding-left: 15px 0;">
+                {{ $sale->customer->mobile }}
+            </td>
+        </tr>
+    </table>
+</div>
 
     <table>
         <thead>

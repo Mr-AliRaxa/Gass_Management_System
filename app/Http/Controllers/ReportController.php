@@ -25,32 +25,33 @@ class ReportController extends Controller
 
         switch ($type) {
             case 'daily':
-                $startDate = Carbon::today();
-                $endDate = Carbon::today();
+                $targetDate = $request->query('date', Carbon::today()->toDateString());
+                $startDate = Carbon::parse($targetDate)->startOfDay();
+                $endDate = Carbon::parse($targetDate)->endOfDay();
                 $title = "Daily Report - " . $startDate->format('d M Y');
                 break;
             case 'weekly':
-                $startDate = Carbon::now()->startOfWeek();
-                $endDate = Carbon::now()->endOfWeek();
+                $startDate = Carbon::now()->startOfWeek()->startOfDay();
+                $endDate = Carbon::now()->endOfWeek()->endOfDay();
                 $title = "Weekly Report (" . $startDate->format('d M') . " - " . $endDate->format('d M Y') . ")";
                 break;
             case 'monthly':
                 if ($selectedMonth && $selectedYear) {
-                    $startDate = Carbon::createFromDate($selectedYear, $selectedMonth, 1)->startOfMonth();
-                    $endDate = (clone $startDate)->endOfMonth();
+                    $startDate = Carbon::createFromDate($selectedYear, $selectedMonth, 1)->startOfMonth()->startOfDay();
+                    $endDate = (clone $startDate)->endOfMonth()->endOfDay();
                 } else {
-                    $startDate = Carbon::now()->startOfMonth();
-                    $endDate = Carbon::now()->endOfMonth();
+                    $startDate = Carbon::now()->startOfMonth()->startOfDay();
+                    $endDate = Carbon::now()->endOfMonth()->endOfDay();
                 }
                 $title = "Monthly Report - " . $startDate->format('F Y');
                 break;
             case 'yearly':
                 if ($selectedYear) {
-                    $startDate = Carbon::createFromDate($selectedYear, 1, 1)->startOfYear();
-                    $endDate = (clone $startDate)->endOfYear();
+                    $startDate = Carbon::createFromDate($selectedYear, 1, 1)->startOfYear()->startOfDay();
+                    $endDate = (clone $startDate)->endOfYear()->endOfDay();
                 } else {
-                    $startDate = Carbon::now()->startOfYear();
-                    $endDate = Carbon::now()->endOfYear();
+                    $startDate = Carbon::now()->startOfYear()->startOfDay();
+                    $endDate = Carbon::now()->endOfYear()->endOfDay();
                 }
                 $title = "Yearly Report - " . $startDate->format('Y');
                 break;
@@ -59,7 +60,7 @@ class ReportController extends Controller
         }
 
         if (!$endDate) {
-            $endDate = Carbon::today();
+            $endDate = Carbon::today()->endOfDay();
         }
         
         $agencyId = auth()->user()->agency_id;
@@ -76,24 +77,36 @@ class ReportController extends Controller
             'total_sales_ar' => $arabic->utf8Glyphs('إجمالي المبيعات'),
             'total_expenses_ar' => $arabic->utf8Glyphs('إجمالي المصروفات'),
             'total_salaries_ar' => $arabic->utf8Glyphs('إجمالي الرواتب المدفوعة'),
+            'total_gas_reading_ar' => $arabic->utf8Glyphs('إجمالي استهلاك الغاز'),
             'net_profit_ar' => $arabic->utf8Glyphs('صافي الربح'),
         ];
 
-        $sales = Sale::whereBetween('date', [$startDate, $endDate])->get();
-        $expenses = Expense::whereBetween('date', [$startDate, $endDate])->get();
-        $salaries = Salary::whereBetween('date', [$startDate, $endDate])->get();
-        $attendances = Attendance::with('teamMember')->whereBetween('date', [$startDate, $endDate])->get();
-        $gasReadings = GasReading::whereBetween('date', [$startDate, $endDate])->get();
+        $startDateStr = $startDate->toDateString();
+        $endDateStr = $endDate->toDateString();
 
-        $totalSales = $sales->sum('total_amount');
-        $totalExpenses = $expenses->sum('amount');
-        $totalSalaries = $salaries->sum('amount');
+        $sales = Sale::whereDate('date', '>=', $startDateStr)->whereDate('date', '<=', $endDateStr)->get();
+        $expenses = Expense::whereDate('date', '>=', $startDateStr)->whereDate('date', '<=', $endDateStr)->get();
+        $salaries = Salary::whereDate('date', '>=', $startDateStr)->whereDate('date', '<=', $endDateStr)->get();
+        $attendances = Attendance::with('teamMember')->whereDate('date', '>=', $startDateStr)->whereDate('date', '<=', $endDateStr)->get();
+        $gasReadings = GasReading::whereDate('date', '>=', $startDateStr)->whereDate('date', '<=', $endDateStr)->get();
+
+        $totalSales = (float) $sales->sum('total_amount');
+        $totalExpenses = (float) $expenses->sum('amount');
+        $totalSalaries = (float) $salaries->sum('amount');
         $netProfit = $totalSales - ($totalExpenses + $totalSalaries);
+
+        // Calculate total gas consumed / used (positive difference)
+        $totalGasUsed = (float) $gasReadings->sum(function ($reading) {
+            if ($reading->start_reading !== null && $reading->end_reading !== null) {
+                return abs((float)$reading->start_reading - (float)$reading->end_reading);
+            }
+            return 0;
+        });
 
         $pdf = Pdf::loadView('reports.pdf', compact(
             'type', 'title', 'startDate', 'endDate', 
             'sales', 'expenses', 'salaries', 'attendances', 'gasReadings',
-            'totalSales', 'totalExpenses', 'totalSalaries', 'netProfit', 'setting', 'labels'
+            'totalSales', 'totalExpenses', 'totalSalaries', 'totalGasUsed', 'netProfit', 'setting', 'labels'
         ));
 
         return $pdf->download(strtolower(str_replace(' ', '_', $title)) . '.pdf');
@@ -133,8 +146,9 @@ class ReportController extends Controller
         $salaries = (float) Salary::whereBetween('date', [$startDate, $endDate])->sum('amount');
         $profit = $sales - ($expenses + $salaries);
 
-        $gas = (float) (GasReading::whereBetween('date', [$startDate, $endDate])
-            ->selectRaw('SUM(end_reading - start_reading) as total')
+        $gas = (float) (GasReading::whereDate('date', '>=', $startDate)
+            ->whereDate('date', '<=', $endDate)
+            ->selectRaw('SUM(ABS(end_reading - start_reading)) as total')
             ->first()->total ?? 0);
 
         $totalSum = $sales + $expenses + $salaries + $gas;

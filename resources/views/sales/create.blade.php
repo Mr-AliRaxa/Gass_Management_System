@@ -98,7 +98,7 @@
                             $stockType = $weight . '_empty'; 
                             $stock = max(0, (int) ($stockLevels[$stockType] ?? 0));
                         @endphp
-                        <div class="mb-4 p-3 rounded-3 {{ $stock <= 0 ? 'bg-danger-subtle bg-opacity-25 border border-danger-subtle' : 'bg-white border' }}">
+                        <div class="mb-4 p-3 rounded-3 {{ $stock <= 0 ? 'bg-light-subtle bg-opacity-25 border border-danger-subtle' : 'bg-white border' }}">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <label class="form-label font-weight-bold mb-0 text-dark">
                                     <i class="fas fa-gas-pump text-primary me-1"></i> {{ $weight }} {{ __('messages.quantity_label') }}
@@ -211,7 +211,7 @@
                     title: title,
                     text: message,
                     confirmButtonColor: '#2563eb',
-                    confirmButtonText: '{{ __('messages.ok') ?? 'OK' }}',
+                    confirmButtonText: '{{ __('messages.ok1') ?? 'OK' }}',
                     customClass: {
                         popup: 'rounded-4 shadow'
                     }
