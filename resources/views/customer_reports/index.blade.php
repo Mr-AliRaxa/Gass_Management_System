@@ -328,7 +328,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card kpi-card kpi-purple shadow-sm p-4 h-100">
                     <div class="kpi-title">{{ __('messages.total_sales_revenue') }}</div>
-                    <div class="kpi-val">{{ number_format($stats['total_revenue'], 2) }} <small
+                    <div class="kpi-val">{{ number_format($stats['total_revenue'], 3) }} <small
                             style="font-size: 15px; font-weight: 600;">OMR</small></div>
                     <div class="kpi-sub">
                         <i class="fas fa-receipt me-1"></i> {{ $stats['total_orders'] }} {{ __('messages.total_invoicess') }}
@@ -472,7 +472,7 @@
                         <small class="text-muted text-uppercase" style="font-size: 11px; font-weight: 700;">Lifetime
                             Purchases</small>
                         <div class="h5 mb-0 font-weight-bold text-primary">
-                            {{ number_format($selectedCustomer->sales_sum_total_amount ?? 0, 2) }} OMR
+                            {{ number_format($selectedCustomer->sales_sum_total_amount ?? 0, 3) }} OMR
                         </div>
                     </div>
                     <div class="text-md-end">
@@ -698,7 +698,7 @@
 
                                 <!-- Amount -->
                                 <td class="text-end font-weight-bold text-dark" style="font-size: 14px;">
-                                    {{ number_format($sale->total_amount, 2) }}
+                                    {{ number_format($sale->total_amount, 3) }}
                                 </td>
 
                                 <!-- Action -->
@@ -758,7 +758,7 @@
 
                                 <!-- Grand Total Revenue -->
                                 <td class="text-end" style="color: #0f172a; font-size: 15px;">
-                                    {{ number_format($stats['total_revenue'], 2) }}
+                                    {{ number_format($stats['total_revenue'], 3) }}
                                 </td>
 
                                 <td></td>

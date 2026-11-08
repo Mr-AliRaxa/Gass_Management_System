@@ -334,7 +334,7 @@
         <div class="stat-kpi-card stat-kpi-green">
             <div>
                 <div class="stat-kpi-label">{{ __('messages.purchase_investment') }}</div>
-                <div class="stat-kpi-value">{{ number_format($totalPurchaseCost, 2) }} <span style="font-size:13px;font-weight:600;">{{ __('messages.omr') }}</span></div>
+                <div class="stat-kpi-value">{{ number_format($totalPurchaseCost, 3) }} <span style="font-size:13px;font-weight:600;">{{ __('messages.omr') }}</span></div>
             </div>
             <div class="stat-kpi-icon stat-kpi-icon-green"><i class="fas fa-money-bill-wave"></i></div>
             <i class="fas fa-coins stat-kpi-bg-icon text-success"></i>
@@ -433,11 +433,11 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-1">
                             <span class="text-muted" style="font-size: 13px;">{{ __('messages.buy_unit_price') }}:</span>
-                            <strong style="font-size: 14px; color: #2563eb;">{{ number_format($item['purchase_price'], 2) }} {{ __('messages.omr') }}</strong>
+                            <strong style="font-size: 14px; color: #2563eb;">{{ number_format($item['purchase_price'], 3) }} {{ __('messages.omr') }}</strong>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pt-1" style="border-top: 1px dashed #cbd5e1;">
                             <span class="text-muted" style="font-size: 13px; font-weight: 600;">{{ __('messages.total_purchase_cost') }}:</span>
-                            <strong style="font-size: 15px; color: #0f172a;">{{ number_format($item['total_purchase_cost'], 2) }} {{ __('messages.omr') }}</strong>
+                            <strong style="font-size: 15px; color: #0f172a;">{{ number_format($item['total_purchase_cost'], 3) }} {{ __('messages.omr') }}</strong>
                         </div>
                     </div>
 
@@ -455,11 +455,11 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-1">
                             <span class="text-muted" style="font-size: 13px;">{{ __('messages.sale_unit_price') }}:</span>
-                            <strong style="font-size: 14px; color: #16a34a;">{{ number_format($item['sale_price'], 2) }} {{ __('messages.omr') }}</strong>
+                            <strong style="font-size: 14px; color: #16a34a;">{{ number_format($item['sale_price'], 3) }} {{ __('messages.omr') }}</strong>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pt-1" style="border-top: 1px dashed #86efac;">
                             <span class="text-muted" style="font-size: 13px; font-weight: 600;">{{ __('messages.total_sale_revenue') }}:</span>
-                            <strong style="font-size: 15px; color: #15803d;">{{ number_format($item['total_sale_revenue'], 2) }} {{ __('messages.omr') }}</strong>
+                            <strong style="font-size: 15px; color: #15803d;">{{ number_format($item['total_sale_revenue'], 3) }} {{ __('messages.omr') }}</strong>
                         </div>
                     </div>
 
@@ -470,7 +470,7 @@
                             <div style="font-size: 11px; color: #a16207;">{{ __('messages.revenue_minus_cost') }}</div>
                         </div>
                         <div style="font-size: 17px; font-weight: 800; color: {{ $item['estimated_profit'] >= 0 ? '#15803d' : '#dc2626' }};">
-                            {{ $item['estimated_profit'] >= 0 ? '+' : '' }}{{ number_format($item['estimated_profit'], 2) }} {{ __('messages.omr') }}
+                            {{ $item['estimated_profit'] >= 0 ? '+' : '' }}{{ number_format($item['estimated_profit'], 3) }} {{ __('messages.omr') }}
                         </div>
                     </div>
 
@@ -549,7 +549,7 @@
                         </td>
                         <td>
                             @if(($m['bought_cost'] ?? 0) > 0)
-                                <strong style="color: #047857; font-size:14px;">{{ number_format($m['bought_cost'], 2) }} {{ __('messages.omr') }}</strong>
+                                <strong style="color: #047857; font-size:14px;">{{ number_format($m['bought_cost'], 3) }} {{ __('messages.omr') }}</strong>
                             @else
                                 <span class="text-muted">—</span>
                             @endif
@@ -609,7 +609,7 @@
                         </td>
                         <td>
                             @if(($m['sold_revenue'] ?? 0) > 0)
-                                <strong style="color: #15803d; font-size:14px;">{{ number_format($m['sold_revenue'], 2) }} {{ __('messages.omr') }}</strong>
+                                <strong style="color: #15803d; font-size:14px;">{{ number_format($m['sold_revenue'], 3) }} {{ __('messages.omr') }}</strong>
                             @else
                                 <span class="text-muted">—</span>
                             @endif
@@ -749,7 +749,7 @@
                         <td>
                             @if($item->unit_price > 0)
                                 <span class="price-pill">
-                                    <i class="fas fa-tag text-muted"></i> {{ number_format($item->unit_price, 2) }} {{ __('messages.omr') }}
+                                    <i class="fas fa-tag text-muted"></i> {{ number_format($item->unit_price, 3) }} {{ __('messages.omr') }}
                                 </span>
                             @else
                                 <span class="text-muted">—</span>
@@ -760,7 +760,7 @@
                         <td>
                             @if($item->total_cost > 0)
                                 <span class="total-cost-pill">
-                                    <i class="fas fa-coins"></i> {{ number_format($item->total_cost, 2) }} {{ __('messages.omr') }}
+                                    <i class="fas fa-coins"></i> {{ number_format($item->total_cost, 3) }} {{ __('messages.omr') }}
                                 </span>
                             @else
                                 <span class="text-muted">—</span>
@@ -823,7 +823,7 @@
                         </td>
                         <td></td>
                         <td style="padding: 12px 18px;">
-                            <strong style="color: #047857; font-size: 14px;">{{ number_format($totalPurchasedFilteredCost, 2) }} {{ __('messages.omr') }}</strong>
+                            <strong style="color: #047857; font-size: 14px;">{{ number_format($totalPurchasedFilteredCost, 3) }} {{ __('messages.omr') }}</strong>
                         </td>
                         <td colspan="2"></td>
                     </tr>
@@ -920,14 +920,14 @@
                         {{-- Sale Unit Price --}}
                         <td>
                             <span class="price-pill">
-                                <i class="fas fa-tag text-muted"></i> {{ number_format($saleItem->price, 2) }} {{ __('messages.omr') }}
+                                <i class="fas fa-tag text-muted"></i> {{ number_format($saleItem->price, 3) }} {{ __('messages.omr') }}
                             </span>
                         </td>
 
                         {{-- Total Sale Revenue --}}
                         <td>
                             <span class="total-cost-pill" style="background: #fef2f2; color: #dc2626;">
-                                <i class="fas fa-coins"></i> {{ number_format($itemTotal, 2) }} {{ __('messages.omr') }}
+                                <i class="fas fa-coins"></i> {{ number_format($itemTotal, 3) }} {{ __('messages.omr') }}
                             </span>
                         </td>
 
@@ -973,7 +973,7 @@
                         </td>
                         <td></td>
                         <td style="padding: 12px 18px;">
-                            <strong style="color: #dc2626; font-size: 14px;">{{ number_format($totalSoldFilteredRevenue, 2) }} {{ __('messages.omr') }}</strong>
+                            <strong style="color: #dc2626; font-size: 14px;">{{ number_format($totalSoldFilteredRevenue, 3) }} {{ __('messages.omr') }}</strong>
                         </td>
                         <td colspan="2"></td>
                     </tr>

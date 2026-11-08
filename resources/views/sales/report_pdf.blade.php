@@ -70,7 +70,7 @@
                     <td class="text-center">{{ $getQty('11kg_empty') }}</td>
                     <td class="text-center">{{ $getQty('22kg_empty') }}</td>
                     <td class="text-center">{{ $getQty('44kg_empty') }}</td>
-                    <td class="font-bold">{{ number_format($sale->total_amount, 2) }}</td>
+                    <td class="font-bold">{{ number_format($sale->total_amount, 3) }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -83,7 +83,7 @@
                 <td class="text-center">{{ $totals['11kg_empty'] }}</td>
                 <td class="text-center">{{ $totals['22kg_empty'] }}</td>
                 <td class="text-center">{{ $totals['44kg_empty'] }}</td>
-                <td class="text-primary">{{ number_format($grandTotal, 2) }}</td>
+                <td class="text-primary">{{ number_format($grandTotal, 3) }}</td>
             </tr>
         </tfoot>
     </table>

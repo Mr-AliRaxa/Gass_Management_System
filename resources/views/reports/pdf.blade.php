@@ -109,21 +109,21 @@
                 <span style="float: left;">Total Sales</span>
                 <span style="float: right;">{{ $labels['total_sales_ar'] }}</span>
             </th>
-            <td>{{ number_format($totalSales, 2) }} OMR</td>
+            <td>{{ number_format($totalSales, 3) }} OMR</td>
         </tr>
         <tr>
             <th>
                 <span style="float: left;">Total Expenses</span>
                 <span style="float: right;">{{ $labels['total_expenses_ar'] }}</span>
             </th>
-            <td>{{ number_format($totalExpenses, 2) }} OMR</td>
+            <td>{{ number_format($totalExpenses, 3) }} OMR</td>
         </tr>
         <tr>
             <th>
                 <span style="float: left;">Total Paid Salaries</span>
                 <span style="float: right;">{{ $labels['total_salaries_ar'] }}</span>
             </th>
-            <td>{{ number_format($totalSalaries, 2) }} OMR</td>
+            <td>{{ number_format($totalSalaries, 3) }} OMR</td>
         </tr>
         <tr>
             <th>
@@ -137,7 +137,7 @@
                 <span style="float: left;">Net Profit</span>
                 <span style="float: right;">{{ $labels['net_profit_ar'] }}</span>
             </th>
-            <td>{{ number_format($netProfit, 2) }} OMR</td>
+            <td>{{ number_format($netProfit, 3) }} OMR</td>
         </tr>
     </table>
 
@@ -161,7 +161,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($sale->date)) }}</td>
                 <td>{{ \App\Helpers\ArabicHelper::shape($sale->customer->name ?? 'Walk-in / Cash') }}</td>
-                <td>{{ number_format($sale->total_amount, 2) }}</td>
+                <td>{{ number_format($sale->total_amount, 3) }}</td>
             </tr>
             @empty
             <tr>
@@ -173,7 +173,7 @@
         <tfoot>
             <tr style="background: #f8fafc; font-weight: bold;">
                 <td colspan="3" style="text-align: right;">Total Sales:</td>
-                <td>{{ number_format($totalSales, 2) }} OMR</td>
+                <td>{{ number_format($totalSales, 3) }} OMR</td>
             </tr>
         </tfoot>
         @endif
@@ -199,7 +199,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($expense->date)) }}</td>
                 <td>{{ \App\Helpers\ArabicHelper::shape($expense->note ?: ($expense->expenseType->name ?? 'N/A')) }}</td>
-                <td>{{ number_format($expense->amount, 2) }}</td>
+                <td>{{ number_format($expense->amount, 3) }}</td>
             </tr>
             @empty
             <tr>
@@ -211,7 +211,7 @@
         <tfoot>
             <tr style="background: #f8fafc; font-weight: bold;">
                 <td colspan="3" style="text-align: right;">Total Expenses:</td>
-                <td>{{ number_format($totalExpenses, 2) }} OMR</td>
+                <td>{{ number_format($totalExpenses, 3) }} OMR</td>
             </tr>
         </tfoot>
         @endif
@@ -237,7 +237,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($salary->date)) }}</td>
                 <td>{{ \App\Helpers\ArabicHelper::shape($salary->teamMember->name ?? 'N/A') }}</td>
-                <td>{{ number_format($salary->amount, 2) }}</td>
+                <td>{{ number_format($salary->amount, 3) }}</td>
             </tr>
             @empty
             <tr>
@@ -249,7 +249,7 @@
         <tfoot>
             <tr style="background: #f8fafc; font-weight: bold;">
                 <td colspan="3" style="text-align: right;">Total Salaries:</td>
-                <td>{{ number_format($totalSalaries, 2) }} OMR</td>
+                <td>{{ number_format($totalSalaries, 3) }} OMR</td>
             </tr>
         </tfoot>
         @endif

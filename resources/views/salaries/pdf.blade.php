@@ -70,8 +70,8 @@
             <tr>
                 <td>{{ \Carbon\Carbon::parse($salary->date)->format('d/m/Y') }}</td>
                 <td>{{ \App\Helpers\ArabicHelper::shape($salary->teamMember->name ?? 'N/A') }}</td>
-                <td style="text-align: right;">{{ number_format($salary->amount, 2) }}</td>
-                <td style="text-align: right;">{{ number_format($salary->bonus, 2) }}</td>
+                <td style="text-align: right;">{{ number_format($salary->amount, 3) }}</td>
+                <td style="text-align: right;">{{ number_format($salary->bonus, 3) }}</td>
                 <td>{{ \App\Helpers\ArabicHelper::shape($salary->note ?? '-') }}</td>
             </tr>
             @php 
@@ -86,8 +86,8 @@
             @if(count($salaries) > 0)
             <tr class="total-row">
                 <td colspan="2" style="text-align: right;">Total</td>
-                <td style="text-align: right;">{{ number_format($totalAmount, 2) }}</td>
-                <td style="text-align: right;">{{ number_format($totalBonus, 2) }}</td>
+                <td style="text-align: right;">{{ number_format($totalAmount, 3) }}</td>
+                <td style="text-align: right;">{{ number_format($totalBonus, 3) }}</td>
                 <td></td>
             </tr>
             @endif

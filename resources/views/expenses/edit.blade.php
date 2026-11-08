@@ -47,7 +47,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.amount') }}:</strong></label>
-                        <input type="number" step="0.01" name="amount" value="{{ $expense->amount }}" class="form-control" placeholder="{{ __('messages.amount') }}">
+                        <input type="number" step="0.001" name="amount" value="{{ $expense->amount }}" class="form-control" placeholder="0.000">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">

@@ -273,7 +273,7 @@
         <div class="stat-card stat-card-blue">
             <div>
                 <div class="stat-label">{{ __('messages.todays_revenue') }}</div>
-                <div class="stat-value">{{ number_format($todayRevenue ?? 0, 2) }} <span style="font-size:14px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($todayRevenue ?? 0, 3) }} <span style="font-size:14px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-blue"><i class="fas fa-coins"></i></div>
             <i class="fas fa-chart-line stat-bg-icon stat-bg-icon-blue"></i>
@@ -303,7 +303,7 @@
         <div class="stat-card stat-card-orange">
             <div>
                 <div class="stat-label">{{ __('messages.total_sales') }}</div>
-                <div class="stat-value">{{ number_format($totalSalesRevenue ?? 0, 0) }} <span style="font-size:14px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($totalSalesRevenue ?? 0, 3) }} <span style="font-size:14px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-orange"><i class="fas fa-wallet"></i></div>
             <i class="fas fa-money-bill-wave stat-bg-icon stat-bg-icon-orange"></i>
@@ -456,7 +456,7 @@
                         {{-- Total Amount --}}
                         <td class="text-end">
                             <span class="total-amount-pill">
-                                {{ number_format($sale->total_amount, 2) }} OMR
+                                {{ number_format($sale->total_amount, 3) }} OMR
                             </span>
                         </td>
 

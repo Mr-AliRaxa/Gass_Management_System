@@ -40,7 +40,7 @@
             <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                 <div class="form-group">
                     <label class="form-label"><strong>{{ __('messages.basic_salary') }}:</strong></label>
-                    {{ number_format($teamMember->basic_salary, 2) }}
+                    {{ number_format($teamMember->basic_salary, 3) }} OMR
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4 mb-3">

@@ -28,7 +28,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                 <div class="form-group">
                     <label class="form-label"><strong> {{ __('messages.amount') }} :</strong></label>
-                    {{ number_format($expense->amount, 2) }}
+                    {{ number_format($expense->amount, 3) }} OMR
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 mb-3">

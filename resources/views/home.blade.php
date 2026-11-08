@@ -632,7 +632,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white-50 text-uppercase mb-1">{{ __('messages.today_expenses') }}</div>
-                        <div class="h5 mb-0 font-weight-bold">{{ number_format($dailyExpenses, 2) }}</div>
+                        <div class="h5 mb-0 font-weight-bold">{{ number_format($dailyExpenses, 3) }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-receipt fa-3x text-white"></i>
@@ -648,7 +648,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white-50 text-uppercase mb-1">{{ __('messages.this_week_expenses') }}</div>
-                        <div class="h5 mb-0 font-weight-bold">{{ number_format($weeklyExpenses, 2) }}</div>
+                        <div class="h5 mb-0 font-weight-bold">{{ number_format($weeklyExpenses, 3) }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar-week fa-3x text-white"></i>
@@ -664,7 +664,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white-50 text-uppercase mb-1">{{ __('messages.this_month_expenses') }}</div>
-                        <div class="h5 mb-0 font-weight-bold">{{ number_format($monthlyExpenses, 2) }}</div>
+                        <div class="h5 mb-0 font-weight-bold">{{ number_format($monthlyExpenses, 3) }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-file-invoice-dollar fa-3x text-white"></i>
@@ -680,7 +680,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white-50 text-uppercase mb-1">{{ __('messages.total_expenses_all_time') }}</div>
-                        <div class="h5 mb-0 font-weight-bold">{{ number_format($totalExpenses, 2) }}</div>
+                        <div class="h5 mb-0 font-weight-bold">{{ number_format($totalExpenses, 3) }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-wallet fa-3x text-white"></i>
@@ -702,7 +702,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white-50 text-uppercase mb-1">{{ __('messages.today_paid_salary') }}</div>
-                        <div class="h5 mb-0 font-weight-bold">{{ number_format($dailySalaries, 2) }}</div>
+                        <div class="h5 mb-0 font-weight-bold">{{ number_format($dailySalaries, 3) }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user-check fa-3x text-white"></i>
@@ -718,7 +718,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white-50 text-uppercase mb-1">{{ __('messages.this_month_salaries') }}</div>
-                        <div class="h5 mb-0 font-weight-bold">{{ number_format($monthlySalaries, 2) }}</div>
+                        <div class="h5 mb-0 font-weight-bold">{{ number_format($monthlySalaries, 3) }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-users-cog fa-3x text-white"></i>
@@ -734,7 +734,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white-50 text-uppercase mb-1">{{ __('messages.total_salaries_all_time') }}</div>
-                        <div class="h5 mb-0 font-weight-bold">{{ number_format($totalSalaries, 2) }}</div>
+                        <div class="h5 mb-0 font-weight-bold">{{ number_format($totalSalaries, 3) }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-money-bill-wave fa-3x text-white"></i>
@@ -890,7 +890,7 @@
                         <div class="fin-subbar d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
                             <div class="fin-net-capsule">
                                 <i class="fas fa-file-alt"></i>
-                                <span>{{ __('messages.daily_report') }}: <strong>{{ number_format($dailyProfit, 2) }}</strong></span>
+                                <span>{{ __('messages.daily_report') }}: <strong>{{ number_format($dailyProfit, 3) }}</strong></span>
                             </div>
                             <a href="{{ route('reports.download', 'daily') }}" class="btn btn-pdf-gradient">
                                 <span class="pdf-tag-badge">{{ __('messages.pdf') }}</span>
@@ -905,7 +905,7 @@
                                 <div class="fin-donut-wrapper">
                                     <canvas id="dailyDonutChart"></canvas>
                                     <div class="fin-donut-center">
-                                        <div class="fin-donut-val">{{ number_format($dailyProfit, 2) }}</div>
+                                        <div class="fin-donut-val">{{ number_format($dailyProfit, 3) }}</div>
                                         <div class="fin-donut-lbl">Total</div>
                                     </div>
                                 </div>
@@ -918,7 +918,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.sales') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount">{{ number_format($dailySales, 2) }}</span>
+                                            <span class="fin-lbl-amount">{{ number_format($dailySales, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-blue">{{ $dSalesPct }}%</span>
                                         </div>
                                     </div>
@@ -928,7 +928,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.expenses') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount">{{ number_format($dailyExpenses, 2) }}</span>
+                                            <span class="fin-lbl-amount">{{ number_format($dailyExpenses, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-orange">{{ $dExpPct }}%</span>
                                         </div>
                                     </div>
@@ -938,7 +938,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.salaries') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount">{{ number_format($dailySalaries, 2) }}</span>
+                                            <span class="fin-lbl-amount">{{ number_format($dailySalaries, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-green">{{ $dSalPct }}%</span>
                                         </div>
                                     </div>
@@ -969,7 +969,7 @@
                         <div class="fin-subbar d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
                             <div class="fin-net-capsule">
                                 <i class="fas fa-file-alt"></i>
-                                <span>{{ __('messages.weekly_report') }}: <strong>{{ number_format($weeklyProfit, 2) }}</strong></span>
+                                <span>{{ __('messages.weekly_report') }}: <strong>{{ number_format($weeklyProfit, 3) }}</strong></span>
                             </div>
                             <a href="{{ route('reports.download', 'weekly') }}" class="btn btn-pdf-gradient">
                                 <span class="pdf-tag-badge">{{ __('messages.pdf') }}</span>
@@ -983,7 +983,7 @@
                                 <div class="fin-donut-wrapper">
                                     <canvas id="weeklyDonutChart"></canvas>
                                     <div class="fin-donut-center">
-                                        <div class="fin-donut-val">{{ number_format($weeklyProfit, 2) }}</div>
+                                        <div class="fin-donut-val">{{ number_format($weeklyProfit, 3) }}</div>
                                         <div class="fin-donut-lbl">Total</div>
                                     </div>
                                 </div>
@@ -996,7 +996,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.sales') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount">{{ number_format($weeklySales, 2) }}</span>
+                                            <span class="fin-lbl-amount">{{ number_format($weeklySales, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-blue">{{ $wSalesPct }}%</span>
                                         </div>
                                     </div>
@@ -1006,7 +1006,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.expenses') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount">{{ number_format($weeklyExpenses, 2) }}</span>
+                                            <span class="fin-lbl-amount">{{ number_format($weeklyExpenses, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-orange">{{ $wExpPct }}%</span>
                                         </div>
                                     </div>
@@ -1016,7 +1016,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.salaries') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount">{{ number_format($weeklySalaries, 2) }}</span>
+                                            <span class="fin-lbl-amount">{{ number_format($weeklySalaries, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-green">{{ $wSalPct }}%</span>
                                         </div>
                                     </div>
@@ -1047,7 +1047,7 @@
                         <div class="fin-subbar d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
                             <div class="fin-net-capsule">
                                 <i class="fas fa-file-alt"></i>
-                                <span>{{ __('messages.monthly_report') }}: <strong id="monthlyProfitNet">{{ number_format($monthlyProfit, 2) }}</strong></span>
+                                <span>{{ __('messages.monthly_report') }}: <strong id="monthlyProfitNet">{{ number_format($monthlyProfit, 3) }}</strong></span>
                             </div>
                             <div class="d-flex align-items-center gap-2 flex-wrap">
                                 <select id="monthlyReportMonth" class="form-select form-select-sm" style="border-radius: 10px; font-weight: 600; width: auto; border: 1.5px solid #e2e8f0;">
@@ -1073,7 +1073,7 @@
                                 <div class="fin-donut-wrapper">
                                     <canvas id="monthlyDonutChart"></canvas>
                                     <div class="fin-donut-center">
-                                        <div class="fin-donut-val" id="monthlyDonutCenterVal">{{ number_format($monthlyProfit, 2) }}</div>
+                                        <div class="fin-donut-val" id="monthlyDonutCenterVal">{{ number_format($monthlyProfit, 3) }}</div>
                                         <div class="fin-donut-lbl">Total</div>
                                     </div>
                                 </div>
@@ -1086,7 +1086,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.sales') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount" id="monthlySalesVal">{{ number_format($monthlySales, 2) }}</span>
+                                            <span class="fin-lbl-amount" id="monthlySalesVal">{{ number_format($monthlySales, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-blue" id="monthlySalesPct">{{ $mSalesPct }}%</span>
                                         </div>
                                     </div>
@@ -1096,7 +1096,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.expenses') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount" id="monthlyExpensesVal">{{ number_format($monthlyExpenses, 2) }}</span>
+                                            <span class="fin-lbl-amount" id="monthlyExpensesVal">{{ number_format($monthlyExpenses, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-orange" id="monthlyExpensesPct">{{ $mExpPct }}%</span>
                                         </div>
                                     </div>
@@ -1106,7 +1106,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.salaries') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount" id="monthlySalariesVal">{{ number_format($monthlySalaries, 2) }}</span>
+                                            <span class="fin-lbl-amount" id="monthlySalariesVal">{{ number_format($monthlySalaries, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-green" id="monthlySalariesPct">{{ $mSalPct }}%</span>
                                         </div>
                                     </div>
@@ -1137,7 +1137,7 @@
                         <div class="fin-subbar d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
                             <div class="fin-net-capsule">
                                 <i class="fas fa-file-alt"></i>
-                                <span>{{ __('messages.yearly_report') }}: <strong id="yearlyProfitNet">{{ number_format($yearlyProfit, 2) }}</strong></span>
+                                <span>{{ __('messages.yearly_report') }}: <strong id="yearlyProfitNet">{{ number_format($yearlyProfit, 3) }}</strong></span>
                             </div>
                             <div class="d-flex align-items-center gap-2 flex-wrap">
                                 <select id="yearlyReportYear" class="form-select form-select-sm" style="border-radius: 10px; font-weight: 600; width: auto; border: 1.5px solid #e2e8f0;">
@@ -1158,7 +1158,7 @@
                                 <div class="fin-donut-wrapper">
                                     <canvas id="yearlyDonutChart"></canvas>
                                     <div class="fin-donut-center">
-                                        <div class="fin-donut-val" id="yearlyDonutCenterVal">{{ number_format($yearlyProfit, 2) }}</div>
+                                        <div class="fin-donut-val" id="yearlyDonutCenterVal">{{ number_format($yearlyProfit, 3) }}</div>
                                         <div class="fin-donut-lbl">Total</div>
                                     </div>
                                 </div>
@@ -1171,7 +1171,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.sales') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount" id="yearlySalesVal">{{ number_format($yearlySales, 2) }}</span>
+                                            <span class="fin-lbl-amount" id="yearlySalesVal">{{ number_format($yearlySales, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-blue" id="yearlySalesPct">{{ $ySalesPct }}%</span>
                                         </div>
                                     </div>
@@ -1181,7 +1181,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.expenses') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount" id="yearlyExpensesVal">{{ number_format($yearlyExpenses, 2) }}</span>
+                                            <span class="fin-lbl-amount" id="yearlyExpensesVal">{{ number_format($yearlyExpenses, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-orange" id="yearlyExpensesPct">{{ $yExpPct }}%</span>
                                         </div>
                                     </div>
@@ -1191,7 +1191,7 @@
                                             <span class="fin-lbl-name">{{ __('messages.salaries') }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <span class="fin-lbl-amount" id="yearlySalariesVal">{{ number_format($yearlySalaries, 2) }}</span>
+                                            <span class="fin-lbl-amount" id="yearlySalariesVal">{{ number_format($yearlySalaries, 3) }}</span>
                                             <span class="fin-pct-pill fin-pct-green" id="yearlySalariesPct">{{ $ySalPct }}%</span>
                                         </div>
                                     </div>
@@ -1234,7 +1234,7 @@
                             <span class="text-xs font-weight-bold text-uppercase" style="color: #4f46e5; font-size: 11px; letter-spacing: 0.5px;">{{ __('messages.monthly_report') }} ({{ __('messages.sales') }})</span>
                             <span class="badge" style="background: #e0e7ff; color: #4338ca; border-radius: 6px; font-size: 10px;">{{ __('messages.this_month_salaries') }}</span>
                         </div>
-                        <div class="h3 mb-0 font-weight-bold" style="color: #0f172a;">{{ number_format($monthlySales, 2) }} <small style="font-size: 14px; color: #64748b;">OMR</small></div>
+                        <div class="h3 mb-0 font-weight-bold" style="color: #0f172a;">{{ number_format($monthlySales, 3) }} <small style="font-size: 14px; color: #64748b;">OMR</small></div>
                     </div>
 
                     <!-- Metric 2: Total Customer Base -->
@@ -1252,7 +1252,7 @@
                             <span class="text-xs font-weight-bold text-uppercase" style="color: #dc2626; font-size: 11px; letter-spacing: 0.5px;">{{ __('messages.all_time_expenses') }}</span>
                             <span class="badge" style="background: #fee2e2; color: #b91c1c; border-radius: 6px; font-size: 10px;">{{ __('messages.cumulative') }}</span>
                         </div>
-                        <div class="h3 mb-0 font-weight-bold" style="color: #0f172a;">{{ number_format($totalExpenses, 2) }} <small style="font-size: 14px; color: #64748b;">OMR</small></div>
+                        <div class="h3 mb-0 font-weight-bold" style="color: #0f172a;">{{ number_format($totalExpenses, 3) }} <small style="font-size: 14px; color: #64748b;">OMR</small></div>
                     </div>
                 </div>
 
@@ -1302,7 +1302,7 @@
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                     <div>
-                        <div class="sales7-total-val">{{ number_format($last7DaysSales, 2) }}</div>
+                        <div class="sales7-total-val">{{ number_format($last7DaysSales, 3) }}</div>
                         <div class="sales7-total-lbl">{{ __('messages.total_sales') }}</div>
                     </div>
                     <div class="sales7-divider"></div>

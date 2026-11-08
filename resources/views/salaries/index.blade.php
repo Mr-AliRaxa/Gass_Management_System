@@ -243,7 +243,7 @@
         <div class="stat-card stat-card-blue">
             <div>
                 <div class="stat-label">{{ __('messages.todays_paid') }}</div>
-                <div class="stat-value">{{ number_format($todaySalaries, 2) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($todaySalaries, 3) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-blue"><i class="fas fa-calendar-day"></i></div>
             <i class="fas fa-clock stat-bg-icon stat-bg-icon-blue"></i>
@@ -252,7 +252,7 @@
         <div class="stat-card stat-card-green">
             <div>
                 <div class="stat-label">{{ __('messages.this_month_paid') }}</div>
-                <div class="stat-value">{{ number_format($monthSalaries, 2) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($monthSalaries, 3) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-green"><i class="fas fa-calendar-alt"></i></div>
             <i class="fas fa-money-check-alt stat-bg-icon stat-bg-icon-green"></i>
@@ -270,7 +270,7 @@
         <div class="stat-card stat-card-orange">
             <div>
                 <div class="stat-label">{{ __('messages.all_time_paid') }}</div>
-                <div class="stat-value">{{ number_format($totalAllSalaries, 0) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($totalAllSalaries, 3) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-orange"><i class="fas fa-wallet"></i></div>
             <i class="fas fa-coins stat-bg-icon stat-bg-icon-orange"></i>
@@ -372,13 +372,13 @@
                         <td>
                             <span class="salary-badge">
                                 <i class="fas fa-money-bill-wave"></i>
-                                {{ number_format($salary->amount, 2) }} OMR
+                                {{ number_format($salary->amount, 3) }} OMR
                             </span>
                         </td>
                         <td>
                             @if($salary->bonus > 0)
                                 <span class="bonus-badge">
-                                    <i class="fas fa-gift"></i> +{{ number_format($salary->bonus, 2) }} OMR
+                                    <i class="fas fa-gift"></i> +{{ number_format($salary->bonus, 3) }} OMR
                                 </span>
                             @else
                                 <span class="text-muted">—</span>

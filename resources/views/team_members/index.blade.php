@@ -755,7 +755,7 @@
                                 <td>
                                     <span class="salary-badge">
                                         <i class="fas fa-coins"></i>
-                                        {{ number_format($teamMember->basic_salary, 2) }} OMR
+                                        {{ number_format($teamMember->basic_salary, 3) }} OMR
                                     </span>
                                 </td>
 

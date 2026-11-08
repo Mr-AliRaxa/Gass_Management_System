@@ -72,7 +72,7 @@
                                 <div class="col-6">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light border-0 text-muted small">OMR</span>
-                                        <input type="number" step="0.01" name="filled_{{ $weight }}_price" class="form-control bg-light border-0 price-input" value="" min="">
+                                        <input type="number" step="0.001" name="filled_{{ $weight }}_price" class="form-control bg-light border-0 price-input" value="" min="0" placeholder="0.000">
                                     </div>
                                 </div>
                             </div>
@@ -138,12 +138,12 @@
                                     <div class="input-group">
                                         <span class="input-group-text bg-light border-0 text-muted small">OMR</span>
                                         <input type="number" 
-                                               step="0.01" 
+                                               step="0.001" 
                                                name="new_{{ $weight }}_price" 
                                                class="form-control bg-light border-0 price-input new-cylinder-price" 
                                                value="" 
                                                min="0" 
-                                               placeholder="0.00"
+                                               placeholder="0.000"
                                                {{ $stock <= 0 ? 'readonly' : '' }}>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
         <!-- Footer Total and Submit -->
         <div class="row mt-5">
             <div class="col-12 d-flex justify-content-end align-items-center bg-white p-4 shadow-sm rounded">
-                <h4 class="mb-0 me-4 font-weight-bold">{{ __('messages.total_amount_label') }}: <span id="displayTotal" class="text-primary">0.00</span> OMR</h4>
+                <h4 class="mb-0 me-4 font-weight-bold">{{ __('messages.total_amount_label') }}: <span id="displayTotal" class="text-primary">0.000</span> OMR</h4>
                 <button type="submit" class="btn btn-primary btn-lg px-5 font-weight-bold">
                     {{ __('messages.add_new_sale') }}
                 </button>
@@ -237,7 +237,7 @@
                 grandTotal += (qty * price);
             });
             
-            displayTotal.innerText = grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            displayTotal.innerText = grandTotal.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
         }
 
         // New Cylinders Stock Validation Logic

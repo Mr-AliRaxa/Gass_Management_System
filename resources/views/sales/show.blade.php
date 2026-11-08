@@ -44,13 +44,13 @@
                      <tr>
                          <td>{{ str_replace('_', ' ', ucfirst($item->type)) }}</td>
                          <td>{{ $item->quantity }}</td>
-                         <td>{{ number_format($item->price, 2) }}</td>
-                         <td>{{ number_format($item->quantity * $item->price, 2) }}</td>
+                         <td>{{ number_format($item->price, 3) }}</td>
+                         <td>{{ number_format($item->quantity * $item->price, 3) }}</td>
                      </tr>
                      @endforeach
                      <tr>
                          <td colspan="3" class="text-end"><strong>  {{ __('messages.sale_total') }}   </strong></td>
-                         <td><strong>{{ number_format($sale->total_amount, 2) }}</strong></td>
+                         <td><strong>{{ number_format($sale->total_amount, 3) }}</strong></td>
                      </tr>
                  </tbody>
              </table>

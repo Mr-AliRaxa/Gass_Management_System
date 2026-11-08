@@ -197,7 +197,7 @@
                 </td>
                 <td style="width: 50%; text-align: right;">
                     <span style="font-size: 11px; font-weight: bold; color: #1e3a8a;">
-                        Filtered Purchases: {{ number_format($totals['grand_amount'], 2) }} OMR ({{ $sales->count() }} Invoices)
+                        Filtered Purchases: {{ number_format($totals['grand_amount'], 3) }} OMR ({{ $sales->count() }} Invoices)
                     </span>
                 </td>
             </tr>
@@ -211,7 +211,7 @@
             <td style="width: 25%;">
                 <div class="summary-box">
                     <div class="summary-box-title">Total Sales Revenue</div>
-                    <div class="summary-box-val" style="color: #4f46e5;">{{ number_format($totals['grand_amount'], 2) }} OMR</div>
+                    <div class="summary-box-val" style="color: #4f46e5;">{{ number_format($totals['grand_amount'], 3) }} OMR</div>
                     <div class="summary-box-sub">{{ $sales->count() }} Total Invoices</div>
                 </div>
             </td>
@@ -303,7 +303,7 @@
                     <td class="text-center col-new-total">{{ $totNew }}</td>
 
                     <td class="text-center font-bold">{{ $rowQty }}</td>
-                    <td class="text-end font-bold">{{ number_format($sale->total_amount, 2) }}</td>
+                    <td class="text-end font-bold">{{ number_format($sale->total_amount, 3) }}</td>
                 </tr>
             @empty
                 <tr>
@@ -328,7 +328,7 @@
                 <td class="text-center col-new-total">{{ $totals['total_new'] }}</td>
 
                 <td class="text-center font-bold">{{ $totals['total_qty'] }}</td>
-                <td class="text-end font-bold">{{ number_format($totals['grand_amount'], 2) }}</td>
+                <td class="text-end font-bold">{{ number_format($totals['grand_amount'], 3) }}</td>
             </tr>
         </tfoot>
         @endif

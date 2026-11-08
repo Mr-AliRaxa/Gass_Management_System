@@ -236,7 +236,7 @@
         <div class="stat-card stat-card-red">
             <div>
                 <div class="stat-label">{{ __('messages.today_expenses') }}</div>
-                <div class="stat-value">{{ number_format($todayExpense ?? 0, 2) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($todayExpense ?? 0, 3) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-red"><i class="fas fa-calendar-day"></i></div>
             <i class="fas fa-money-bill-alt stat-bg-icon stat-bg-icon-red"></i>
@@ -246,7 +246,7 @@
         <div class="stat-card stat-card-orange">
             <div>
                 <div class="stat-label">{{ __('messages.this_month_expenses') }}</div>
-                <div class="stat-value">{{ number_format($thisMonthExpense ?? 0, 2) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($thisMonthExpense ?? 0, 3) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-orange"><i class="fas fa-calendar-alt"></i></div>
             <i class="fas fa-file-invoice-dollar stat-bg-icon stat-bg-icon-orange"></i>
@@ -266,7 +266,7 @@
         <div class="stat-card stat-card-green">
             <div>
                 <div class="stat-label">{{ __('messages.all_time_total') }}</div>
-                <div class="stat-value">{{ number_format($totalExpenseAllTime ?? 0, 0) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
+                <div class="stat-value">{{ number_format($totalExpenseAllTime ?? 0, 3) }} <span style="font-size:13px;font-weight:600;">OMR</span></div>
             </div>
             <div class="stat-icon stat-icon-green"><i class="fas fa-wallet"></i></div>
             <i class="fas fa-coins stat-bg-icon stat-bg-icon-green"></i>
@@ -369,7 +369,7 @@
                         <td>
                             <span class="amount-badge">
                                 <i class="fas fa-coins"></i>
-                                {{ number_format($expense->amount, 2) }} OMR
+                                {{ number_format($expense->amount, 3) }} OMR
                             </span>
                         </td>
 

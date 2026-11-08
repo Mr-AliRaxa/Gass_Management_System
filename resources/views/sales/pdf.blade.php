@@ -124,13 +124,13 @@
             <tr>
                 <td>{{ str_replace('_', ' ', ucfirst($item->type)) }}</td>
                 <td style="text-align: center;">{{ $item->quantity }}</td>
-                <td style="text-align: right;">{{ number_format($item->price, 2) }}</td>
-                <td style="text-align: right;">{{ number_format($item->quantity * $item->price, 2) }}</td>
+                <td style="text-align: right;">{{ number_format($item->price, 3) }}</td>
+                <td style="text-align: right;">{{ number_format($item->quantity * $item->price, 3) }}</td>
             </tr>
             @endforeach
             <tr style="background-color: #f8fafc;">
                 <td colspan="3" style="text-align: right;"><strong>Grand Total</strong></td>
-                <td style="text-align: right;"><strong>{{ number_format($sale->total_amount, 2) }}</strong></td>
+                <td style="text-align: right;"><strong>{{ number_format($sale->total_amount, 3) }}</strong></td>
             </tr>
         </tbody>
     </table>

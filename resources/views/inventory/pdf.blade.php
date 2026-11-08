@@ -80,7 +80,7 @@
                 <td width="25%">
                     <div class="kpi-box" style="border-top: 3px solid #2563eb;">
                         <div class="kpi-title">Total Purchase Cost</div>
-                        <div class="kpi-val" style="color: #2563eb;">{{ number_format($totalPurchasedFilteredCost ?? $totalPurchaseCost, 2) }} OMR</div>
+                        <div class="kpi-val" style="color: #2563eb;">{{ number_format($totalPurchasedFilteredCost ?? $totalPurchaseCost, 3) }} OMR</div>
                     </div>
                 </td>
                 <td width="25%">
@@ -97,7 +97,7 @@
                             $pCost = $totalPurchasedFilteredCost ?? $totalPurchaseCost;
                             $avgBuy = $pQty > 0 ? ($pCost / $pQty) : 0;
                         @endphp
-                        <div class="kpi-val" style="color: #d97706;">{{ number_format($avgBuy, 2) }} OMR</div>
+                        <div class="kpi-val" style="color: #d97706;">{{ number_format($avgBuy, 3) }} OMR</div>
                     </div>
                 </td>
             </tr>
@@ -120,8 +120,8 @@
                 <tr>
                     <td><strong>{{ $item['name'] }}</strong></td>
                     <td class="text-center">{{ number_format($item['purchased_qty']) }}</td>
-                    <td class="text-right">{{ number_format($item['purchase_price'], 2) }} OMR</td>
-                    <td class="text-right" style="font-weight:bold; color:#1e40af;">{{ number_format($item['total_purchase_cost'], 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($item['purchase_price'], 3) }} OMR</td>
+                    <td class="text-right" style="font-weight:bold; color:#1e40af;">{{ number_format($item['total_purchase_cost'], 3) }} OMR</td>
                     <td class="text-center">{{ $item['remaining'] }}</td>
                 </tr>
                 @endforeach
@@ -129,7 +129,7 @@
                     <td>TOTAL PURCHASES:</td>
                     <td class="text-center">{{ number_format($totalPurchasedQty) }} Units</td>
                     <td class="text-right">—</td>
-                    <td class="text-right">{{ number_format($totalPurchaseCost, 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($totalPurchaseCost, 3) }} OMR</td>
                     <td class="text-center">{{ number_format(($stocks['11kg_empty'] ?? 0) + ($stocks['22kg_empty'] ?? 0) + ($stocks['44kg_empty'] ?? 0)) }} Units</td>
                 </tr>
             </tbody>
@@ -159,7 +159,7 @@
                         <span class="badge-positive">+{{ $m['bought_qty'] }} Units</span>
                     </td>
                     <td class="text-right" style="font-weight: bold; color: #16a34a;">
-                        {{ number_format($m['bought_cost'], 2) }} OMR
+                        {{ number_format($m['bought_cost'], 3) }} OMR
                     </td>
                 </tr>
                 @endforeach
@@ -192,8 +192,8 @@
                     <td>{{ $pDate }}</td>
                     <td><strong>{{ $pType }}</strong></td>
                     <td class="text-center"><span class="badge-positive">+{{ $p->quantity }}</span></td>
-                    <td class="text-right">{{ number_format($p->unit_price, 2) }} OMR</td>
-                    <td class="text-right" style="font-weight: bold; color:#1e40af;">{{ number_format($p->total_cost, 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($p->unit_price, 3) }} OMR</td>
+                    <td class="text-right" style="font-weight: bold; color:#1e40af;">{{ number_format($p->total_cost, 3) }} OMR</td>
                     <td><strong>{{ $p->supplier_name ? \App\Helpers\ArabicHelper::shape($p->supplier_name) : '—' }}</strong></td>
                     <td>{{ $p->note ? \App\Helpers\ArabicHelper::shape($p->note) : '—' }}</td>
                 </tr>
@@ -207,7 +207,7 @@
                     <td colspan="3" class="text-right">TOTAL:</td>
                     <td class="text-center">+{{ number_format($totalPurchasedFilteredQty) }} Units</td>
                     <td class="text-right">—</td>
-                    <td class="text-right">{{ number_format($totalPurchasedFilteredCost, 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($totalPurchasedFilteredCost, 3) }} OMR</td>
                     <td colspan="2"></td>
                 </tr>
                 @endif
@@ -231,7 +231,7 @@
                 <td width="25%">
                     <div class="kpi-box" style="border-top: 3px solid #2563eb;">
                         <div class="kpi-title">Total Sales Revenue</div>
-                        <div class="kpi-val" style="color: #2563eb;">{{ number_format($totalSoldFilteredRevenue, 2) }} OMR</div>
+                        <div class="kpi-val" style="color: #2563eb;">{{ number_format($totalSoldFilteredRevenue, 3) }} OMR</div>
                     </div>
                 </td>
                 <td width="25%">
@@ -248,7 +248,7 @@
                             $sRev = $totalSoldFilteredRevenue;
                             $avgSale = $sQty > 0 ? ($sRev / $sQty) : 0;
                         @endphp
-                        <div class="kpi-val" style="color: #16a34a;">{{ number_format($avgSale, 2) }} OMR</div>
+                        <div class="kpi-val" style="color: #16a34a;">{{ number_format($avgSale, 3) }} OMR</div>
                     </div>
                 </td>
             </tr>
@@ -271,10 +271,10 @@
                 <tr>
                     <td><strong>{{ $item['name'] }}</strong></td>
                     <td class="text-center">{{ number_format($item['sold_qty']) }}</td>
-                    <td class="text-right">{{ number_format($item['sale_price'], 2) }} OMR</td>
-                    <td class="text-right" style="font-weight:bold; color:#1e40af;">{{ number_format($item['total_sale_revenue'], 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($item['sale_price'], 3) }} OMR</td>
+                    <td class="text-right" style="font-weight:bold; color:#1e40af;">{{ number_format($item['total_sale_revenue'], 3) }} OMR</td>
                     <td class="text-right {{ $item['profit'] >= 0 ? 'text-success' : 'text-danger' }}">
-                        {{ $item['profit'] >= 0 ? '+' : '' }}{{ number_format($item['profit'], 2) }} OMR
+                        {{ $item['profit'] >= 0 ? '+' : '' }}{{ number_format($item['profit'], 3) }} OMR
                     </td>
                 </tr>
                 @endforeach
@@ -312,7 +312,7 @@
                         <span class="badge-negative">-{{ $m['sold_qty'] }} Sold</span>
                     </td>
                     <td class="text-right" style="font-weight: bold; color: #1e40af;">
-                        {{ number_format($m['sold_revenue'] ?? 0, 2) }} OMR
+                        {{ number_format($m['sold_revenue'] ?? 0, 3) }} OMR
                     </td>
                 </tr>
                 @endforeach
@@ -346,8 +346,8 @@
                     <td>{{ $sDate }}</td>
                     <td><strong>{{ $sType }}</strong></td>
                     <td class="text-center"><span class="badge-negative">{{ $s->quantity }}</span></td>
-                    <td class="text-right">{{ number_format($s->price, 2) }} OMR</td>
-                    <td class="text-right" style="font-weight: bold; color: #1e40af;">{{ number_format($sTotal, 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($s->price, 3) }} OMR</td>
+                    <td class="text-right" style="font-weight: bold; color: #1e40af;">{{ number_format($sTotal, 3) }} OMR</td>
                     <td><strong>{{ \App\Helpers\ArabicHelper::shape($s->sale?->customer?->name ?? 'Walk-in Customer') }}</strong></td>
                     <td>
                         <span class="badge-blue">#SALE-{{ $s->sale_id }}</span>
@@ -363,7 +363,7 @@
                     <td colspan="3" class="text-right">TOTAL:</td>
                     <td class="text-center">{{ number_format($totalSoldFilteredQty) }} Units</td>
                     <td class="text-right">—</td>
-                    <td class="text-right">{{ number_format($totalSoldFilteredRevenue, 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($totalSoldFilteredRevenue, 3) }} OMR</td>
                     <td colspan="2"></td>
                 </tr>
                 @endif
@@ -387,7 +387,7 @@
                 <td width="25%">
                     <div class="kpi-box">
                         <div class="kpi-title">Total Purchase Cost</div>
-                        <div class="kpi-val" style="color: #2563eb;">{{ number_format($totalPurchaseCost, 2) }} OMR</div>
+                        <div class="kpi-val" style="color: #2563eb;">{{ number_format($totalPurchaseCost, 3) }} OMR</div>
                     </div>
                 </td>
                 <td width="25%">
@@ -427,13 +427,13 @@
                     <td><strong>{{ $item['name'] }}</strong></td>
                     <td class="text-center"><strong>{{ $item['remaining'] }}</strong></td>
                     <td class="text-center">{{ number_format($item['purchased_qty']) }}</td>
-                    <td class="text-right">{{ number_format($item['purchase_price'], 2) }} OMR</td>
-                    <td class="text-right">{{ number_format($item['total_purchase_cost'], 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($item['purchase_price'], 3) }} OMR</td>
+                    <td class="text-right">{{ number_format($item['total_purchase_cost'], 3) }} OMR</td>
                     <td class="text-center">{{ number_format($item['sold_qty']) }}</td>
-                    <td class="text-right">{{ number_format($item['sale_price'], 2) }} OMR</td>
-                    <td class="text-right">{{ number_format($item['total_sale_revenue'], 2) }} OMR</td>
+                    <td class="text-right">{{ number_format($item['sale_price'], 3) }} OMR</td>
+                    <td class="text-right">{{ number_format($item['total_sale_revenue'], 3) }} OMR</td>
                     <td class="text-right {{ $item['profit'] >= 0 ? 'text-success' : 'text-danger' }}">
-                        {{ $item['profit'] >= 0 ? '+' : '' }}{{ number_format($item['profit'], 2) }} OMR
+                        {{ $item['profit'] >= 0 ? '+' : '' }}{{ number_format($item['profit'], 3) }} OMR
                     </td>
                 </tr>
                 @endforeach
@@ -459,9 +459,9 @@
                 <tr>
                     <td><strong>{{ $m['month'] }}</strong></td>
                     <td class="text-center">{{ $m['bought_qty'] > 0 ? '+' . $m['bought_qty'] : '0' }}</td>
-                    <td class="text-right">{{ $m['bought_cost'] > 0 ? number_format($m['bought_cost'], 2) : '0.00' }}</td>
+                    <td class="text-right">{{ $m['bought_cost'] > 0 ? number_format($m['bought_cost'], 3) : '0.00' }}</td>
                     <td class="text-center">{{ $m['sold_qty'] > 0 ? '-' . $m['sold_qty'] : '0' }}</td>
-                    <td class="text-right">{{ ($m['sold_revenue'] ?? 0) > 0 ? number_format($m['sold_revenue'], 2) : '0.00' }}</td>
+                    <td class="text-right">{{ ($m['sold_revenue'] ?? 0) > 0 ? number_format($m['sold_revenue'], 3) : '0.00' }}</td>
                     <td class="text-center {{ $net >= 0 ? 'text-success' : 'text-danger' }}">
                         {{ $net > 0 ? '+' . $net : $net }}
                     </td>
@@ -498,8 +498,8 @@
                             {{ $isPurchase ? '+' : '' }}{{ $item->quantity }}
                         </span>
                     </td>
-                    <td class="text-right">{{ $item->unit_price > 0 ? number_format($item->unit_price, 2) . ' OMR' : '—' }}</td>
-                    <td class="text-right">{{ $item->total_cost > 0 ? number_format($item->total_cost, 2) . ' OMR' : '—' }}</td>
+                    <td class="text-right">{{ $item->unit_price > 0 ? number_format($item->unit_price, 3) . ' OMR' : '—' }}</td>
+                    <td class="text-right">{{ $item->total_cost > 0 ? number_format($item->total_cost, 3) . ' OMR' : '—' }}</td>
                     <td>
                         @if($item->supplier_name)
                             <strong>{{ \App\Helpers\ArabicHelper::shape($item->supplier_name) }}</strong> - 

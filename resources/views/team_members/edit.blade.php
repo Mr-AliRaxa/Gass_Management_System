@@ -55,7 +55,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.basic_salary') }}:</strong></label>
-                        <input type="number" step="0.01" name="basic_salary" value="{{ $teamMember->basic_salary }}" class="form-control" placeholder="{{ __('messages.basic_salary') }}">
+                        <input type="number" step="0.001" name="basic_salary" value="{{ $teamMember->basic_salary }}" class="form-control" placeholder="0.000">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 mb-3">

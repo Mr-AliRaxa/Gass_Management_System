@@ -70,7 +70,7 @@
                 <td>{{ \Carbon\Carbon::parse($expense->date)->format('d/m/Y') }}</td>
                 <td>{{ \App\Helpers\ArabicHelper::shape($expense->type->name ?? 'N/A') }}</td>
                 <td>{{ \App\Helpers\ArabicHelper::shape($expense->note ?? '-') }}</td>
-                <td style="text-align: right;">{{ number_format($expense->amount, 2) }}</td>
+                <td style="text-align: right;">{{ number_format($expense->amount, 3) }}</td>
             </tr>
             @php $total += $expense->amount; @endphp
             @empty
@@ -81,7 +81,7 @@
             @if(count($expenses) > 0)
             <tr class="total-row">
                 <td colspan="3" style="text-align: right;">Total</td>
-                <td style="text-align: right;">{{ number_format($total, 2) }}</td>
+                <td style="text-align: right;">{{ number_format($total, 3) }}</td>
             </tr>
             @endif
         </tbody>

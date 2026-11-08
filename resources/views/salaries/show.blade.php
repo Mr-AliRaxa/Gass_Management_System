@@ -28,13 +28,13 @@
             <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                 <div class="form-group">
                     <label class="form-label"><strong>Amount:</strong></label>
-                    {{ number_format($salary->amount, 2) }}
+                    {{ number_format($salary->amount, 3) }} OMR
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                 <div class="form-group">
                     <label class="form-label"><strong>Bonus:</strong></label>
-                    {{ number_format($salary->bonus, 2) }}
+                    {{ number_format($salary->bonus, 3) }} OMR
                 </div>
             </div>
              <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
