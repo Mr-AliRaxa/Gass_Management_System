@@ -250,7 +250,7 @@
                                 @endcan
                                 @can('expense-delete')
                                 @if($expenseType->expenses_count > 0)
-                                    <button type="button" class="act-btn act-btn-del" style="opacity: 0.45; cursor: not-allowed;" title="{{ __('messages.cannot_delete_expense_type_linked') }}" onclick="alert('{{ addslashes(__('messages.cannot_delete_expense_type_linked')) }}')">
+                                    <button type="button" class="act-btn act-btn-del" style="opacity: 0.55; cursor: pointer;" title="{{ __('messages.cannot_delete_expense_type_linked') }}" onclick="showBlockedModal('{{ addslashes(__('messages.cannot_delete_expense_type_linked')) }}', '{{ addslashes(__('messages.cannot_delete') ?? 'Cannot Delete') }}')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 @else

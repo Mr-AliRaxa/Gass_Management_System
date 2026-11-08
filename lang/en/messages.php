@@ -622,4 +622,7 @@ return [
     'insufficient_stock_error' => 'Insufficient stock for :weight New Cylinder. Available: :stock, Requested: :qty.',
     'cannot_delete_expense_type_linked' => 'This expense type cannot be deleted because it has linked expense records. Please delete or reassign those expenses first.',
     'expense_type_deleted_success' => 'Expense Type deleted successfully.',
+    'action_not_allowed' => 'Action Not Allowed',
+    'cannot_delete' => 'Cannot Delete',
+    'close' => 'Close',
 ];

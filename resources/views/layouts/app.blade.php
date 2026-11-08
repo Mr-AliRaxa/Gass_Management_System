@@ -339,6 +339,39 @@
         </div>
     </div>
 
+    <!-- Global Blocked / Action Not Allowed Modal -->
+    <div class="modal fade" id="actionBlockedModal" tabindex="-1" aria-labelledby="actionBlockedModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 18px; overflow: hidden;">
+                <div class="modal-header" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; padding: 18px 24px;">
+                    <h5 class="modal-title d-flex align-items-center gap-2 font-weight-bold" id="actionBlockedModalLabel" style="font-size: 17px; margin:0;">
+                        <i class="fas fa-ban"></i>
+                        <span id="actionBlockedTitle">{{ __('messages.action_not_allowed') ?? 'Action Not Allowed' }}</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <div class="mb-3">
+                        <div style="width: 72px; height: 72px; border-radius: 50%; background: #fee2e2; color: #dc2626; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 14px rgba(220,38,38,0.2);">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <h5 class="font-weight-bold mb-2" id="actionBlockedHeading" style="color: #1e293b; font-size: 19px;">
+                        {{ __('messages.cannot_delete') ?? 'Cannot Delete' }}
+                    </h5>
+                    <p class="text-muted mb-0" id="actionBlockedMessage" style="font-size: 15px; line-height: 1.6; padding: 0 10px;">
+                        {{-- Injected dynamically --}}
+                    </p>
+                </div>
+                <div class="modal-footer border-0 bg-light justify-content-center p-3">
+                    <button type="button" class="btn btn-primary px-4 shadow-sm font-weight-bold" style="border-radius: 10px;" data-bs-dismiss="modal">
+                        <i class="fas fa-check me-1"></i> {{ __('messages.close') ?? 'OK, Understood' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
     </form>
@@ -349,6 +382,15 @@
             form.setAttribute('action', url);
             const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             deleteModal.show();
+        }
+
+        function showBlockedModal(message, heading) {
+            const msgEl = document.getElementById('actionBlockedMessage');
+            const headEl = document.getElementById('actionBlockedHeading');
+            if (msgEl) msgEl.textContent = message;
+            if (headEl && heading) headEl.textContent = heading;
+            const blockedModal = new bootstrap.Modal(document.getElementById('actionBlockedModal'));
+            blockedModal.show();
         }
     </script>
     <!-- Mobile Sidebar Interaction Script -->

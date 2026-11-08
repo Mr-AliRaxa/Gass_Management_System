@@ -625,4 +625,7 @@ return [
     'insufficient_stock_error' => 'المخزون غير كافٍ لأسطوانة :weight الجديدة. المتاح: :stock، المطلوب: :qty.',
     'cannot_delete_expense_type_linked' => 'لا يمكن حذف نوع المصروف هذا نظراً لوجود مصروفات مرتبطة به. يرجى حذف أو إعادة تعيين تلك المصروفات أولاً.',
     'expense_type_deleted_success' => 'تم حذف نوع المصروف بنجاح.',
+    'action_not_allowed' => 'الإجراء غير مسموح به',
+    'cannot_delete' => 'لا يمكن الحذف',
+    'close' => 'إغلاق',
 ];
