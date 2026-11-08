@@ -20,7 +20,7 @@ class ExpenseTypeController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->input('per_page', 10);
-        $expenseTypes = ExpenseType::latest()->paginate($perPage)->withQueryString();
+        $expenseTypes = ExpenseType::withCount('expenses')->latest()->paginate($perPage)->withQueryString();
         return view('expense_types.index', compact('expenseTypes'));
     }
 
@@ -77,9 +77,14 @@ class ExpenseTypeController extends Controller
 
     public function destroy(ExpenseType $expenseType)
     {
+        if ($expenseType->expenses()->exists()) {
+            return redirect()->route('expense_types.index')
+                            ->with('error', __('messages.cannot_delete_expense_type_linked'));
+        }
+
         $expenseType->delete();
 
         return redirect()->route('expense_types.index')
-                        ->with('success', 'Expense Type deleted successfully');
+                        ->with('success', __('messages.expense_type_deleted_success'));
     }
 }

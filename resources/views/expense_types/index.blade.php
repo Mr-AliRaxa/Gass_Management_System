@@ -159,6 +159,13 @@
     </div>
     @endif
 
+    @if ($message = Session::get('error'))
+    <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i>{{ $message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    @endif
+
     {{-- ── Stat Cards ── --}}
     <div class="stat-cards">
         <div class="stat-card stat-card-blue">
@@ -221,6 +228,11 @@
                             <span class="type-pill">
                                 <i class="fas fa-tag"></i> {{ $expenseType->name }}
                             </span>
+                            @if($expenseType->expenses_count > 0)
+                                <span class="badge rounded-pill bg-light text-dark border ms-2" title="{{ $expenseType->expenses_count }} expense record(s) linked">
+                                    <i class="fas fa-receipt text-primary me-1"></i>{{ $expenseType->expenses_count }}
+                                </span>
+                            @endif
                         </td>
                         <td>
                             @if($expenseType->description)
@@ -237,9 +249,15 @@
                                 </a>
                                 @endcan
                                 @can('expense-delete')
-                                <button type="button" class="act-btn act-btn-del" title="Delete" onclick="confirmDelete('{{ route('expense_types.destroy', $expenseType->id) }}')">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                @if($expenseType->expenses_count > 0)
+                                    <button type="button" class="act-btn act-btn-del" style="opacity: 0.45; cursor: not-allowed;" title="{{ __('messages.cannot_delete_expense_type_linked') }}" onclick="alert('{{ addslashes(__('messages.cannot_delete_expense_type_linked')) }}')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                @else
+                                    <button type="button" class="act-btn act-btn-del" title="Delete" onclick="confirmDelete('{{ route('expense_types.destroy', $expenseType->id) }}')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                @endif
                                 @endcan
                             </div>
                         </td>
