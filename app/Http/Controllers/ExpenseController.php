@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expense;
 use Illuminate\Http\Request;
 use App\Models\ExpenseType;
+use App\Models\AgencySetting;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class ExpenseController extends Controller
@@ -137,8 +138,10 @@ class ExpenseController extends Controller
         }
 
         $expenses = $query->orderBy('date', 'desc')->get();
+        $agencyId = auth()->user()->agency_id ?? null;
+        $setting = $agencyId ? AgencySetting::where('agency_id', $agencyId)->first() : null;
         
-        $pdf = Pdf::loadView('expenses.pdf', compact('expenses'));
+        $pdf = Pdf::loadView('expenses.pdf', compact('expenses', 'setting'));
         return $pdf->download('expenses_report.pdf');
     }
 }

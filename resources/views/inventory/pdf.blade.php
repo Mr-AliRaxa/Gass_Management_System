@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>
         @if(($reportType ?? 'all') == 'purchases')
             Cylinder Purchases & Investment Report
@@ -194,8 +194,8 @@
                     <td class="text-center"><span class="badge-positive">+{{ $p->quantity }}</span></td>
                     <td class="text-right">{{ number_format($p->unit_price, 2) }} OMR</td>
                     <td class="text-right" style="font-weight: bold; color:#1e40af;">{{ number_format($p->total_cost, 2) }} OMR</td>
-                    <td><strong>{{ $p->supplier_name ?: '—' }}</strong></td>
-                    <td>{{ $p->note ?: '—' }}</td>
+                    <td><strong>{{ $p->supplier_name ? \App\Helpers\ArabicHelper::shape($p->supplier_name) : '—' }}</strong></td>
+                    <td>{{ $p->note ? \App\Helpers\ArabicHelper::shape($p->note) : '—' }}</td>
                 </tr>
                 @empty
                 <tr>
@@ -348,7 +348,7 @@
                     <td class="text-center"><span class="badge-negative">{{ $s->quantity }}</span></td>
                     <td class="text-right">{{ number_format($s->price, 2) }} OMR</td>
                     <td class="text-right" style="font-weight: bold; color: #1e40af;">{{ number_format($sTotal, 2) }} OMR</td>
-                    <td><strong>{{ $s->sale?->customer?->name ?? 'Walk-in Customer' }}</strong></td>
+                    <td><strong>{{ \App\Helpers\ArabicHelper::shape($s->sale?->customer?->name ?? 'Walk-in Customer') }}</strong></td>
                     <td>
                         <span class="badge-blue">#SALE-{{ $s->sale_id }}</span>
                     </td>
@@ -502,9 +502,9 @@
                     <td class="text-right">{{ $item->total_cost > 0 ? number_format($item->total_cost, 2) . ' OMR' : '—' }}</td>
                     <td>
                         @if($item->supplier_name)
-                            <strong>{{ $item->supplier_name }}</strong> - 
+                            <strong>{{ \App\Helpers\ArabicHelper::shape($item->supplier_name) }}</strong> - 
                         @endif
-                        {{ $item->note ?: '—' }}
+                        {{ $item->note ? \App\Helpers\ArabicHelper::shape($item->note) : '—' }}
                     </td>
                 </tr>
                 @empty

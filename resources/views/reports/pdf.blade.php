@@ -160,7 +160,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($sale->date)) }}</td>
-                <td>{{ $sale->customer->name ?? 'Walk-in / Cash' }}</td>
+                <td>{{ \App\Helpers\ArabicHelper::shape($sale->customer->name ?? 'Walk-in / Cash') }}</td>
                 <td>{{ number_format($sale->total_amount, 2) }}</td>
             </tr>
             @empty
@@ -198,7 +198,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($expense->date)) }}</td>
-                <td>{{ $expense->note ?: ($expense->expenseType->name ?? 'N/A') }}</td>
+                <td>{{ \App\Helpers\ArabicHelper::shape($expense->note ?: ($expense->expenseType->name ?? 'N/A')) }}</td>
                 <td>{{ number_format($expense->amount, 2) }}</td>
             </tr>
             @empty
@@ -236,7 +236,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($salary->date)) }}</td>
-                <td>{{ $salary->teamMember->name ?? 'N/A' }}</td>
+                <td>{{ \App\Helpers\ArabicHelper::shape($salary->teamMember->name ?? 'N/A') }}</td>
                 <td>{{ number_format($salary->amount, 2) }}</td>
             </tr>
             @empty
@@ -275,9 +275,9 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($attendance->date)) }}</td>
-                <td>{{ $attendance->teamMember->name ?? 'N/A' }}</td>
+                <td>{{ \App\Helpers\ArabicHelper::shape($attendance->teamMember->name ?? 'N/A') }}</td>
                 <td>{{ ucfirst($attendance->status) }}</td>
-                <td>{{ $attendance->note ?? '-' }}</td>
+                <td>{{ \App\Helpers\ArabicHelper::shape($attendance->note ?? '-') }}</td>
             </tr>
             @empty
             <tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Salary;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
+use App\Models\AgencySetting;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class SalaryController extends Controller
@@ -134,8 +135,10 @@ class SalaryController extends Controller
         }
 
         $salaries = $query->orderBy('date', 'desc')->get();
+        $agencyId = auth()->user()->agency_id ?? null;
+        $setting = $agencyId ? AgencySetting::where('agency_id', $agencyId)->first() : null;
         
-        $pdf = Pdf::loadView('salaries.pdf', compact('salaries'));
+        $pdf = Pdf::loadView('salaries.pdf', compact('salaries', 'setting'));
         return $pdf->download('salary_report.pdf');
     }
 }

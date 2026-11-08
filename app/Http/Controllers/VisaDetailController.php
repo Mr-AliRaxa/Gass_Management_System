@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\VisaDetail;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
+use App\Models\AgencySetting;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class VisaDetailController extends Controller
@@ -84,7 +85,10 @@ class VisaDetailController extends Controller
     public function downloadPdf()
     {
         $visaDetails = VisaDetail::with('teamMember')->orderBy('expiry_date', 'asc')->get();
-        $pdf = Pdf::loadView('visa_details.pdf', compact('visaDetails'));
+        $agencyId = auth()->user()->agency_id ?? null;
+        $setting = $agencyId ? AgencySetting::where('agency_id', $agencyId)->first() : null;
+
+        $pdf = Pdf::loadView('visa_details.pdf', compact('visaDetails', 'setting'));
         return $pdf->download('visa_expiry_report.pdf');
     }
 }

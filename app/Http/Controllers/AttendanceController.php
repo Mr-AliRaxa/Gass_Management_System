@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
+use App\Models\AgencySetting;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class AttendanceController extends Controller
@@ -122,8 +123,10 @@ class AttendanceController extends Controller
         }
 
         $attendances = $query->orderBy('date', 'desc')->get();
+        $agencyId = auth()->user()->agency_id ?? null;
+        $setting = $agencyId ? AgencySetting::where('agency_id', $agencyId)->first() : null;
         
-        $pdf = Pdf::loadView('attendances.pdf', compact('attendances'));
+        $pdf = Pdf::loadView('attendances.pdf', compact('attendances', 'setting'));
         return $pdf->download('attendance_report.pdf');
     }
 }

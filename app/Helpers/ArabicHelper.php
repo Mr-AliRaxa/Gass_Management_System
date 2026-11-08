@@ -47,3 +47,4 @@ class ArabicHelper
         return (bool) preg_match('/[\x{0600}-\x{06FF}]/u', $text);
     }
 }
+
