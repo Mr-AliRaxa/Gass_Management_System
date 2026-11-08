@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Salaries
     Route::get('salaries/download-pdf', [App\Http\Controllers\SalaryController::class, 'downloadPdf'])->name('salaries.downloadPdf')->middleware('permission:salary-list');
+    Route::get('salaries/check-month-paid', [App\Http\Controllers\SalaryController::class, 'checkMonthPaid'])->name('salaries.checkMonthPaid')->middleware('permission:salary-list');
     Route::resource('salaries', App\Http\Controllers\SalaryController::class)->middleware('permission:salary-list');
 
     // Inventory

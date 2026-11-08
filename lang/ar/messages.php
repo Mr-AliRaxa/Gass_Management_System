@@ -628,4 +628,6 @@ return [
     'action_not_allowed' => 'الإجراء غير مسموح به',
     'cannot_delete' => 'لا يمكن الحذف',
     'close' => 'إغلاق',
+    'salary_already_paid_month' => 'تم صرف راتب شهر :month مسبقاً للموظف :member. لا يمكن صرف الراتب أكثر من مرة واحدة في نفس الشهر لكل موظف.',
+    'salary_already_paid_title' => 'تم صرف الراتب مسبقاً',
 ];

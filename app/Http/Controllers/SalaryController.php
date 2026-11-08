@@ -51,6 +51,50 @@ class SalaryController extends Controller
         return view('salaries.create', compact('teamMembers'));
     }
 
+    public function checkMonthPaid(Request $request)
+    {
+        $memberId = $request->query('team_member_id');
+        $date = $request->query('date', now()->toDateString());
+        $excludeId = $request->query('exclude_id');
+
+        if (!$memberId || !$date) {
+            return response()->json(['paid' => false]);
+        }
+
+        $carbonDate = \Carbon\Carbon::parse($date);
+        $year = $carbonDate->year;
+        $month = $carbonDate->month;
+
+        $query = Salary::where('team_member_id', $memberId)
+            ->whereYear('date', $year)
+            ->whereMonth('date', $month);
+
+        if ($excludeId) {
+            $query->where('id', '!=', $excludeId);
+        }
+
+        $existing = $query->first();
+
+        if ($existing) {
+            $member = TeamMember::find($memberId);
+            $monthName = $carbonDate->translatedFormat('F Y');
+            return response()->json([
+                'paid' => true,
+                'salary_id' => $existing->id,
+                'paid_date' => $existing->date,
+                'amount' => number_format($existing->amount, 3),
+                'member_name' => $member?->name ?? '',
+                'month_name' => $monthName,
+                'message' => __('messages.salary_already_paid_month', [
+                    'member' => $member?->name ?? '',
+                    'month' => $monthName
+                ])
+            ]);
+        }
+
+        return response()->json(['paid' => false]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -61,6 +105,23 @@ class SalaryController extends Controller
             'salary_slip' => 'nullable|file|mimes:jpeg,png,jpg,gif,pdf|max:2048',
             'note' => 'nullable|string',
         ]);
+
+        $carbonDate = \Carbon\Carbon::parse($request->date);
+        $existing = Salary::where('team_member_id', $request->team_member_id)
+            ->whereYear('date', $carbonDate->year)
+            ->whereMonth('date', $carbonDate->month)
+            ->first();
+
+        if ($existing) {
+            $member = TeamMember::find($request->team_member_id);
+            $monthName = $carbonDate->translatedFormat('F Y');
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('messages.salary_already_paid_month', [
+                    'member' => $member?->name ?? '',
+                    'month' => $monthName
+                ]));
+        }
 
         $input = $request->all();
         $input['bonus'] = $input['bonus'] ?? 0;
@@ -96,6 +157,24 @@ class SalaryController extends Controller
             'salary_slip' => 'nullable|file|mimes:jpeg,png,jpg,gif,pdf|max:2048',
             'note' => 'nullable|string',
         ]);
+
+        $carbonDate = \Carbon\Carbon::parse($request->date);
+        $existing = Salary::where('team_member_id', $request->team_member_id)
+            ->where('id', '!=', $salary->id)
+            ->whereYear('date', $carbonDate->year)
+            ->whereMonth('date', $carbonDate->month)
+            ->first();
+
+        if ($existing) {
+            $member = TeamMember::find($request->team_member_id);
+            $monthName = $carbonDate->translatedFormat('F Y');
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('messages.salary_already_paid_month', [
+                    'member' => $member?->name ?? '',
+                    'month' => $monthName
+                ]));
+        }
 
         $input = $request->all();
         $input['bonus'] = $input['bonus'] ?? 0;

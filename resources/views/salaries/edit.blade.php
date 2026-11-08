@@ -10,6 +10,13 @@
     </div>
 </div>
 
+@if ($message = Session::get('error'))
+<div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">
+    <i class="fas fa-exclamation-triangle me-2"></i>{{ $message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+@endif
+
 @if ($errors->any())
 <div class="alert alert-danger">
     <strong>{{ __('messages.whoops') }}</strong> {{ __('messages.input_errors') }}<br><br>
@@ -31,9 +38,9 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.team_member') }}:</strong></label>
-                        <select name="team_member_id" class="form-control">
+                        <select name="team_member_id" id="salaryTeamMember" class="form-control" required>
                             @foreach($teamMembers as $member)
-                                <option value="{{ $member->id }}" {{ $salary->team_member_id == $member->id ? 'selected' : '' }}>{{ $member->name }}</option>
+                                <option value="{{ $member->id }}" {{ (old('team_member_id', $salary->team_member_id) == $member->id) ? 'selected' : '' }}>{{ $member->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -41,7 +48,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.date') }}:</strong></label>
-                        <input type="date" name="date" value="{{ $salary->date }}" class="form-control">
+                        <input type="date" name="date" id="salaryDate" value="{{ old('date', $salary->date) }}" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
@@ -72,10 +79,86 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                    <button type="submit" class="btn btn-primary">{{ __('messages.update') }}</button>
+                    <button type="submit" id="submitSalaryBtn" class="btn btn-primary">{{ __('messages.update') }}</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const memberSelect = document.getElementById('salaryTeamMember');
+    const dateInput = document.getElementById('salaryDate');
+    const submitBtn = document.getElementById('submitSalaryBtn');
+    const currentSalaryId = '{{ $salary->id }}';
+
+    async function checkSalaryMonth() {
+        const memberId = memberSelect ? memberSelect.value : '';
+        const dateVal = dateInput ? dateInput.value : '';
+
+        if (!memberId || !dateVal) return;
+
+        try {
+            const res = await fetch(`{{ route('salaries.checkMonthPaid') }}?team_member_id=${encodeURIComponent(memberId)}&date=${encodeURIComponent(dateVal)}&exclude_id=${currentSalaryId}`);
+            const data = await res.json();
+
+            if (data.paid) {
+                if (typeof showBlockedModal === 'function') {
+                    showBlockedModal(data.message, '{{ addslashes(__('messages.salary_already_paid_title')) }}');
+                } else {
+                    alert(data.message);
+                }
+                if (submitBtn) {
+                    submitBtn.classList.add('disabled');
+                    submitBtn.setAttribute('title', data.message);
+                }
+            } else {
+                if (submitBtn) {
+                    submitBtn.classList.remove('disabled');
+                    submitBtn.removeAttribute('title');
+                }
+            }
+        } catch (e) {
+            console.error('Error checking salary status:', e);
+        }
+    }
+
+    if (memberSelect) {
+        memberSelect.addEventListener('change', checkSalaryMonth);
+    }
+    if (dateInput) {
+        dateInput.addEventListener('change', checkSalaryMonth);
+    }
+
+    const form = document.querySelector('form[action="{{ route('salaries.update', $salary->id) }}"]');
+    if (form) {
+        form.addEventListener('submit', async function (e) {
+            const memberId = memberSelect ? memberSelect.value : '';
+            const dateVal = dateInput ? dateInput.value : '';
+            if (!memberId || !dateVal) return;
+
+            e.preventDefault();
+            try {
+                const res = await fetch(`{{ route('salaries.checkMonthPaid') }}?team_member_id=${encodeURIComponent(memberId)}&date=${encodeURIComponent(dateVal)}&exclude_id=${currentSalaryId}`);
+                const data = await res.json();
+                if (data.paid) {
+                    if (typeof showBlockedModal === 'function') {
+                        showBlockedModal(data.message, '{{ addslashes(__('messages.salary_already_paid_title')) }}');
+                    } else {
+                        alert(data.message);
+                    }
+                    return false;
+                } else {
+                    form.submit();
+                }
+            } catch (err) {
+                form.submit();
+            }
+        });
+    }
+});
+</script>
+@endpush
 @endsection

@@ -625,4 +625,6 @@ return [
     'action_not_allowed' => 'Action Not Allowed',
     'cannot_delete' => 'Cannot Delete',
     'close' => 'Close',
+    'salary_already_paid_month' => 'Salary has already been paid to :member for :month. In a single month, salary can only be paid once per team member.',
+    'salary_already_paid_title' => 'Salary Already Paid',
 ];
