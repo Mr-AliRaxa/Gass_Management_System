@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\SaleItem;
 use App\Models\Customer;
 use App\Models\CylinderStock;
+use App\Models\Agency;
+use App\Models\AgencySetting;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 
@@ -185,7 +187,11 @@ class SaleController extends Controller
     public function downloadPdf(Sale $sale)
     {
         $sale->load('customer', 'saleItems');
-        $pdf = Pdf::loadView('sales.pdf', compact('sale'));
+        $agencyId = auth()->user()->agency_id ?? ($sale->agency_id ?? null);
+        $agency = $agencyId ? Agency::with('setting')->find($agencyId) : null;
+        $setting = $agency ? $agency->setting : null;
+
+        $pdf = Pdf::loadView('sales.pdf', compact('sale', 'agency', 'setting'));
         return $pdf->download('invoice_'.$sale->id.'.pdf');
     }
 

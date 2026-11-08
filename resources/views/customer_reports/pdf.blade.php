@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Customer Sales & Cylinder Report</title>
     <style>
         @page {
             margin: 15mm 12mm 15mm 12mm;
         }
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'DejaVu Sans', sans-serif;
             font-size: 11px;
             color: #1e293b;
             margin: 0;
@@ -190,7 +190,7 @@
         <table style="width: 100%;">
             <tr>
                 <td style="width: 50%;">
-                    <strong style="font-size: 13px; color: #1e3a8a;">Customer: {{ $selectedCustomer->name }}</strong>
+                    <strong style="font-size: 13px; color: #1e3a8a;">Customer: {{ \App\Helpers\ArabicHelper::shape($selectedCustomer->name) }}</strong>
                     <div class="meta-text" style="margin-top: 2px;">
                         Phone: {{ $selectedCustomer->mobile ?? 'N/A' }} | Address: {{ $selectedCustomer->address ?? 'N/A' }}
                     </div>
@@ -288,7 +288,7 @@
                 <tr>
                     <td class="text-center font-bold">#{{ $sale->id }}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($sale->date)->format('d/m/Y') }}</td>
-                    <td class="text-start">{{ $sale->customer->name ?? 'Walk-in Customer' }}</td>
+                    <td class="text-start">{{ \App\Helpers\ArabicHelper::shape($sale->customer->name ?? 'Walk-in Customer') }}</td>
 
                     <!-- Filled Breakdowns -->
                     <td class="text-center">{{ $f11 > 0 ? $f11 : '-' }}</td>
