@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Invoice #{{ $sale->id }}</title>
     <style>
-        @if(isset($setting) && $setting && $setting->letterhead)
+        @if(isset($setting) && $setting && $setting->hasActiveLetterhead())
         @page {
             margin-top: {{ ($setting->top_margin ?? 120) . 'px' }};
             margin-bottom: {{ ($setting->bottom_margin ?? 80) . 'px' }};
@@ -57,21 +57,21 @@
 </head>
 <body>
 
-    @if(isset($setting) && $setting && $setting->letterhead)
+    @if(isset($setting) && $setting && $setting->hasActiveLetterhead())
     <div class="letterhead-bg">
         <img src="{{ public_path('storage/' . $setting->letterhead) }}" alt="Letterhead">
     </div>
     @endif
 
     <div class="header">
-        @if(!($setting && $setting->letterhead))
+        @if(!($setting && $setting->hasActiveLetterhead()))
         <div class="company-info">
             <h2>{{ \App\Helpers\ArabicHelper::shape($agency->name ?? 'Gas Agency') }}</h2>
             <p>{{ \App\Helpers\ArabicHelper::shape($agency->address ?? 'Your Address Here') }}</p>
             <p>Phone: {{ $agency->phone ?? '123-456-7890' }}</p>
         </div>
         @endif
-        <div class="invoice-info" style="{{ (isset($setting) && $setting && $setting->letterhead) ? 'width: 100%; text-align: right;' : '' }}">
+        <div class="invoice-info" style="{{ (isset($setting) && $setting && $setting->hasActiveLetterhead()) ? 'width: 100%; text-align: right;' : '' }}">
             <h3>INVOICE</h3>
             <p><strong>Invoice #:</strong> {{ $sale->id }}</p>
             <p><strong>Date:</strong> {{ $sale->date }}</p>

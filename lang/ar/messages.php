@@ -630,4 +630,9 @@ return [
     'close' => 'إغلاق',
     'salary_already_paid_month' => 'تم صرف راتب شهر :month مسبقاً للموظف :member. لا يمكن صرف الراتب أكثر من مرة واحدة في نفس الشهر لكل موظف.',
     'salary_already_paid_title' => 'تم صرف الراتب مسبقاً',
+    'letterhead_status' => 'حالة الترويسة',
+    'letterhead_active' => 'مفعّل (إظهار الخلفية في التقارير)',
+    'letterhead_inactive' => 'معطّل (عدم إظهار الخلفية في التقارير)',
+    'active' => 'مفعّل',
+    'inactive' => 'معطّل',
 ];

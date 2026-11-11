@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Attendance Report</title>
     <style>
-        @if(isset($setting) && $setting && $setting->letterhead)
+        @if(isset($setting) && $setting && $setting->hasActiveLetterhead())
         @page {
             margin-top: {{ ($setting->top_margin ?? 120) . 'px' }};
             margin-bottom: {{ ($setting->bottom_margin ?? 80) . 'px' }};
@@ -47,7 +47,7 @@
 </head>
 <body>
 
-    @if(isset($setting) && $setting && $setting->letterhead)
+    @if(isset($setting) && $setting && $setting->hasActiveLetterhead())
     <div class="letterhead-bg">
         <img src="{{ public_path('storage/' . $setting->letterhead) }}" alt="Letterhead">
     </div>

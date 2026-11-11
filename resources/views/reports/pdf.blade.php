@@ -3,19 +3,28 @@
 <head>
     <title>{{ $title }}</title>
     <style>
+        @if($setting && $setting->hasActiveLetterhead())
         @page {
             margin-top: {{ ($setting->top_margin ?? 120) . 'px' }};
             margin-bottom: {{ ($setting->bottom_margin ?? 80) . 'px' }};
             margin-left: 40px;
             margin-right: 40px;
         }
+        @else
+        @page {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+        @endif
         body { 
             font-family: 'DejaVu Sans', sans-serif; 
             margin: 0px;
             padding: 0px;
             color: #1e293b;
         }
-        @if($setting && $setting->letterhead)
+        @if($setting && $setting->hasActiveLetterhead())
         .letterhead-bg {
             position: fixed;
             top: -{{ ($setting->top_margin ?? 120) . 'px' }};
@@ -85,7 +94,7 @@
     </style>
 </head>
 <body>
-    @if($setting && $setting->letterhead)
+    @if($setting && $setting->hasActiveLetterhead())
     <div class="letterhead-bg">
         <img src="{{ public_path('storage/' . $setting->letterhead) }}" alt="">
     </div>
@@ -97,7 +106,7 @@
 
     <div class="content-wrapper">
         <div class="header">
-            @if(!($setting && $setting->letterhead))
+            @if(!($setting && $setting->hasActiveLetterhead()))
                 <h1>Gas Agency</h1>
             @endif
             <h2>{{ $title }}</h2>

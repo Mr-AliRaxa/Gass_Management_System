@@ -34,6 +34,7 @@ class AgencySettingController extends Controller
     {
         $request->validate([
             'letterhead' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120', // Max 5MB
+            'is_letterhead_active' => 'nullable|in:0,1',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB for logo
             'top_margin' => 'required|integer|min:0|max:500',
             'bottom_margin' => 'required|integer|min:0|max:500',
@@ -44,6 +45,7 @@ class AgencySettingController extends Controller
 
         $setting->top_margin = $request->top_margin;
         $setting->bottom_margin = $request->bottom_margin;
+        $setting->is_letterhead_active = $request->has('is_letterhead_active') ? (bool)$request->is_letterhead_active : false;
 
         if ($request->hasFile('letterhead')) {
             // Delete old image if exists
