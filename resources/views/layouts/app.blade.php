@@ -1,51 +1,94 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @if(app()->getLocale() == 'ar') dir="rtl" @endif>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     @if(app()->getLocale() == 'ar')
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
         <style>
-            body, h1, h2, h3, h4, h5, h6, .nav-link, .dropdown-item, .card-title, .table, button, input, select, textarea {
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            .nav-link,
+            .dropdown-item,
+            .card-title,
+            .table,
+            button,
+            input,
+            select,
+            textarea {
                 font-family: 'Cairo', sans-serif !important;
             }
+
             [dir="rtl"] {
                 text-align: right;
             }
+
             [dir="rtl"] .ms-auto {
                 margin-right: auto !important;
                 margin-left: 0 !important;
             }
+
             [dir="rtl"] .me-auto {
                 margin-left: auto !important;
                 margin-right: 0 !important;
             }
-            [dir="rtl"] .me-1, [dir="rtl"] .me-2, [dir="rtl"] .me-3 {
+
+            [dir="rtl"] .me-1,
+            [dir="rtl"] .me-2,
+            [dir="rtl"] .me-3 {
                 margin-right: 0 !important;
             }
-            [dir="rtl"] .me-1 { margin-left: 0.25rem !important; }
-            [dir="rtl"] .me-2 { margin-left: 0.5rem !important; }
-            [dir="rtl"] .me-3 { margin-left: 1rem !important; }
 
-            [dir="rtl"] .ms-1, [dir="rtl"] .ms-2, [dir="rtl"] .ms-3 {
+            [dir="rtl"] .me-1 {
+                margin-left: 0.25rem !important;
+            }
+
+            [dir="rtl"] .me-2 {
+                margin-left: 0.5rem !important;
+            }
+
+            [dir="rtl"] .me-3 {
+                margin-left: 1rem !important;
+            }
+
+            [dir="rtl"] .ms-1,
+            [dir="rtl"] .ms-2,
+            [dir="rtl"] .ms-3 {
                 margin-left: 0 !important;
             }
-            [dir="rtl"] .ms-1 { margin-right: 0.25rem !important; }
-            [dir="rtl"] .ms-2 { margin-right: 0.5rem !important; }
-            [dir="rtl"] .ms-3 { margin-right: 1rem !important; }
+
+            [dir="rtl"] .ms-1 {
+                margin-right: 0.25rem !important;
+            }
+
+            [dir="rtl"] .ms-2 {
+                margin-right: 0.5rem !important;
+            }
+
+            [dir="rtl"] .ms-3 {
+                margin-right: 1rem !important;
+            }
 
             [dir="rtl"] .text-end {
                 text-align: left !important;
             }
+
             [dir="rtl"] .text-start {
                 text-align: right !important;
             }
+
             [dir="rtl"] .dropdown-menu-end {
                 right: auto !important;
                 left: 0 !important;
@@ -58,17 +101,19 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    
+
     <style>
         body {
             overflow-x: hidden;
         }
+
         #wrapper {
             display: flex;
             width: 100%;
             min-height: 100vh;
             position: relative;
         }
+
         #page-content-wrapper {
             flex-grow: 1;
             min-width: 0;
@@ -94,6 +139,7 @@
             transition: opacity 0.3s ease;
             cursor: pointer;
         }
+
         .sidebar-overlay.show {
             display: block;
             opacity: 1;
@@ -107,9 +153,11 @@
                 min-height: 100vh;
                 background: #212529;
             }
+
             #page-content-wrapper {
                 width: calc(100% - 280px);
             }
+
             .sidebar-overlay {
                 display: none !important;
             }
@@ -134,28 +182,33 @@
                 box-shadow: none;
                 background: #212529 !important;
             }
+
             #sidebarMenu.show {
                 transform: translateX(0) !important;
                 box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4) !important;
             }
+
             [dir="rtl"] #sidebarMenu {
                 left: auto !important;
                 right: 0 !important;
                 transform: translateX(100%) !important;
             }
+
             [dir="rtl"] #sidebarMenu.show {
                 transform: translateX(0) !important;
                 box-shadow: -4px 0 24px rgba(0, 0, 0, 0.4) !important;
             }
+
             #page-content-wrapper {
                 width: 100% !important;
             }
+
             body.sidebar-open {
                 overflow: hidden !important;
             }
         }
 
-        #sidebarMenu > div {
+        #sidebarMenu>div {
             width: 100% !important;
             max-width: 100% !important;
             min-height: 100vh !important;
@@ -174,7 +227,8 @@
             background: #ffffff;
             border-top: 1.5px solid #f1f5f9;
         }
-        .pagination-wrap > nav,
+
+        .pagination-wrap>nav,
         .pagination-container {
             display: flex;
             align-items: center;
@@ -185,17 +239,20 @@
             min-width: 0;
             width: 100%;
         }
+
         .pagination-wrap .pagination-info,
         .pagination-container .pagination-info {
             font-size: 13px;
             color: #64748b;
             font-weight: 500;
         }
+
         .pagination-wrap .pagination-info span,
         .pagination-container .pagination-info span {
             color: #1e293b;
             font-weight: 700;
         }
+
         ul.pagination.pagination-modern,
         .pagination-wrap ul.pagination {
             display: inline-flex;
@@ -205,6 +262,7 @@
             padding: 0;
             list-style: none;
         }
+
         ul.pagination.pagination-modern .page-item .page-link,
         .pagination-wrap .page-item .page-link {
             display: inline-flex;
@@ -223,6 +281,7 @@
             transition: all 0.15s ease-in-out;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
         }
+
         ul.pagination.pagination-modern .page-item .page-link:hover,
         .pagination-wrap .page-item .page-link:hover {
             color: #2563eb;
@@ -230,6 +289,7 @@
             border-color: #93c5fd;
             transform: translateY(-1px);
         }
+
         ul.pagination.pagination-modern .page-item.active .page-link,
         .pagination-wrap .page-item.active .page-link {
             color: #ffffff !important;
@@ -238,6 +298,7 @@
             font-weight: 700;
             box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
         }
+
         ul.pagination.pagination-modern .page-item.disabled .page-link,
         .pagination-wrap .page-item.disabled .page-link {
             color: #cbd5e1 !important;
@@ -248,12 +309,14 @@
             box-shadow: none;
             opacity: 0.7;
         }
+
         ul.pagination.pagination-modern .page-item.disabled .page-link.dots,
         .pagination-wrap .page-item.disabled .page-link.dots {
             border: none;
             background: transparent !important;
             color: #94a3b8 !important;
         }
+
         .pagination-wrap .show-entries {
             font-size: 13px;
             color: #64748b;
@@ -262,6 +325,7 @@
             gap: 6px;
             font-weight: 500;
         }
+
         .pagination-wrap .entries-select {
             border: 1.5px solid #e2e8f0;
             border-radius: 8px;
@@ -272,10 +336,12 @@
             font-weight: 600;
             outline: none;
         }
+
         .pagination-wrap .entries-select:focus {
             border-color: #2563eb;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
+
         /* Defend against unstyled giant SVGs */
         .pagination-wrap svg,
         nav[role="navigation"] svg {
@@ -289,6 +355,7 @@
     </style>
     @stack('styles')
 </head>
+
 <body>
     <div id="wrapper">
         <!-- Sidebar -->
@@ -310,16 +377,18 @@
             </main>
         </div>
     </div>
-    
+
     <!-- Global Delete Confirmation Modal -->
-    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-danger text-white">
                     <h5 class="modal-title" id="deleteModalLabel text-white">
                         <i class="fas fa-exclamation-triangle me-2"></i> {{ __('messages.confirm_delete_title') }}
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4 text-center">
                     <div class="mb-3">
@@ -328,11 +397,13 @@
                     <h5 class="font-weight-bold mb-2">{{ __('messages.confirm_delete_msg') }}</h5>
                 </div>
                 <div class="modal-footer border-0 bg-light justify-content-center">
-                    <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
+                    <button type="button" class="btn btn-outline-secondary px-4"
+                        data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
                     <form id="global-delete-form" method="POST" style="display:inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger px-4 shadow-sm font-weight-bold">{{ __('messages.delete') }}</button>
+                        <button type="submit"
+                            class="btn btn-danger px-4 shadow-sm font-weight-bold">{{ __('messages.delete') }}</button>
                     </form>
                 </div>
             </div>
@@ -340,31 +411,40 @@
     </div>
 
     <!-- Global Blocked / Action Not Allowed Modal -->
-    <div class="modal fade" id="actionBlockedModal" tabindex="-1" aria-labelledby="actionBlockedModalLabel" aria-hidden="true">
+    <div class="modal fade" id="actionBlockedModal" tabindex="-1" aria-labelledby="actionBlockedModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg" style="border-radius: 18px; overflow: hidden;">
-                <div class="modal-header" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; padding: 18px 24px;">
-                    <h5 class="modal-title d-flex align-items-center gap-2 font-weight-bold" id="actionBlockedModalLabel" style="font-size: 17px; margin:0;">
+                <div class="modal-header"
+                    style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; padding: 18px 24px;">
+                    <h5 class="modal-title d-flex align-items-center gap-2 font-weight-bold"
+                        id="actionBlockedModalLabel" style="font-size: 17px; margin:0;">
                         <i class="fas fa-ban"></i>
-                        <span id="actionBlockedTitle">{{ __('messages.action_not_allowed') ?? 'Action Not Allowed' }}</span>
+                        <span
+                            id="actionBlockedTitle">{{ __('messages.action_not_allowed') ?? 'Action Not Allowed' }}</span>
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4 text-center">
                     <div class="mb-3">
-                        <div style="width: 72px; height: 72px; border-radius: 50%; background: #fee2e2; color: #dc2626; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 14px rgba(220,38,38,0.2);">
+                        <div
+                            style="width: 72px; height: 72px; border-radius: 50%; background: #fee2e2; color: #dc2626; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 14px rgba(220,38,38,0.2);">
                             <i class="fas fa-shield-alt"></i>
                         </div>
                     </div>
-                    <h5 class="font-weight-bold mb-2" id="actionBlockedHeading" style="color: #1e293b; font-size: 19px;">
+                    <h5 class="font-weight-bold mb-2" id="actionBlockedHeading"
+                        style="color: #1e293b; font-size: 19px;">
                         {{ __('messages.cannot_delete') ?? 'Cannot Delete' }}
                     </h5>
-                    <p class="text-muted mb-0" id="actionBlockedMessage" style="font-size: 15px; line-height: 1.6; padding: 0 10px;">
+                    <p class="text-muted mb-0" id="actionBlockedMessage"
+                        style="font-size: 15px; line-height: 1.6; padding: 0 10px;">
                         {{-- Injected dynamically --}}
                     </p>
                 </div>
                 <div class="modal-footer border-0 bg-light justify-content-center p-3">
-                    <button type="button" class="btn btn-primary px-4 shadow-sm font-weight-bold" style="border-radius: 10px;" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary px-4 shadow-sm font-weight-bold"
+                        style="border-radius: 10px;" data-bs-dismiss="modal">
                         <i class="fas fa-check me-1"></i> {{ __('messages.close') ?? 'OK, Understood' }}
                     </button>
                 </div>
@@ -395,7 +475,7 @@
     </script>
     <!-- Mobile Sidebar Interaction Script -->
     <script>
-        (function() {
+        (function () {
             function setupSidebar() {
                 var sidebar = document.getElementById('sidebarMenu');
                 var overlay = document.getElementById('sidebarOverlay');
@@ -421,7 +501,7 @@
                 }
 
                 // Global click delegation for all buttons that toggle sidebar
-                document.addEventListener('click', function(e) {
+                document.addEventListener('click', function (e) {
                     var toggleBtn = e.target.closest('#sidebarToggle, .btn-sidebar-toggle');
                     if (toggleBtn) {
                         e.preventDefault();
@@ -455,14 +535,14 @@
                 });
 
                 // ESC key closes sidebar
-                document.addEventListener('keydown', function(e) {
+                document.addEventListener('keydown', function (e) {
                     if (e.key === 'Escape' || e.keyCode === 27) {
                         closeSidebar();
                     }
                 });
 
                 // Close sidebar on desktop resize
-                window.addEventListener('resize', function() {
+                window.addEventListener('resize', function () {
                     if (window.innerWidth >= 992) {
                         closeSidebar();
                     }
@@ -479,4 +559,5 @@
 
     @stack('scripts')
 </body>
+
 </html>

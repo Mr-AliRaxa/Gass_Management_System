@@ -139,7 +139,7 @@
                 <span style="float: left;">Total Gas Used / Consumption</span>
                 <span style="float: right;">{{ $labels['total_gas_reading_ar'] }}</span>
             </th>
-            <td><strong>{{ number_format($totalGasUsed, 2) }}</strong> Ton</td>
+            <td><strong>{{ number_format($totalGasUsed, 3) }}</strong> Ton</td>
         </tr>
         <tr class="{{ $netProfit >= 0 ? 'profit' : 'loss' }}">
             <th>
@@ -321,9 +321,9 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ date('d-m-Y', strtotime($reading->date)) }}</td>
-                <td>{{ number_format($reading->start_reading, 2) }}</td>
-                <td>{{ $reading->end_reading !== null ? number_format($reading->end_reading, 2) : '—' }}</td>
-                <td><strong>{{ number_format($used, 2) }}</strong> Ton</td>
+                <td>{{ number_format($reading->start_reading, 3) }}</td>
+                <td>{{ $reading->end_reading !== null ? number_format($reading->end_reading, 3) : '—' }}</td>
+                <td><strong>{{ number_format($used, 3) }}</strong> Ton</td>
             </tr>
             @empty
             <tr>
@@ -335,7 +335,7 @@
         <tfoot>
             <tr style="background: #f8fafc; font-weight: bold;">
                 <td colspan="4" style="text-align: right;">Total Gas Consumption:</td>
-                <td><strong>{{ number_format($totalGasUsed, 2) }}</strong> Ton</td>
+                <td><strong>{{ number_format($totalGasUsed, 3) }}</strong> Ton</td>
             </tr>
         </tfoot>
         @endif

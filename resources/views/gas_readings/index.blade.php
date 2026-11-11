@@ -565,7 +565,7 @@
             <div class="stat-card stat-card-blue">
                 <div>
                     <div class="stat-label">{{ __('messages.todays_consumption') }}</div>
-                    <div class="stat-value">{{ number_format($todayConsumption, 2) }} <span
+                    <div class="stat-value">{{ number_format($todayConsumption, 3) }} <span
                             style="font-size:13px;font-weight:600;">Ton</span></div>
                 </div>
                 <div class="stat-icon stat-icon-blue"><i class="fas fa-gas-pump"></i></div>
@@ -575,7 +575,7 @@
             <div class="stat-card stat-card-green">
                 <div>
                     <div class="stat-label">{{ __('messages.all_time_consumption') }}</div>
-                    <div class="stat-value">{{ number_format($totalLitresUsed, 1) }} <span
+                    <div class="stat-value">{{ number_format($totalLitresUsed, 3) }} <span
                             style="font-size:13px;font-weight:600;">Ton</span></div>
                 </div>
                 <div class="stat-icon stat-icon-green"><i class="fas fa-chart-line"></i></div>
@@ -671,17 +671,17 @@
                                 </td>
                                 <td>
                                     <span class="reading-pill">
-                                        <i class="fas fa-play text-muted"></i> {{ number_format($reading->start_reading, 2) }}
+                                        <i class="fas fa-play text-muted"></i> {{ number_format($reading->start_reading, 3) }}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="reading-pill">
-                                        <i class="fas fa-stop text-muted"></i> {{ number_format($reading->end_reading, 2) }}
+                                        <i class="fas fa-stop text-muted"></i> {{ number_format($reading->end_reading, 3) }}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="consumption-pill">
-                                        <i class="fas fa-burn"></i>   {{ number_format($consumption, 2) }} {{ __('messages.GAS_TON') }}
+                                        <i class="fas fa-burn"></i>   {{ number_format($consumption, 3) }} {{ __('messages.GAS_TON') }}
                                     </span>
                                 </td>
                                 <td>

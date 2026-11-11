@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="card-header"> {{ __('messages.re_startreading') }}   </div>
                         <div class="card-body text-center">
-                            <h3>{{ $gasReading->start_reading }}</h3>
+                            <h3>{{ number_format($gasReading->start_reading, 3) }}</h3>
                             @if($gasReading->start_image)
                                 <img src="{{ asset('storage/' . $gasReading->start_image) }}" class="img-fluid mt-2"
                                     style="max-height: 200px;">
@@ -37,7 +37,7 @@
                     <div class="card">
                         <div class="card-header"> {{ __('messages.re_endtreading') }}  </div>
                         <div class="card-body text-center">
-                            <h3>{{ $gasReading->end_reading }}</h3>
+                            <h3>{{ number_format($gasReading->end_reading, 3) }}</h3>
                             @if($gasReading->end_image)
                                 <img src="{{ asset('storage/' . $gasReading->end_image) }}" class="img-fluid mt-2"
                                     style="max-height: 200px;">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 mb-3 text-center">
-                    <h4> {{ __('messages.todaycongasston') }} : {{ $gasReading->end_reading - $gasReading->start_reading }}</h4>
+                    <h4> {{ __('messages.todaycongasston') }} : {{ number_format($gasReading->end_reading - $gasReading->start_reading, 3) }}</h4>
                 </div>
             </div>
         </div>

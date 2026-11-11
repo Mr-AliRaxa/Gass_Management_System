@@ -37,7 +37,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.start_reading') }}:</strong></label>
-                        <input type="number" step="0.01" name="start_reading" class="form-control" value="{{ $gasReading->start_reading }}">
+                        <input type="number" step="0.001" name="start_reading" class="form-control" value="{{ $gasReading->start_reading }}">
                     </div>
                 </div>
                  <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
@@ -52,7 +52,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.end_reading') }}:</strong></label>
-                        <input type="number" step="0.01" name="end_reading" class="form-control" value="{{ $gasReading->end_reading }}">
+                        <input type="number" step="0.001" name="end_reading" class="form-control" value="{{ $gasReading->end_reading }}">
                     </div>
                 </div>
                  <div class="col-xs-12 col-sm-12 col-md-6 mb-3">

@@ -165,9 +165,9 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ \Carbon\Carbon::parse($reading->date)->format('d M Y') }}</td>
-                    <td>{{ number_format($reading->start_reading, 2) }}</td>
-                    <td>{{ number_format($reading->end_reading, 2) }}</td>
-                    <td class="consumption-cell">{{ number_format($consumption, 2) }}</td>
+                    <td>{{ number_format($reading->start_reading, 3) }}</td>
+                    <td>{{ number_format($reading->end_reading, 3) }}</td>
+                    <td class="consumption-cell">{{ number_format($consumption, 3) }}</td>
                 </tr>
             @empty
                 <tr>
@@ -178,7 +178,7 @@
             @if($gasReadings->count() > 0)
                 <tr class="total-row">
                     <td colspan="4" style="text-align:right;">TOTAL CONSUMPTION:</td>
-                    <td>{{ number_format($totalConsumption, 2) }} Ton</td>
+                    <td>{{ number_format($totalConsumption, 3) }} Ton</td>
                 </tr>
             @endif
         </tbody>
@@ -188,9 +188,9 @@
         <div class="summary-box">
             <h4>Summary</h4>
             <p><strong>Total Records:</strong> {{ $gasReadings->count() }}</p>
-            <p><strong>Total Consumption:</strong> {{ number_format($totalConsumption, 2) }} Ton</p>
+            <p><strong>Total Consumption:</strong> {{ number_format($totalConsumption, 3) }} Ton</p>
             @if($gasReadings->count() > 0)
-                <p><strong>Average Daily Consumption:</strong> {{ number_format($totalConsumption / $gasReadings->count(), 2) }} Ton</p>
+                <p><strong>Average Daily Consumption:</strong> {{ number_format($totalConsumption / $gasReadings->count(), 3) }} Ton</p>
                 <p><strong>First Record Date:</strong> {{ \Carbon\Carbon::parse($gasReadings->first()->date)->format('d M Y') }}</p>
                 <p><strong>Last Record Date:</strong> {{ \Carbon\Carbon::parse($gasReadings->last()->date)->format('d M Y') }}</p>
             @endif
