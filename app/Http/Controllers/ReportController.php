@@ -121,33 +121,43 @@ class ReportController extends Controller
         $startDate = null;
         $endDate = null;
 
-        if ($type === 'monthly') {
+        if ($type === 'daily') {
+            $targetDate = $request->query('date', Carbon::today()->toDateString());
+            $startDate = Carbon::parse($targetDate)->startOfDay();
+            $endDate = Carbon::parse($targetDate)->endOfDay();
+        } elseif ($type === 'monthly') {
             if ($selectedMonth && $selectedYear) {
-                $startDate = Carbon::createFromDate($selectedYear, $selectedMonth, 1)->startOfMonth();
-                $endDate = (clone $startDate)->endOfMonth();
+                $startDate = Carbon::createFromDate($selectedYear, $selectedMonth, 1)->startOfMonth()->startOfDay();
+                $endDate = (clone $startDate)->endOfMonth()->endOfDay();
             } else {
-                $startDate = Carbon::now()->startOfMonth();
-                $endDate = Carbon::now()->endOfMonth();
+                $startDate = Carbon::now()->startOfMonth()->startOfDay();
+                $endDate = Carbon::now()->endOfMonth()->endOfDay();
             }
         } elseif ($type === 'yearly') {
             if ($selectedYear) {
-                $startDate = Carbon::createFromDate($selectedYear, 1, 1)->startOfYear();
-                $endDate = (clone $startDate)->endOfYear();
+                $startDate = Carbon::createFromDate($selectedYear, 1, 1)->startOfYear()->startOfDay();
+                $endDate = (clone $startDate)->endOfYear()->endOfDay();
             } else {
-                $startDate = Carbon::now()->startOfYear();
-                $endDate = Carbon::now()->endOfYear();
+                $startDate = Carbon::now()->startOfYear()->startOfDay();
+                $endDate = Carbon::now()->endOfYear()->endOfDay();
             }
         } else {
             return response()->json(['error' => 'Invalid type'], 400);
         }
 
-        $sales = (float) Sale::whereBetween('date', [$startDate, $endDate])->sum('total_amount');
-        $expenses = (float) Expense::whereBetween('date', [$startDate, $endDate])->sum('amount');
-        $salaries = (float) Salary::whereBetween('date', [$startDate, $endDate])->sum('amount');
+        $sales = (float) Sale::whereDate('date', '>=', $startDate->toDateString())
+            ->whereDate('date', '<=', $endDate->toDateString())
+            ->sum('total_amount');
+        $expenses = (float) Expense::whereDate('date', '>=', $startDate->toDateString())
+            ->whereDate('date', '<=', $endDate->toDateString())
+            ->sum('amount');
+        $salaries = (float) Salary::whereDate('date', '>=', $startDate->toDateString())
+            ->whereDate('date', '<=', $endDate->toDateString())
+            ->sum('amount');
         $profit = $sales - ($expenses + $salaries);
 
-        $gas = (float) (GasReading::whereDate('date', '>=', $startDate)
-            ->whereDate('date', '<=', $endDate)
+        $gas = (float) (GasReading::whereDate('date', '>=', $startDate->toDateString())
+            ->whereDate('date', '<=', $endDate->toDateString())
             ->selectRaw('SUM(ABS(end_reading - start_reading)) as total')
             ->first()->total ?? 0);
 
@@ -157,27 +167,34 @@ class ReportController extends Controller
         $salPct = $totalSum > 0 ? number_format(($salaries / $totalSum) * 100, 1) : '0.0';
         $gasPct = $totalSum > 0 ? number_format(($gas / $totalSum) * 100, 1) : '0.0';
 
+        $formattedPeriod = $startDate->format('d M Y');
+        if ($type === 'monthly') {
+            $formattedPeriod = $startDate->format('F Y');
+        } elseif ($type === 'yearly') {
+            $formattedPeriod = $startDate->format('Y');
+        }
+
         return response()->json([
             'sales' => $sales,
-            'sales_formatted' => number_format($sales, 2),
+            'sales_formatted' => number_format($sales, 3),
             'sales_pct' => $salesPct,
 
             'expenses' => $expenses,
-            'expenses_formatted' => number_format($expenses, 2),
+            'expenses_formatted' => number_format($expenses, 3),
             'expenses_pct' => $expPct,
 
             'salaries' => $salaries,
-            'salaries_formatted' => number_format($salaries, 2),
+            'salaries_formatted' => number_format($salaries, 3),
             'salaries_pct' => $salPct,
 
             'profit' => $profit,
-            'profit_formatted' => number_format($profit, 2),
+            'profit_formatted' => number_format($profit, 3),
 
             'gas' => $gas,
-            'gas_formatted' => number_format($gas, 2),
+            'gas_formatted' => number_format($gas, 3),
             'gas_pct' => $gasPct,
 
-            'formatted_period' => $type === 'monthly' ? $startDate->format('F Y') : $startDate->format('Y')
+            'formatted_period' => $formattedPeriod
         ]);
     }
 }

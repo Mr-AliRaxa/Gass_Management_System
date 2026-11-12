@@ -1072,7 +1072,7 @@
                                 <div class="fin-net-capsule">
                                     <i class="fas fa-file-alt"></i>
                                     <span>{{ __('messages.daily_report') }}:
-                                        <strong>{{ number_format($dailyProfit, 3) }}</strong></span>
+                                        <strong id="dailyProfitNet">{{ number_format($dailyProfit, 3) }}</strong></span>
                                 </div>
                                 <div class="d-flex align-items-center gap-2 flex-wrap">
                                     <input type="date" id="dailyReportDate"
@@ -1096,7 +1096,7 @@
                                     <div class="fin-donut-wrapper">
                                         <canvas id="dailyDonutChart"></canvas>
                                         <div class="fin-donut-center">
-                                            <div class="fin-donut-val">{{ number_format($dailyProfit, 3) }}</div>
+                                            <div class="fin-donut-val" id="dailyDonutCenterVal">{{ number_format($dailyProfit, 3) }}</div>
                                             <div class="fin-donut-lbl">Total</div>
                                         </div>
                                     </div>
@@ -1109,8 +1109,8 @@
                                                 <span class="fin-lbl-name">{{ __('messages.sales') }}</span>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <span class="fin-lbl-amount">{{ number_format($dailySales, 3) }}</span>
-                                                <span class="fin-pct-pill fin-pct-blue">{{ $dSalesPct }}%</span>
+                                                <span class="fin-lbl-amount" id="dailySalesVal">{{ number_format($dailySales, 3) }}</span>
+                                                <span class="fin-pct-pill fin-pct-blue" id="dailySalesPct">{{ $dSalesPct }}%</span>
                                             </div>
                                         </div>
                                         <div class="fin-breakdown-row">
@@ -1119,8 +1119,8 @@
                                                 <span class="fin-lbl-name">{{ __('messages.expenses') }}</span>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <span class="fin-lbl-amount">{{ number_format($dailyExpenses, 3) }}</span>
-                                                <span class="fin-pct-pill fin-pct-orange">{{ $dExpPct }}%</span>
+                                                <span class="fin-lbl-amount" id="dailyExpensesVal">{{ number_format($dailyExpenses, 3) }}</span>
+                                                <span class="fin-pct-pill fin-pct-orange" id="dailyExpensesPct">{{ $dExpPct }}%</span>
                                             </div>
                                         </div>
                                         <div class="fin-breakdown-row">
@@ -1129,8 +1129,8 @@
                                                 <span class="fin-lbl-name">{{ __('messages.salaries') }}</span>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <span class="fin-lbl-amount">{{ number_format($dailySalaries, 3) }}</span>
-                                                <span class="fin-pct-pill fin-pct-green">{{ $dSalPct }}%</span>
+                                                <span class="fin-lbl-amount" id="dailySalariesVal">{{ number_format($dailySalaries, 3) }}</span>
+                                                <span class="fin-pct-pill fin-pct-green" id="dailySalariesPct">{{ $dSalPct }}%</span>
                                             </div>
                                         </div>
                                         <div class="fin-breakdown-row">
@@ -1139,8 +1139,8 @@
                                                 <span class="fin-lbl-name">{{ __('messages.gas_readings') }}</span>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <span class="fin-lbl-amount">{{ number_format($dailyGas, 2) }} ℓ</span>
-                                                <span class="fin-pct-pill fin-pct-purple">{{ $dGasPct }}%</span>
+                                                <span class="fin-lbl-amount" id="dailyGasVal">{{ number_format($dailyGas, 3) }} ℓ</span>
+                                                <span class="fin-pct-pill fin-pct-purple" id="dailyGasPct">{{ $dGasPct }}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -2015,7 +2015,7 @@
 
         // Dynamic Report Download URL Updates & Live AJAX Data Fetching
 
-        // ── DAILY date picker ──
+        // ── DAILY date picker & live AJAX data ──
         const dailyDateInput = document.getElementById('dailyReportDate');
         const dailyBtn = document.getElementById('dailyDownloadBtn');
         const dailyBaseUrl = "{{ route('reports.download', 'daily') }}";
@@ -2026,8 +2026,52 @@
             }
         }
 
+        function fetchDailyData() {
+            updateDailyLink();
+            if (!dailyDateInput) return;
+            const dateVal = dailyDateInput.value;
+            const url = `{{ route('reports.data') }}?type=daily&date=${dateVal}`;
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) return;
+
+                    // Update text fields
+                    const netEl = document.getElementById('dailyProfitNet');
+                    if (netEl) netEl.textContent = data.profit_formatted;
+
+                    const centerValEl = document.getElementById('dailyDonutCenterVal');
+                    if (centerValEl) centerValEl.textContent = data.profit_formatted;
+
+                    const salesValEl = document.getElementById('dailySalesVal');
+                    if (salesValEl) salesValEl.textContent = data.sales_formatted;
+                    const salesPctEl = document.getElementById('dailySalesPct');
+                    if (salesPctEl) salesPctEl.textContent = data.sales_pct + '%';
+
+                    const expValEl = document.getElementById('dailyExpensesVal');
+                    if (expValEl) expValEl.textContent = data.expenses_formatted;
+                    const expPctEl = document.getElementById('dailyExpensesPct');
+                    if (expPctEl) expPctEl.textContent = data.expenses_pct + '%';
+
+                    const salValEl = document.getElementById('dailySalariesVal');
+                    if (salValEl) salValEl.textContent = data.salaries_formatted;
+                    const salPctEl = document.getElementById('dailySalariesPct');
+                    if (salPctEl) salPctEl.textContent = data.salaries_pct + '%';
+
+                    const gasValEl = document.getElementById('dailyGasVal');
+                    if (gasValEl) gasValEl.textContent = data.gas_formatted + ' ℓ';
+                    const gasPctEl = document.getElementById('dailyGasPct');
+                    if (gasPctEl) gasPctEl.textContent = data.gas_pct + '%';
+
+                    // Update Donut Chart
+                    updateDonutChart('daily', [data.sales, data.expenses, data.salaries, Math.max(0, data.gas)]);
+                })
+                .catch(err => console.error('Error fetching daily report data:', err));
+        }
+
         if (dailyDateInput) {
-            dailyDateInput.addEventListener('change', updateDailyLink);
+            dailyDateInput.addEventListener('change', fetchDailyData);
             updateDailyLink(); // set on page load
         }
 
