@@ -632,4 +632,6 @@ return [
     'letterhead_inactive' => 'Inactive (Do not show background on reports)',
     'active' => 'Active',
     'inactive' => 'Inactive',
+    'attendance_already_recorded' => 'Attendance for :member on :date has already been recorded (:status). Attendance can only be recorded once per day per team member.',
+    'attendance_already_recorded_title' => 'Attendance Already Recorded',
 ];

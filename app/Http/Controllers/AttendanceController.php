@@ -57,6 +57,49 @@ class AttendanceController extends Controller
         return view('attendances.create', compact('teamMembers'));
     }
 
+    public function checkDateRecorded(Request $request)
+    {
+        $memberId = $request->query('team_member_id');
+        $date = $request->query('date', now()->toDateString());
+        $excludeId = $request->query('exclude_id');
+
+        if (!$memberId || !$date) {
+            return response()->json(['recorded' => false]);
+        }
+
+        $dateStr = \Carbon\Carbon::parse($date)->toDateString();
+
+        $query = Attendance::where('team_member_id', $memberId)
+            ->whereDate('date', $dateStr);
+
+        if ($excludeId) {
+            $query->where('id', '!=', $excludeId);
+        }
+
+        $existing = $query->first();
+
+        if ($existing) {
+            $member = TeamMember::find($memberId);
+            $formattedDate = \Carbon\Carbon::parse($dateStr)->format('d M Y');
+            $statusLabel = __('messages.' . $existing->status);
+            return response()->json([
+                'recorded' => true,
+                'attendance_id' => $existing->id,
+                'status' => $existing->status,
+                'status_label' => $statusLabel,
+                'member_name' => $member?->name ?? '',
+                'date' => $formattedDate,
+                'message' => __('messages.attendance_already_recorded', [
+                    'member' => $member?->name ?? '',
+                    'date' => $formattedDate,
+                    'status' => $statusLabel
+                ])
+            ]);
+        }
+
+        return response()->json(['recorded' => false]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -65,6 +108,24 @@ class AttendanceController extends Controller
             'status' => 'required|in:present,absent,leave',
             'note' => 'nullable|string',
         ]);
+
+        $dateStr = \Carbon\Carbon::parse($request->date)->toDateString();
+        $existing = Attendance::where('team_member_id', $request->team_member_id)
+            ->whereDate('date', $dateStr)
+            ->first();
+
+        if ($existing) {
+            $member = TeamMember::find($request->team_member_id);
+            $formattedDate = \Carbon\Carbon::parse($dateStr)->format('d M Y');
+            $statusLabel = __('messages.' . $existing->status);
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('messages.attendance_already_recorded', [
+                    'member' => $member?->name ?? '',
+                    'date' => $formattedDate,
+                    'status' => $statusLabel
+                ]));
+        }
 
         Attendance::create($request->all());
 
@@ -91,6 +152,25 @@ class AttendanceController extends Controller
             'status' => 'required|in:present,absent,leave',
             'note' => 'nullable|string',
         ]);
+
+        $dateStr = \Carbon\Carbon::parse($request->date)->toDateString();
+        $existing = Attendance::where('team_member_id', $request->team_member_id)
+            ->where('id', '!=', $attendance->id)
+            ->whereDate('date', $dateStr)
+            ->first();
+
+        if ($existing) {
+            $member = TeamMember::find($request->team_member_id);
+            $formattedDate = \Carbon\Carbon::parse($dateStr)->format('d M Y');
+            $statusLabel = __('messages.' . $existing->status);
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('messages.attendance_already_recorded', [
+                    'member' => $member?->name ?? '',
+                    'date' => $formattedDate,
+                    'status' => $statusLabel
+                ]));
+        }
 
         $attendance->update($request->all());
 

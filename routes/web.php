@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     
     // Attendance
     Route::get('attendances/download-pdf', [App\Http\Controllers\AttendanceController::class, 'downloadPdf'])->name('attendances.downloadPdf')->middleware('permission:attendance-list');
+    Route::get('attendances/check-date-recorded', [App\Http\Controllers\AttendanceController::class, 'checkDateRecorded'])->name('attendances.checkDateRecorded')->middleware('permission:attendance-list');
     Route::resource('attendances', App\Http\Controllers\AttendanceController::class)->middleware('permission:attendance-list');
 
     // Expenses

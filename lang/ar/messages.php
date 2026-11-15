@@ -635,4 +635,6 @@ return [
     'letterhead_inactive' => 'معطّل (عدم إظهار الخلفية في التقارير)',
     'active' => 'مفعّل',
     'inactive' => 'معطّل',
+    'attendance_already_recorded' => 'تم تسجيل حضور الموظف :member لتاريخ :date مسبقاً (:status). لا يمكن تسجيل الحضور أكثر من مرة في نفس اليوم لنفس الموظف.',
+    'attendance_already_recorded_title' => 'تم تسجيل الحضور مسبقاً',
 ];
