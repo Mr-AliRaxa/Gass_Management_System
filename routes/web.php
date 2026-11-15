@@ -2,10 +2,33 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Public Website Routes
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 })->name('landing');
 
+Route::get('/about', function () {
+    return view('frontend.about');
+})->name('public.about');
+
+Route::get('/services', function () {
+    return view('frontend.services');
+})->name('public.services');
+
+Route::get('/products', function () {
+    return view('frontend.products');
+})->name('public.products');
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+})->name('public.contact');
+
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ar'])) {
+        session()->put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
 
 Auth::routes();
 
@@ -69,13 +92,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/reports/download/{type}', [App\Http\Controllers\ReportController::class, 'download'])->name('reports.download');
     Route::get('/reports/data', [App\Http\Controllers\ReportController::class, 'getData'])->name('reports.data');
-
-    Route::get('/lang/{locale}', function ($locale) {
-        if (in_array($locale, ['en', 'ar'])) {
-            session()->put('locale', $locale);
-        }
-        return redirect()->back();
-    })->name('lang.switch');
 
     // Profile Management
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
