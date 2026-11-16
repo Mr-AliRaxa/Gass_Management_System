@@ -79,11 +79,21 @@
             color: #000;
         }
 
+        @media (max-width: 767.98px) {
+            .top-nav-strip {
+                padding: 6px 0;
+                font-size: 11px;
+            }
+            .top-hide-sm {
+                display: none !important;
+            }
+        }
+
         /* ── Main Navigation ── */
         .main-navbar {
             background: #ffffff;
-            padding: 14px 0;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+            padding: 12px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1050;
@@ -96,12 +106,11 @@
             text-decoration: none;
         }
 
-        .brand-logo-icon {
-            width: 36px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .brand-logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.2s;
         }
 
         .brand-title-wrap h2 {
@@ -125,10 +134,12 @@
             font-weight: 600;
             font-size: 13.5px;
             color: #334155 !important;
-            padding: 7px 16px !important;
+            padding: 8px 16px !important;
             border-radius: 20px;
             transition: all 0.2s;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
         }
 
         .nav-link-btn:hover,
@@ -151,11 +162,128 @@
             gap: 6px;
             box-shadow: 0 3px 10px rgba(247, 164, 0, 0.3);
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .btn-get-support:hover {
             background-color: #e69500;
             transform: translateY(-1px);
+        }
+
+        .mobile-support-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 16px;
+        }
+
+        /* ── Custom Animated Mobile Hamburger Toggler ── */
+        .custom-nav-toggler {
+            border: 1.5px solid #0b5fa5 !important;
+            background: #f0f7ff !important;
+            border-radius: 10px !important;
+            padding: 7px 8px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 40px;
+            height: 38px;
+            box-shadow: 0 2px 6px rgba(11, 95, 165, 0.12);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .custom-nav-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(11, 95, 165, 0.25) !important;
+            outline: none !important;
+        }
+
+        .custom-nav-toggler .toggler-icon-bar {
+            width: 20px;
+            height: 2.5px;
+            background-color: #0b5fa5;
+            border-radius: 2px;
+            transition: all 0.25s ease;
+            display: block;
+        }
+
+        .custom-nav-toggler:not(.collapsed) .top-bar {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .custom-nav-toggler:not(.collapsed) .middle-bar {
+            opacity: 0;
+        }
+
+        .custom-nav-toggler:not(.collapsed) .bottom-bar {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: #ffffff;
+                border-radius: 16px;
+                padding: 14px 16px;
+                margin-top: 12px;
+                box-shadow: 0 12px 32px rgba(9, 37, 64, 0.12);
+                border: 1px solid #e2e8f0;
+            }
+
+            .nav-link-btn {
+                display: flex !important;
+                padding: 10px 14px !important;
+                margin-bottom: 5px;
+                font-size: 14.5px !important;
+                border-radius: 10px !important;
+                background: #f8fafc;
+                color: #0f172a !important;
+            }
+
+            .nav-link-btn:hover,
+            .nav-link-btn.active {
+                background-color: #0b5fa5 !important;
+                color: #ffffff !important;
+            }
+
+            .nav-link-btn:hover i,
+            .nav-link-btn.active i {
+                color: #ffffff !important;
+            }
+
+            .brand-title-wrap h2 {
+                font-size: 20px;
+            }
+
+            .brand-title-wrap p {
+                font-size: 9.5px;
+            }
+
+            .brand-logo-img {
+                height: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-title-wrap h2 {
+                font-size: 17px;
+            }
+
+            .brand-title-wrap p {
+                font-size: 8.5px;
+            }
+
+            .brand-logo-img {
+                height: 32px;
+            }
+
+            .mobile-support-btn span {
+                display: none;
+            }
+
+            .mobile-support-btn {
+                padding: 7px 10px;
+                font-size: 13px;
+            }
         }
 
         .lang-switch-link {
@@ -186,12 +314,12 @@
             align-items: center;
             position: relative;
             color: #fff;
-            padding: 120px 0;
+            padding: 100px 0;
             overflow: hidden;
         }
 
         .hero-headline {
-            font-size: 62px;
+            font-size: clamp(32px, 5.5vw, 62px);
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 25px;
@@ -282,6 +410,36 @@
             }
 
             .hero-checklist li {
+                justify-content: center;
+            }
+        }
+
+        @media(max-width: 575.98px) {
+            .hero-banner-section {
+                padding: 55px 0 !important;
+            }
+
+            .hero-headline {
+                font-size: 30px !important;
+                margin-bottom: 16px !important;
+            }
+
+            .hero-subtext {
+                font-size: 14.5px !important;
+                margin-bottom: 22px !important;
+            }
+
+            .hero-checklist li {
+                font-size: 14px !important;
+                margin-bottom: 10px !important;
+            }
+
+            .btn-hero-primary,
+            .btn-hero-video {
+                padding: 11px 22px !important;
+                font-size: 14px !important;
+                width: 100%;
+                text-align: center;
                 justify-content: center;
             }
         }
@@ -555,7 +713,7 @@
             padding: 24px 0;
             margin: auto;
             width: 70%;
-            border-radius: 20px
+            border-radius: 20px;
         }
 
         .stat-item-block {
@@ -581,6 +739,25 @@
             font-size: 11.5px;
             color: #94a3b8;
             margin: 2px 0 0;
+        }
+
+        @media (max-width: 991.98px) {
+            .stats-dark-strip {
+                width: 92% !important;
+                padding: 20px 16px !important;
+                border-radius: 16px !important;
+            }
+            .stat-item-block {
+                justify-content: flex-start !important;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .stats-dark-strip {
+                width: 100% !important;
+                border-radius: 0 !important;
+                padding: 20px 12px !important;
+            }
         }
 
         /* ── Blue CTA Banner with Cylinders ── */
@@ -617,6 +794,22 @@
             font-size: 14px;
             color: #e2e8f0;
             margin: 0;
+        }
+
+        @media (max-width: 767.98px) {
+            .cta-banner-overlay {
+                padding: 20px !important;
+                background: rgba(9, 37, 64, 0.6);
+            }
+            .cta-banner-overlay h2 {
+                font-size: 22px !important;
+            }
+            .cta-banner-overlay p {
+                font-size: 13px !important;
+            }
+            .cta-banner-img {
+                min-height: 180px;
+            }
         }
 
         /* ── Footer ── */
@@ -719,13 +912,13 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div class="d-flex align-items-center gap-3 gap-md-4 flex-wrap">
-                    <span><i class="fas fa-location-dot me-1"></i> Al Mudhaibi, North Sharqiyah OMAN</span>
+                    <span class="top-hide-sm"><i class="fas fa-location-dot me-1"></i> Al Mudhaibi, North Sharqiyah OMAN</span>
                     <a href="tel:+96892966649"><i class="fas fa-phone me-1"></i> +968 9296 6649</a>
-                    <a href="mailto:info@samadgas.com"><i class="fas fa-envelope me-1"></i> info@samadgas.com</a>
+                    <a href="mailto:info@samadgas.com" class="top-hide-sm"><i class="fas fa-envelope me-1"></i> info@samadgas.com</a>
                 </div>
-                <div class="d-flex align-items-center gap-3">
-                    <span><i class="far fa-clock me-1"></i> Mon - Sat: 7:00 AM - 10:00 PM</span>
-                    <div class="d-flex align-items-center gap-1 ms-2">
+                <div class="d-flex align-items-center gap-2 gap-md-3">
+                    <span class="top-hide-sm"><i class="far fa-clock me-1"></i> Mon - Sat: 7:00 AM - 10:00 PM</span>
+                    <div class="d-flex align-items-center gap-1">
                         <a href="#" class="top-social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="top-social-icon"><i class="fab fa-youtube"></i></a>
                         <a href="https://wa.me/96892966649" target="_blank" class="top-social-icon"><i
@@ -733,11 +926,11 @@
                     </div>
                     <!-- Language Switcher -->
                     @if(app()->getLocale() == 'ar')
-                        <a href="{{ route('lang.switch', 'en') }}" class="lang-switch-link bg-dark ms-2">
+                        <a href="{{ route('lang.switch', 'en') }}" class="lang-switch-link bg-dark ms-1">
                             <i class="fas fa-globe"></i> English
                         </a>
                     @else
-                        <a href="{{ route('lang.switch', 'ar') }}" class="lang-switch-link bg-dark ms-2">
+                        <a href="{{ route('lang.switch', 'ar') }}" class="lang-switch-link bg-dark ms-1">
                             <i class="fas fa-globe"></i> العربية
                         </a>
                     @endif
@@ -746,46 +939,102 @@
         </div>
     </div>
 
-    <!-- ── 2. MAIN NAVBAR ── -->
-    <nav class="main-navbar">
+    <!-- ── 2. MAIN NAVBAR (Fully Responsive with Mobile Hamburger Toggle) ── -->
+    <nav class="navbar navbar-expand-lg main-navbar">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <!-- Logo -->
-                <a href="{{ route('landing') }}" class="brand-logo-area">
-                    <img src="{{ asset('images/design/logo_flame.jpg') }}" alt="Samad Gas Logo"
-                        style="height: 42px; width: auto; object-fit: contain;">
-                    <div class="brand-title-wrap">
-                        <h2>Samad Gas</h2>
-                        <p>Safe Energy. Better Tomorrow</p>
-                    </div>
-                </a>
-
-                <!-- Nav Menu Links -->
-                <div class="d-none d-lg-flex align-items-center gap-2">
-                    <a href="{{ route('landing') }}"
-                        class="nav-link-btn {{ request()->routeIs('landing') ? 'active' : '' }}">
-                        {{ app()->getLocale() == 'ar' ? 'الرئيسية' : 'Home' }}
-                    </a>
-                    <a href="{{ route('public.services') }}"
-                        class="nav-link-btn {{ request()->routeIs('public.services') ? 'active' : '' }}">
-                        {{ app()->getLocale() == 'ar' ? 'خدماتنا' : 'Our Services' }}
-                    </a>
-                    <a href="{{ route('public.about') }}"
-                        class="nav-link-btn {{ request()->routeIs('public.about') ? 'active' : '' }}">
-                        {{ app()->getLocale() == 'ar' ? 'من نحن' : 'About Us' }}
-                    </a>
-                    <a href="{{ route('public.products') }}"
-                        class="nav-link-btn {{ request()->routeIs('public.products') ? 'active' : '' }}">
-                        {{ app()->getLocale() == 'ar' ? 'التزامنا' : 'Our Commitment' }}
-                    </a>
-                    <a href="{{ route('public.contact') }}"
-                        class="nav-link-btn {{ request()->routeIs('public.contact') ? 'active' : '' }}">
-                        {{ app()->getLocale() == 'ar' ? 'اتصل بنا' : 'Contact Us' }}
-                    </a>
+            <!-- Brand Logo -->
+            <a href="{{ route('landing') }}" class="brand-logo-area">
+                <img src="{{ asset('images/design/logo_flame.jpg') }}" alt="Samad Gas Logo"
+                    class="brand-logo-img">
+                <div class="brand-title-wrap">
+                    <h2>Samad Gas</h2>
+                    <p>Safe Energy. Better Tomorrow</p>
                 </div>
+            </a>
 
-                <!-- Right Action: Get Support -->
-                <div class="d-flex align-items-center gap-2">
+            <!-- Mobile Action Controls (Support + Hamburger Toggle) -->
+            <div class="d-flex align-items-center gap-2 d-lg-none">
+                <a href="https://wa.me/96892966649" target="_blank" class="btn-get-support mobile-support-btn" title="Get Support">
+                    <i class="fas fa-headset"></i> <span>Support</span>
+                </a>
+                <button class="navbar-toggler custom-nav-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbarCollapse" aria-controls="mainNavbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="toggler-icon-bar top-bar"></span>
+                    <span class="toggler-icon-bar middle-bar"></span>
+                    <span class="toggler-icon-bar bottom-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collapsible Navigation Menu (Desktop + Mobile) -->
+            <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+                <ul class="navbar-nav mx-auto align-items-lg-center gap-1 gap-lg-2 py-3 py-lg-0">
+                    <li class="nav-item">
+                        <a href="{{ route('landing') }}"
+                            class="nav-link-btn {{ request()->routeIs('landing') ? 'active' : '' }}">
+                            <i class="fas fa-house d-lg-none me-2 text-primary"></i>
+                            {{ app()->getLocale() == 'ar' ? 'الرئيسية' : 'Home' }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('public.services') }}"
+                            class="nav-link-btn {{ request()->routeIs('public.services') ? 'active' : '' }}">
+                            <i class="fas fa-gas-pump d-lg-none me-2 text-primary"></i>
+                            {{ app()->getLocale() == 'ar' ? 'خدماتنا' : 'Our Services' }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('public.about') }}"
+                            class="nav-link-btn {{ request()->routeIs('public.about') ? 'active' : '' }}">
+                            <i class="fas fa-circle-info d-lg-none me-2 text-primary"></i>
+                            {{ app()->getLocale() == 'ar' ? 'من نحن' : 'About Us' }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('public.products') }}"
+                            class="nav-link-btn {{ request()->routeIs('public.products') ? 'active' : '' }}">
+                            <i class="fas fa-shield-halved d-lg-none me-2 text-primary"></i>
+                            {{ app()->getLocale() == 'ar' ? 'التزامنا' : 'Our Commitment' }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('public.contact') }}"
+                            class="nav-link-btn {{ request()->routeIs('public.contact') ? 'active' : '' }}">
+                            <i class="fas fa-envelope d-lg-none me-2 text-primary"></i>
+                            {{ app()->getLocale() == 'ar' ? 'اتصل بنا' : 'Contact Us' }}
+                        </a>
+                    </li>
+
+                    <!-- Mobile-Only Action Footer inside Dropdown Menu -->
+                    <li class="nav-item d-lg-none mt-3 pt-3 border-top">
+                        <div class="d-flex align-items-center justify-content-between gap-2 flex-wrap">
+                            @if(app()->getLocale() == 'ar')
+                                <a href="{{ route('lang.switch', 'en') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                    <i class="fas fa-globe me-1"></i> English
+                                </a>
+                            @else
+                                <a href="{{ route('lang.switch', 'ar') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                    <i class="fas fa-globe me-1"></i> العربية
+                                </a>
+                            @endif
+
+                            @if (Route::has('login'))
+                                @auth
+                                    <a href="{{ url('/home') }}" class="btn btn-sm btn-primary rounded-pill px-3 fw-bold">
+                                        <i class="fas fa-gauge me-1"></i> Dashboard
+                                    </a>
+                                @else
+                                    <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold">
+                                        <i class="fas fa-right-to-bracket me-1"></i> Login
+                                    </a>
+                                @endauth
+                            @endif
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Desktop Right Action: Support + Login -->
+                <div class="d-none d-lg-flex align-items-center gap-2">
                     <a href="https://wa.me/96892966649" target="_blank" class="btn-get-support">
                         <i class="fas fa-headset"></i> <span>Get Support</span>
                     </a>
@@ -796,7 +1045,7 @@
                             </a>
                         @else
                             <a href="{{ route('login') }}"
-                                class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold d-none d-md-inline-block">
+                                class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold">
                                 Login
                             </a>
                         @endauth

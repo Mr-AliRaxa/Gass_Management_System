@@ -90,9 +90,9 @@
 
         .serv-content h1 {
 
-            font-size: 48px;
+            font-size: clamp(28px, 5.5vw, 48px);
 
-            line-height: 1.1;
+            line-height: 1.15;
 
             font-weight: 900;
 
@@ -464,9 +464,9 @@
             min-height: 456px;
             display: flex;
             align-items: center;
-            background-image: url(http://localhost:8000/images/design/serv_why_cylinders.jpg);
+            background-image: url('{{ asset("images/design/serv_why_cylinders.jpg") }}');
             background-size: cover;
-            background-position: cover;
+            background-position: center;
             overflow: hidden;
             padding: 70px 0;
 

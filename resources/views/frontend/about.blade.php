@@ -21,7 +21,7 @@
         }
 
         .about-hero-title {
-            font-size: 44px;
+            font-size: clamp(28px, 5.5vw, 44px);
             font-weight: 900;
             line-height: 1.15;
             color: #0b2742;
