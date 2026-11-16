@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +9,9 @@
     <!-- Google Fonts: Inter / Plus Jakarta Sans & Cairo for Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap 5 CSS & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +31,9 @@
         }
 
         body {
-            font-family: {{ app()->getLocale() == 'ar' ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }};
+            font-family:
+                {{ app()->getLocale() == 'ar' ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }}
+            ;
             color: var(--brand-text-dark);
             background-color: #ffffff;
             overflow-x: hidden;
@@ -126,7 +131,8 @@
             text-decoration: none;
         }
 
-        .nav-link-btn:hover, .nav-link-btn.active {
+        .nav-link-btn:hover,
+        .nav-link-btn.active {
             color: #ffffff !important;
             background-color: #0b5fa5 !important;
         }
@@ -175,208 +181,235 @@
 
         /* ── Hero Section ── */
         .hero-banner-section {
-            background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
-            padding: 40px 0 30px;
+            min-height: auto;
+            display: flex;
+            align-items: center;
             position: relative;
+            color: #fff;
+            padding: 120px 0;
+            overflow: hidden;
         }
 
         .hero-headline {
-            font-size: 46px;
-            font-weight: 900;
+            font-size: 62px;
+            font-weight: 800;
             line-height: 1.15;
-            color: #0b2742;
-            letter-spacing: -1px;
-            margin-bottom: 14px;
+            margin-bottom: 25px;
         }
 
-        .hero-headline .text-gold {
-            color: #f59e0b;
+        .text-gold {
+            color: #D6A74F;
         }
 
         .hero-subtext {
-            font-size: 14.5px;
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 22px;
-            max-width: 480px;
+            font-size: 20px;
+            color: #e9e9e9;
+            margin-bottom: 35px;
+            line-height: 1.8;
         }
 
         .hero-checklist {
             list-style: none;
             padding: 0;
-            margin: 0 0 25px 0;
+            margin: 0 0 40px;
         }
 
         .hero-checklist li {
-            font-size: 13.5px;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            margin-bottom: 18px;
+            font-size: 18px;
         }
 
-        .hero-checklist li i {
-            color: #0b60b0;
-            font-size: 15px;
+        .hero-checklist i {
+            color: #28c76f;
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
         }
 
         .btn-hero-primary {
-            background-color: #08213b;
-            color: #ffffff !important;
-            font-size: 13.5px;
-            font-weight: 700;
-            padding: 10px 22px;
-            border-radius: 20px;
+            background: #D6A74F;
+            color: #fff;
+            padding: 15px 34px;
+            border-radius: 50px;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
+            font-weight: 600;
+            transition: .3s;
         }
 
         .btn-hero-primary:hover {
-            background-color: #0e3760;
+            background: #fff;
+            color: #002B5B;
         }
 
         .btn-hero-video {
-            background-color: #ffffff;
-            color: #08213b !important;
-            font-size: 13.5px;
-            font-weight: 700;
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 1.5px solid #cbd5e1;
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, .2);
+            transition: .3s;
         }
 
         .btn-hero-video:hover {
-            background-color: #f8fafc;
-            border-color: #94a3b8;
+            background: #fff;
+            color: #002B5B;
         }
 
-        .hero-image-wrap {
-            position: relative;
+        @media(max-width:991px) {
+
+            .hero-banner-section {
+                text-align: center;
+                padding: 90px 0;
+            }
+
+            .hero-headline {
+                font-size: 42px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-checklist li {
+                justify-content: center;
+            }
+        }
+
+        /* hero section css end  */
+        .services-section {
+            background: #f5f7fb;
+        }
+
+        .section-line {
+            display: inline-block;
+            width: 60px;
+            height: 4px;
+            background: #f7b500;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+
+        .service-card {
+
+            background: #fff;
+
             border-radius: 20px;
+
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(9, 37, 64, 0.12);
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .08);
+
+            transition: .35s;
+
+            position: relative;
+
+            height: 100%;
         }
 
-        .hero-image-wrap img {
+        .service-card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .15);
+
+        }
+
+        .service-img {
+
             width: 100%;
-            height: auto;
-            display: block;
+
+            height: 170px;
+
             object-fit: cover;
         }
 
-        /* ── Services Section ── */
-        .services-section {
-            padding: 60px 0 50px;
-            background: #ffffff;
-        }
+        .service-icon {
 
-        .section-header-pill {
-            display: inline-block;
-            width: 38px;
-            height: 4px;
-            background-color: #f59e0b;
-            border-radius: 3px;
-            margin-bottom: 10px;
-        }
+            width: 75px;
 
-        .section-header-title {
-            font-size: 32px;
-            font-weight: 800;
-            color: #092540;
-            margin-bottom: 6px;
-        }
+            height: 75px;
 
-        .section-header-sub {
-            font-size: 13.5px;
-            color: #64748b;
-            margin-bottom: 40px;
-        }
+            background: #0b3b87;
 
-        .service-card-box {
-            background: #ffffff;
-            border: 1px solid #e6edf5;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-            height: 100%;
+            color: #fff;
+
+            border-radius: 50%;
+
             display: flex;
-            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+
+            border: 6px solid #fff;
+
+            position: absolute;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            top: 130px;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+
+        }
+
+        .service-body {
+
+            padding: 55px 25px 30px;
+
             text-align: center;
         }
 
-        .service-card-box:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(9, 47, 86, 0.1);
-            border-color: #bfdbfe;
+        .service-body h4 {
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            color: #0c2d63;
+
+            margin-bottom: 15px;
         }
 
-        .service-card-thumb {
-            height: 125px;
-            overflow: hidden;
-            position: relative;
-            background: #f1f5f9;
-        }
+        .service-body p {
 
-        .service-card-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
+            color: #666;
 
-        .service-card-box:hover .service-card-thumb img {
-            transform: scale(1.06);
-        }
+            line-height: 1.8;
 
-        .service-floating-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: #0b5fa5;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            margin: -22px auto 12px;
-            position: relative;
-            z-index: 2;
-            border: 3px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(11, 95, 165, 0.3);
-        }
-
-        .service-card-body {
-            padding: 0 16px 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .service-card-body h5 {
-            font-size: 15.5px;
-            font-weight: 800;
-            color: #092540;
-            margin-bottom: 8px;
-        }
-
-        .service-card-body p {
-            font-size: 12px;
-            color: #64748b;
-            line-height: 1.5;
             margin: 0;
         }
+
+        @media(max-width:992px) {
+
+            .service-img {
+
+                height: 220px;
+
+            }
+
+            .service-icon {
+
+                top: 180px;
+
+            }
+
+        }
+
+        /* ── Services Section ── */
 
         /* ── About Section ── */
         .about-section-wrap {
@@ -518,6 +551,9 @@
             background-color: #08213b;
             color: #ffffff;
             padding: 24px 0;
+            margin: auto;
+            width: 70%;
+            border-radius: 20px
         }
 
         .stat-item-block {
@@ -555,7 +591,7 @@
         .cta-banner-img {
             width: 100%;
             height: auto;
-            max-height: 240px;
+            max-height: 310px;
             object-fit: cover;
             display: block;
         }
@@ -566,7 +602,6 @@
             display: flex;
             align-items: center;
             padding-left: 60px;
-            background: linear-gradient(90deg, rgba(7, 34, 60, 0.95) 0%, rgba(9, 64, 114, 0.8) 45%, rgba(0, 0, 0, 0) 75%);
             color: #ffffff;
         }
 
@@ -584,7 +619,7 @@
 
         /* ── Footer ── */
         .site-footer {
-            background-color: #071927;
+            background-color: #0b2f56;
             color: #cbd5e1;
             padding: 55px 0 20px;
             font-size: 13px;
@@ -644,9 +679,17 @@
             margin-right: 6px;
         }
 
-        .social-fb { background-color: #1877f2; }
-        .social-yt { background-color: #ff0000; }
-        .social-wa { background-color: #25d366; }
+        .social-fb {
+            background-color: #1877f2;
+        }
+
+        .social-yt {
+            background-color: #ff0000;
+        }
+
+        .social-wa {
+            background-color: #25d366;
+        }
 
         .footer-contact-line {
             display: flex;
@@ -666,6 +709,7 @@
     </style>
     @stack('styles')
 </head>
+
 <body>
 
     <!-- ── 1. TOP NAV STRIP (Blue Bar) ── -->
@@ -682,7 +726,8 @@
                     <div class="d-flex align-items-center gap-1 ms-2">
                         <a href="#" class="top-social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="top-social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/96892966649" target="_blank" class="top-social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/96892966649" target="_blank" class="top-social-icon"><i
+                                class="fab fa-whatsapp"></i></a>
                     </div>
                     <!-- Language Switcher -->
                     @if(app()->getLocale() == 'ar')
@@ -705,7 +750,8 @@
             <div class="d-flex justify-content-between align-items-center">
                 <!-- Logo -->
                 <a href="{{ route('landing') }}" class="brand-logo-area">
-                    <img src="{{ asset('images/design/logo_flame.jpg') }}" alt="Samad Gas Logo" style="height: 42px; width: auto; object-fit: contain;">
+                    <img src="{{ asset('images/design/logo_flame.jpg') }}" alt="Samad Gas Logo"
+                        style="height: 42px; width: auto; object-fit: contain;">
                     <div class="brand-title-wrap">
                         <h2>Samad Gas</h2>
                         <p>Safe Energy. Better Tomorrow</p>
@@ -714,19 +760,24 @@
 
                 <!-- Nav Menu Links -->
                 <div class="d-none d-lg-flex align-items-center gap-2">
-                    <a href="{{ route('landing') }}" class="nav-link-btn {{ request()->routeIs('landing') ? 'active' : '' }}">
+                    <a href="{{ route('landing') }}"
+                        class="nav-link-btn {{ request()->routeIs('landing') ? 'active' : '' }}">
                         {{ app()->getLocale() == 'ar' ? 'الرئيسية' : 'Home' }}
                     </a>
-                    <a href="{{ route('public.services') }}" class="nav-link-btn {{ request()->routeIs('public.services') ? 'active' : '' }}">
+                    <a href="{{ route('public.services') }}"
+                        class="nav-link-btn {{ request()->routeIs('public.services') ? 'active' : '' }}">
                         {{ app()->getLocale() == 'ar' ? 'خدماتنا' : 'Our Services' }}
                     </a>
-                    <a href="{{ route('public.about') }}" class="nav-link-btn {{ request()->routeIs('public.about') ? 'active' : '' }}">
+                    <a href="{{ route('public.about') }}"
+                        class="nav-link-btn {{ request()->routeIs('public.about') ? 'active' : '' }}">
                         {{ app()->getLocale() == 'ar' ? 'من نحن' : 'About Us' }}
                     </a>
-                    <a href="{{ route('public.products') }}" class="nav-link-btn {{ request()->routeIs('public.products') ? 'active' : '' }}">
+                    <a href="{{ route('public.products') }}"
+                        class="nav-link-btn {{ request()->routeIs('public.products') ? 'active' : '' }}">
                         {{ app()->getLocale() == 'ar' ? 'التزامنا' : 'Our Commitment' }}
                     </a>
-                    <a href="{{ route('public.contact') }}" class="nav-link-btn {{ request()->routeIs('public.contact') ? 'active' : '' }}">
+                    <a href="{{ route('public.contact') }}"
+                        class="nav-link-btn {{ request()->routeIs('public.contact') ? 'active' : '' }}">
                         {{ app()->getLocale() == 'ar' ? 'اتصل بنا' : 'Contact Us' }}
                     </a>
                 </div>
@@ -742,7 +793,8 @@
                                 Dashboard
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold d-none d-md-inline-block">
+                            <a href="{{ route('login') }}"
+                                class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold d-none d-md-inline-block">
                                 Login
                             </a>
                         @endauth
@@ -756,7 +808,6 @@
     <main>
         @yield('content')
     </main>
-
     <!-- ── FOOTER (Matching Image Design) ── -->
     <footer class="site-footer">
         <div class="container">
@@ -764,7 +815,8 @@
                 <!-- Col 1: Brand -->
                 <div class="col-lg-3 col-md-6">
                     <div class="d-flex align-items-center gap-2 mb-2">
-                        <img src="{{ asset('images/design/logo_flame.jpg') }}" alt="Samad Gas Logo" style="height: 38px; width: auto;">
+                        <img src="{{ asset('images/design/logo_flame.jpg') }}" alt="Samad Gas Logo"
+                            style="height: 38px; width: auto;">
                         <div>
                             <h3 class="footer-logo-title">Samad Gas</h3>
                             <p class="footer-logo-sub">Safe Energy. Better Tomorrow</p>
@@ -799,7 +851,8 @@
                     <div class="d-flex align-items-center">
                         <a href="#" class="footer-social-btn social-fb"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="footer-social-btn social-yt"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/96892966649" target="_blank" class="footer-social-btn social-wa"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/96892966649" target="_blank" class="footer-social-btn social-wa"><i
+                                class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
@@ -823,7 +876,7 @@
 
             <div class="footer-bottom-bar d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <span>&copy; {{ date('Y') }} Samad Gas. All Rights Reserved.</span>
-                <span>Powered by Excellence <i class="fas fa-heart text-danger"></i></span>
+                <span>Powered by Aixo Systems <i class="fas fa-heart text-danger"></i></span>
             </div>
         </div>
     </footer>
@@ -832,4 +885,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')
 </body>
+
 </html>

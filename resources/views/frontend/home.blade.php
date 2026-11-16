@@ -3,19 +3,22 @@
 @section('title', 'Samad Gas | Your Trusted LPG Gas Partner in Oman')
 
 @section('content')
-
     <!-- ── 1. HERO SECTION (Exact Match To Uploaded Image) ── -->
-    <section class="hero-banner-section">
+    <section class="hero-banner-section"
+        style="background: url('{{ asset('images/design/heroimg.jpg') }}') center center / cover no-repeat;">
+
         <div class="container">
-            <div class="row align-items-center g-4">
-                <!-- Left Content -->
-                <div class="col-lg-5">
+            <div class="row">
+                <div class="col-lg-6 col-md-8">
+
                     <h1 class="hero-headline">
                         Your Trusted <br>
                         <span class="text-gold">LPG Gas</span> Partner
                     </h1>
+
                     <p class="hero-subtext">
-                        From empty cylinder to full service – <br>
+                        From empty cylinder to full service –
+                        <br>
                         for homes, businesses and industries in Oman.
                     </p>
 
@@ -24,112 +27,153 @@
                             <i class="fas fa-circle-check"></i>
                             <span>Digital Gas Station</span>
                         </li>
+
                         <li>
                             <i class="fas fa-circle-check"></i>
                             <span>Cylinder Filling</span>
                         </li>
+
                         <li>
                             <i class="fas fa-circle-check"></i>
-                            <span>Bulk Supply &amp; Delivery</span>
+                            <span>Bulk Supply & Delivery</span>
                         </li>
+
                         <li>
                             <i class="fas fa-circle-check"></i>
-                            <span>Safe &amp; Reliable Service</span>
+                            <span>Safe & Reliable Service</span>
                         </li>
                     </ul>
 
-                    <div class="d-flex align-items-center gap-3 flex-wrap">
+                    <div class="hero-buttons">
                         <a href="{{ route('public.services') }}" class="btn-hero-primary">
-                            <span>Our Services</span> <i class="fas fa-arrow-right"></i>
+                            Our Services
+                            <i class="fas fa-arrow-right ms-2"></i>
                         </a>
-                        <a href="https://wa.me/96892966649" target="_blank" class="btn-hero-video">
-                            <i class="fas fa-play text-primary"></i> <span>Watch Video</span>
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Right Visual: Station with Truck, Worker & Gas Dispenser -->
-                <div class="col-lg-7">
-                    <div class="hero-image-wrap">
-                        <img src="{{ asset('images/design/hero_gas_station.jpg') }}" alt="Samad Gas LPG Station Oman" class="img-fluid">
+                        <a href="https://wa.me/96892966649" target="_blank" class="btn-hero-video">
+
+                            <i class="fab fa-whatsapp"></i>
+                            Watch Video
+                        </a>
                     </div>
+
                 </div>
             </div>
         </div>
+
     </section>
+    <!-- our services area  -->
+    <section class="py-5 services-section">
+        <div class="container">
 
-    <!-- ── 2. OUR SERVICES (Exact 4 Cards from Image) ── -->
-    <section class="services-section">
-        <div class="container text-center">
-            <div class="section-header-pill"></div>
-            <h2 class="section-header-title">Our Services</h2>
-            <p class="section-header-sub">Complete LPG Gas Solutions Under One Roof</p>
+            <div class="text-center mb-5">
+                <span class="section-line"></span>
+                <h2 class="fw-bold display-6 mb-2">Our Services</h2>
+                <p class="text-muted">
+                    Complete LPG Gas Solutions Under One Roof
+                </p>
+            </div>
 
-            <div class="row g-3 g-lg-4 text-start">
-                <!-- Card 1: Cylinder Filling -->
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                    <div class="service-card-box">
-                        <div class="service-card-thumb">
-                            <img src="{{ asset('images/design/service_1.jpg') }}" alt="Cylinder Filling">
-                        </div>
-                        <div class="service-floating-icon">
+            <div class="row g-4">
+
+                <!-- Card 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+
+                        <img src="{{ asset('images/design/service_1.jpg') }}" class="img-fluid service-img">
+
+                        <div class="service-icon">
                             <i class="fas fa-gas-pump"></i>
                         </div>
-                        <div class="service-card-body">
-                            <h5>Cylinder Filling</h5>
-                            <p>Bring your empty cylinder, we'll fill it with care.</p>
+
+                        <div class="service-body">
+
+                            <h4>Cylinder Filling</h4>
+
+                            <p>
+                                Bring your empty cylinder,
+                                we'll fill it with care.
+                            </p>
+
                         </div>
+
                     </div>
                 </div>
 
-                <!-- Card 2: Digital Gas Station -->
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                    <div class="service-card-box">
-                        <div class="service-card-thumb">
-                            <img src="{{ asset('images/design/service_2.jpg') }}" alt="Digital Gas Station">
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+
+                        <img src="{{ asset('images/design/service_2.jpg') }}" class="img-fluid service-img">
+
+                        <div class="service-icon">
+                            <i class="fas fa-gas-pump"></i>
                         </div>
-                        <div class="service-floating-icon">
-                            <i class="fas fa-tachometer-alt"></i>
+
+                        <div class="service-body">
+
+                            <h4>Digital Gas Station</h4>
+
+                            <p>
+                                Accurate & transparent filling
+                                with digital meters.
+                            </p>
+
                         </div>
-                        <div class="service-card-body">
-                            <h5>Digital Gas Station</h5>
-                            <p>Accurate &amp; transparent filling with digital meters.</p>
-                        </div>
+
                     </div>
                 </div>
 
-                <!-- Card 3: Bulk Supply & Delivery -->
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                    <div class="service-card-box">
-                        <div class="service-card-thumb">
-                            <img src="{{ asset('images/design/service_3.jpg') }}" alt="Bulk Supply & Delivery">
+                <!-- Card 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+
+                        <img src="{{ asset('images/design/service_3.jpg') }}" class="img-fluid service-img">
+
+                        <div class="service-icon">
+                            <i class="fas fa-truck"></i>
                         </div>
-                        <div class="service-floating-icon">
-                            <i class="fas fa-truck-moving"></i>
+
+                        <div class="service-body">
+
+                            <h4>Bulk Supply & Delivery</h4>
+
+                            <p>
+                                Large vehicles for
+                                commercial supply.
+                            </p>
+
                         </div>
-                        <div class="service-card-body">
-                            <h5>Bulk Supply &amp; Delivery</h5>
-                            <p>Large vehicles for commercial supply.</p>
-                        </div>
+
                     </div>
                 </div>
 
-                <!-- Card 4: Store Supply -->
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                    <div class="service-card-box">
-                        <div class="service-card-thumb">
-                            <img src="{{ asset('images/design/service_4.jpg') }}" alt="Store Supply">
-                        </div>
-                        <div class="service-floating-icon">
+                <!-- Card 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+
+                        <img src="{{ asset('images/design/service_4.jpg') }}" class="img-fluid service-img">
+
+                        <div class="service-icon">
                             <i class="fas fa-warehouse"></i>
                         </div>
-                        <div class="service-card-body">
-                            <h5>Store Supply</h5>
-                            <p>Direct supply to our storage and distribution.</p>
+
+                        <div class="service-body">
+
+                            <h4>Store Supply</h4>
+
+                            <p>
+                                Direct supply to our
+                                storage and distribution.
+                            </p>
+
                         </div>
+
                     </div>
                 </div>
+
             </div>
+
         </div>
     </section>
 
@@ -155,7 +199,9 @@
                         Growing Oman
                     </h2>
                     <p class="about-desc">
-                        Samad Gas is a leading LPG gas provider in Oman, committed to delivering safe, efficient and affordable gas solutions. From our digital filling stations to bulk supply and delivery, we ensure quality service with the highest safety standards.
+                        Samad Gas is a leading LPG gas provider in Oman, committed to delivering safe, efficient and
+                        affordable gas solutions. From our digital filling stations to bulk supply and delivery, we ensure
+                        quality service with the highest safety standards.
                     </p>
 
                     <div class="about-features-row">
@@ -255,7 +301,7 @@
             </div>
         </div>
     </section>
-
+    <br> <br> <br>
     <!-- ── 5. PRE-FOOTER CTA BANNER (Blue Wave + Mosque + 3 Blue Cylinders) ── -->
     <section class="cta-gas-banner">
         <img src="{{ asset('images/design/cta_banner.jpg') }}" alt="Need LPG Gas Services in Oman" class="cta-banner-img">
