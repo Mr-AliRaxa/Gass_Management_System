@@ -3,473 +3,706 @@
 @section('title', 'Our Services | Complete LPG Gas Solutions in Oman - Samad Gas')
 
 @section('content')
-<style>
-    /* ── Services Page Hero Banner ── */
-    .serv-hero-section {
-        background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
-        padding: 40px 0 30px;
-        position: relative;
-    }
+    <style>
+        /* ── Services Page Hero Banner ── */
+        .serv-hero-section {
 
-    .serv-pill-tag {
-        display: inline-block;
-        width: 34px;
-        height: 4px;
-        background-color: #f59e0b;
-        border-radius: 2px;
-        margin-bottom: 8px;
-    }
+            position: relative;
+            min-height: 520px;
+            overflow: hidden;
 
-    .serv-hero-title {
-        font-size: 44px;
-        font-weight: 900;
-        line-height: 1.15;
-        color: #0b2742;
-        letter-spacing: -1px;
-        margin-bottom: 14px;
-    }
+            display: flex;
+            align-items: center;
 
-    .serv-hero-title .text-gold {
-        color: #f59e0b;
-    }
+            background: #ffffff;
+        }
 
-    .serv-hero-desc {
-        font-size: 14.5px;
-        color: #475569;
-        line-height: 1.6;
-        margin-bottom: 22px;
-        max-width: 440px;
-    }
 
-    .btn-explore-serv {
-        background-color: #f7a400;
-        color: #0c233c !important;
-        font-weight: 700;
-        font-size: 13.5px;
-        padding: 9px 24px;
-        border-radius: 20px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.2s;
-        box-shadow: 0 4px 12px rgba(247, 164, 0, 0.3);
-    }
+        .serv-bg-image {
 
-    .btn-explore-serv:hover {
-        background-color: #e69500;
-        transform: translateY(-1px);
-    }
+            position: absolute;
+            inset: 0;
 
-    .serv-hero-img-wrap {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 15px 35px rgba(9, 37, 64, 0.12);
-    }
+            background-image:
+                url('{{ asset("images/design/services_hero_station.jpg") }}');
 
-    .serv-hero-img-wrap img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-    }
+            background-size: cover;
+            background-position: center;
 
-    /* ── 4 Detailed Service Cards Grid ── */
-    .serv-grid-section {
-        padding: 35px 0 50px;
-        background: #ffffff;
-    }
+        }
 
-    .serv-detail-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
-        transition: all 0.3s ease;
-        height: 100%;
-    }
 
-    .serv-detail-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 14px 30px rgba(9, 47, 86, 0.08);
-        border-color: #bfdbfe;
-    }
+        /* Left white fade effect */
 
-    .serv-card-inner {
-        display: flex;
-        height: 100%;
-    }
+        .serv-bg-image:after {
 
-    @media (max-width: 767px) {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(90deg,
+                    #ffffff 0%,
+                    rgba(255, 255, 255, .96) 25%,
+                    rgba(255, 255, 255, .45) 48%,
+                    rgba(255, 255, 255, 0) 70%);
+
+        }
+
+
+
+        .serv-content {
+
+            position: relative;
+            z-index: 2;
+
+            padding: 40px 0;
+
+        }
+
+
+
+        .serv-label {
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 15px;
+
+            color: #12336b;
+        }
+
+
+        .serv-label span {
+
+            width: 40px;
+            height: 4px;
+
+            background: #f5a400;
+
+            border-radius: 10px;
+
+        }
+
+
+
+        .serv-content h1 {
+
+            font-size: 48px;
+
+            line-height: 1.1;
+
+            font-weight: 900;
+
+            color: #12336b;
+
+            margin-bottom: 18px;
+
+        }
+
+
+
+        .serv-content h1 span {
+
+            color: #f5a400;
+
+        }
+
+
+
+        .serv-content p {
+
+            max-width: 430px;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+
+            color: #26364d;
+
+            margin-bottom: 25px;
+
+        }
+
+
+
+        .btn-explore-serv {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 25px;
+
+            border-radius: 30px;
+
+            background: #f5a400;
+
+            color: #102a55 !important;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: .3s;
+
+        }
+
+
+        .btn-explore-serv:hover {
+
+            background: #12336b;
+
+            color: white !important;
+
+        }
+
+
+
+        /* Blue + Gold Bottom Curve */
+
+        .bottom-shape {
+
+            position: absolute;
+
+            bottom: -1px;
+
+            right: 0;
+
+            width: 40%;
+
+            height: 45px;
+
+            background: #003b8f;
+
+            clip-path: polygon(25% 0,
+                    100% 0,
+                    100% 100%,
+                    0 100%);
+
+        }
+
+
+        .bottom-shape:before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            width: 40%;
+
+            height: 100%;
+
+            background: #f5a400;
+
+            clip-path: polygon(0 100%,
+                    100% 0,
+                    100% 100%);
+
+        }
+
+
+
+        @media(max-width:768px) {
+
+            .serv-content h1 {
+                font-size: 34px;
+            }
+
+
+            .serv-bg-image:after {
+
+                background:
+                    linear-gradient(180deg,
+                        rgba(255, 255, 255, .9),
+                        rgba(255, 255, 255, .7));
+
+            }
+
+        }
+
+        /* ── 4 Detailed Service Cards Grid ── */
+        .serv-grid-section {
+            padding: 35px 0 50px;
+            background: #ffffff;
+        }
+
+        .serv-detail-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .serv-detail-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(9, 47, 86, 0.08);
+            border-color: #bfdbfe;
+        }
+
         .serv-card-inner {
-            flex-direction: column;
+            display: flex;
+            height: 100%;
         }
-    }
 
-    .serv-card-img-col {
-        width: 46%;
-        min-height: 190px;
-        overflow: hidden;
-        background: #f1f5f9;
-        flex-shrink: 0;
-    }
+        @media (max-width: 767px) {
+            .serv-card-inner {
+                flex-direction: column;
+            }
+        }
 
-    @media (max-width: 767px) {
         .serv-card-img-col {
-            width: 100%;
-            height: 180px;
+            width: 46%;
+            min-height: 190px;
+            overflow: hidden;
+            background: #f1f5f9;
+            flex-shrink: 0;
         }
-    }
 
-    .serv-card-img-col img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
-    }
+        @media (max-width: 767px) {
+            .serv-card-img-col {
+                width: 100%;
+                height: 180px;
+            }
+        }
 
-    .serv-detail-card:hover .serv-card-img-col img {
-        transform: scale(1.05);
-    }
+        .serv-card-img-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
 
-    .serv-card-content-col {
-        width: 54%;
-        padding: 22px 20px 20px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+        .serv-detail-card:hover .serv-card-img-col img {
+            transform: scale(1.05);
+        }
 
-    @media (max-width: 767px) {
         .serv-card-content-col {
-            width: 100%;
-            padding: 20px;
+            width: 54%;
+            padding: 22px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-    }
 
-    .serv-card-icon-badge {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background-color: #0b5fa5;
-        color: #ffffff;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 15px;
-        margin-bottom: 10px;
-    }
+        @media (max-width: 767px) {
+            .serv-card-content-col {
+                width: 100%;
+                padding: 20px;
+            }
+        }
 
-    .serv-card-title {
-        font-size: 17px;
-        font-weight: 800;
-        color: #092540;
-        margin-bottom: 6px;
-    }
+        .serv-card-icon-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #0b5fa5;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
 
-    .serv-card-text {
-        font-size: 12px;
-        color: #64748b;
-        line-height: 1.5;
-        margin-bottom: 12px;
-    }
+        .serv-card-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #092540;
+            margin-bottom: 6px;
+        }
 
-    .serv-card-bullets {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 16px 0;
-    }
+        .serv-card-text {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
 
-    .serv-card-bullets li {
-        font-size: 11.5px;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 4px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
+        .serv-card-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+        }
 
-    .serv-card-bullets li i {
-        color: #f59e0b;
-        font-size: 12px;
-    }
+        .serv-card-bullets li {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-    .btn-card-learn {
-        border: 1.5px solid #0b5fa5;
-        color: #0b5fa5 !important;
-        font-size: 11.5px;
-        font-weight: 700;
-        padding: 5px 16px;
-        border-radius: 20px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        align-self: flex-start;
-        transition: all 0.2s;
-    }
+        .serv-card-bullets li i {
+            color: #f59e0b;
+            font-size: 12px;
+        }
 
-    .btn-card-learn:hover {
-        background-color: #0b5fa5;
-        color: #ffffff !important;
-    }
+        .btn-card-learn {
+            border: 1.5px solid #0b5fa5;
+            color: #0b5fa5 !important;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+            transition: all 0.2s;
+        }
 
-    /* ── How It Works (Exact 4 Step Icons Strip) ── */
-    .how-it-works-box {
-        background-color: #f0f7ff;
-        border-radius: 20px;
-        padding: 35px 25px 30px;
-        margin: 10px 0 50px;
-        text-align: center;
-    }
+        .btn-card-learn:hover {
+            background-color: #0b5fa5;
+            color: #ffffff !important;
+        }
 
-    .how-title-pill {
-        display: inline-block;
-        width: 32px;
-        height: 3.5px;
-        background-color: #f59e0b;
-        border-radius: 2px;
-        margin-bottom: 6px;
-    }
+        /* ── How It Works (Exact 4 Step Icons Strip) ── */
+        .how-it-works-box {
+            background-color: #f0f7ff;
+            border-radius: 20px;
+            padding: 35px 25px 30px;
+            margin: 10px 0 50px;
+            text-align: center;
+        }
 
-    .how-section-title {
-        font-size: 26px;
-        font-weight: 800;
-        color: #092540;
-        margin-bottom: 4px;
-    }
+        .how-title-pill {
+            display: inline-block;
+            width: 32px;
+            height: 3.5px;
+            background-color: #f59e0b;
+            border-radius: 2px;
+            margin-bottom: 6px;
+        }
 
-    .how-section-sub {
-        font-size: 13px;
-        color: #64748b;
-        margin-bottom: 35px;
-    }
+        .how-section-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #092540;
+            margin-bottom: 4px;
+        }
 
-    .step-unit {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+        .how-section-sub {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 35px;
+        }
 
-    .step-number-bubble {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background-color: #08213b;
-        color: #ffffff;
-        font-size: 11px;
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 12px;
-    }
+        .step-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-    .step-main-icon {
-        font-size: 32px;
-        color: #08213b;
-        margin-bottom: 12px;
-        height: 38px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        .step-number-bubble {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #08213b;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
 
-    .step-unit h6 {
-        font-size: 14px;
-        font-weight: 800;
-        color: #092540;
-        margin-bottom: 4px;
-    }
+        .step-main-icon {
+            font-size: 32px;
+            color: #08213b;
+            margin-bottom: 12px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .step-unit p {
-        font-size: 11.5px;
-        color: #64748b;
-        margin: 0;
-        max-width: 170px;
-        line-height: 1.4;
-    }
+        .step-unit h6 {
+            font-size: 14px;
+            font-weight: 800;
+            color: #092540;
+            margin-bottom: 4px;
+        }
 
-    .step-arrow-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #64748b;
-        font-size: 18px;
-    }
+        .step-unit p {
+            font-size: 11.5px;
+            color: #64748b;
+            margin: 0;
+            max-width: 170px;
+            line-height: 1.4;
+        }
 
-    /* ── Why Choose Samad Gas ── */
-    .why-choose-section {
-        padding: 20px 0 50px;
-    }
+        .step-arrow-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 18px;
+        }
 
-    .why-title-pill {
-        display: inline-block;
-        width: 32px;
-        height: 3.5px;
-        background-color: #f59e0b;
-        border-radius: 2px;
-        margin-bottom: 6px;
-    }
+        /* ── Why Choose Samad Gas ── */
+        .why-choose-section {
 
-    .why-header-label {
-        font-size: 13px;
-        font-weight: 700;
-        color: #092540;
-    }
+            position: relative;
+            min-height: 456px;
+            display: flex;
+            align-items: center;
+            background-image: url(http://localhost:8000/images/design/serv_why_cylinders.jpg);
+            background-size: cover;
+            background-position: cover;
+            overflow: hidden;
+            padding: 70px 0;
 
-    .why-main-heading {
-        font-size: 38px;
-        font-weight: 900;
-        color: #092540;
-        line-height: 1.15;
-        margin-bottom: 14px;
-    }
+        }
 
-    .why-main-desc {
-        font-size: 13.5px;
-        color: #64748b;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        max-width: 380px;
-    }
 
-    .why-feature-card {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        padding: 16px 14px;
-        text-align: center;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        /* Image dark overlay */
 
-    .why-feature-card i {
-        font-size: 24px;
-        color: #08213b;
-        margin-bottom: 8px;
-    }
+        .why-bg-overlay {
 
-    .why-feature-card h6 {
-        font-size: 13px;
-        font-weight: 800;
-        color: #092540;
-        margin-bottom: 2px;
-    }
+            position: absolute;
+            inset: 0;
+        }
 
-    .why-feature-card p {
-        font-size: 10.5px;
-        color: #64748b;
-        margin: 0;
-    }
 
-    .why-feature-card-wide {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        padding: 14px 18px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
 
-    .why-feature-card-wide i {
-        font-size: 24px;
-        color: #08213b;
-    }
+        /* Heading */
 
-    .why-feature-card-wide h6 {
-        font-size: 13px;
-        font-weight: 800;
-        color: #092540;
-        margin-bottom: 2px;
-    }
+        .why-header-label {
 
-    .why-feature-card-wide p {
-        font-size: 11px;
-        color: #64748b;
-        margin: 0;
-    }
+            color: #ffffff;
 
-    .why-right-img {
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    }
+            font-size: 14px;
 
-    .why-right-img img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-    }
+            font-weight: 700;
 
-    /* ── Bottom Dark Blue Contact Bar ── */
-    .bottom-cta-strip {
-        background-color: #08213b;
-        color: #ffffff;
-        padding: 22px 0;
-    }
+        }
 
-    .btn-get-support-cta {
-        background-color: #f7a400;
-        color: #0c233c !important;
-        font-weight: 700;
-        font-size: 13.5px;
-        padding: 10px 26px;
-        border-radius: 25px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        box-shadow: 0 4px 14px rgba(247, 164, 0, 0.35);
-        transition: all 0.2s;
-    }
 
-    .btn-get-support-cta:hover {
-        background-color: #e69500;
-        transform: translateY(-1px);
-    }
-</style>
+
+        .why-title-pill {
+
+            width: 35px;
+            height: 4px;
+
+            background: #f5a400;
+
+            border-radius: 10px;
+
+        }
+
+
+
+        .why-main-heading {
+
+            color: #f5a400;
+
+            font-size: 42px;
+
+            font-weight: 900;
+
+            line-height: 1.15;
+
+        }
+
+
+
+        .why-main-desc {
+
+            color: black;
+
+            max-width: 370px;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+        }
+
+
+
+        /* Cards */
+
+        .why-feature-card {
+
+            background: rgba(255, 255, 255, .92);
+
+            backdrop-filter: blur(10px);
+
+            border-radius: 16px;
+
+            padding: 20px 15px;
+
+            text-align: center;
+
+            min-height: 150px;
+
+            border: 1px solid rgba(255, 255, 255, .4);
+
+            transition: .3s;
+
+        }
+
+
+        .why-feature-card:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        .why-feature-card i {
+
+            color: #f5a400;
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .why-feature-card h6 {
+
+            color: #092540;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+        }
+
+
+        .why-feature-card p {
+
+            color: #64748b;
+
+            font-size: 12px;
+
+        }
+
+
+
+        /* Right image hide because already background */
+
+        .why-right-img {
+
+            display: none;
+
+        }
+
+
+
+        @media(max-width:768px) {
+
+            .why-main-heading {
+
+                font-size: 34px;
+
+            }
+
+            .why-choose-section {
+
+                padding: 50px 0;
+
+            }
+
+        }
+
+        /* ── Bottom Dark Blue Contact Bar ── */
+        .bottom-cta-strip {
+            background-color: #08213b;
+            color: #ffffff;
+            padding: 22px 0;
+        }
+
+        .btn-get-support-cta {
+            background-color: #f7a400;
+            color: #0c233c !important;
+            font-weight: 700;
+            font-size: 13.5px;
+            padding: 10px 26px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 14px rgba(247, 164, 0, 0.35);
+            transition: all 0.2s;
+        }
+
+        .btn-get-support-cta:hover {
+            background-color: #e69500;
+            transform: translateY(-1px);
+        }
+    </style>
 
     <!-- ── 1. SERVICES HERO BANNER ── -->
     <section class="serv-hero-section">
+
+        <div class="serv-bg-image"></div>
+
         <div class="container">
-            <div class="row align-items-center g-4">
-                <!-- Left Content -->
-                <div class="col-lg-5">
-                    <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="serv-pill-tag"></span>
-                        <span class="fw-bold small text-dark">Our Services</span>
-                    </div>
-                    <h1 class="serv-hero-title">
-                        Complete LPG Gas <br>
-                        Solutions <span class="text-gold">in Oman</span>
-                    </h1>
-                    <p class="serv-hero-desc">
-                        From filling to delivery, we provide safe, reliable and efficient LPG gas services for homes, businesses and industries.
-                    </p>
+            <div class="row align-items-center">
 
-                    <a href="#services-grid" class="btn-explore-serv">
-                        <span>Explore Our Services</span> <i class="fas fa-arrow-right"></i>
-                    </a>
+                <div class="col-lg-6">
+
+                    <div class="serv-content">
+
+                        <div class="serv-label">
+                            <span></span>
+                            <strong>Our Services</strong>
+                        </div>
+
+
+                        <h1>
+                            Complete LPG Gas <br>
+                            Solutions <span>in Oman</span>
+                        </h1>
+
+
+                        <p>
+                            From filling to delivery, we provide safe, reliable
+                            and efficient LPG gas services for homes,
+                            businesses and industries.
+                        </p>
+
+
+                        <a href="#services-grid" class="btn-explore-serv">
+                            Explore Our Services
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
                 </div>
 
-                <!-- Right Visual: Canopy Station with blue pumps and mountains -->
-                <div class="col-lg-7">
-                    <div class="serv-hero-img-wrap">
-                        <img src="{{ asset('images/design/services_hero_station.jpg') }}" alt="Samad Gas Oman Station" class="img-fluid">
-                    </div>
-                </div>
+
             </div>
         </div>
+
+
+        <!-- Bottom Shape -->
+        <div class="bottom-shape"></div>
+
     </section>
 
     <!-- ── 2. FOUR SERVICES DETAIL CARDS (2x2 Grid Exact Match) ── -->
@@ -490,7 +723,8 @@
                                     </div>
                                     <h4 class="serv-card-title">Cylinder Filling</h4>
                                     <p class="serv-card-text">
-                                        Bring your empty cylinder, and we'll fill it with care using our digital gas station.
+                                        Bring your empty cylinder, and we'll fill it with care using our digital gas
+                                        station.
                                     </p>
                                     <ul class="serv-card-bullets">
                                         <li><i class="fas fa-circle-check"></i> Accurate Filling</li>
@@ -498,7 +732,8 @@
                                         <li><i class="fas fa-circle-check"></i> Maximum Safety</li>
                                     </ul>
                                 </div>
-                                <a href="https://wa.me/96892966649?text=Hello,%20I%20want%20to%20refill%20my%20cylinder" target="_blank" class="btn-card-learn">
+                                <a href="https://wa.me/96892966649?text=Hello,%20I%20want%20to%20refill%20my%20cylinder"
+                                    target="_blank" class="btn-card-learn">
                                     <span>Learn More</span> <i class="fas fa-arrow-right"></i>
                                 </a>
                             </div>
@@ -528,7 +763,8 @@
                                         <li><i class="fas fa-circle-check"></i> Safe &amp; Reliable</li>
                                     </ul>
                                 </div>
-                                <a href="https://wa.me/96892966649?text=Hello,%20I%20need%20cylinder%20supply" target="_blank" class="btn-card-learn">
+                                <a href="https://wa.me/96892966649?text=Hello,%20I%20need%20cylinder%20supply"
+                                    target="_blank" class="btn-card-learn">
                                     <span>Learn More</span> <i class="fas fa-arrow-right"></i>
                                 </a>
                             </div>
@@ -558,7 +794,8 @@
                                         <li><i class="fas fa-circle-check"></i> Cost Efficient</li>
                                     </ul>
                                 </div>
-                                <a href="https://wa.me/96892966649?text=Hello,%20I%20need%20bulk%20gas%20supply" target="_blank" class="btn-card-learn">
+                                <a href="https://wa.me/96892966649?text=Hello,%20I%20need%20bulk%20gas%20supply"
+                                    target="_blank" class="btn-card-learn">
                                     <span>Learn More</span> <i class="fas fa-arrow-right"></i>
                                 </a>
                             </div>
@@ -588,7 +825,8 @@
                                         <li><i class="fas fa-circle-check"></i> Large Storage Capacity</li>
                                     </ul>
                                 </div>
-                                <a href="https://wa.me/96892966649?text=Hello,%20I%20have%20inquiry%20about%20gas%20storage" target="_blank" class="btn-card-learn">
+                                <a href="https://wa.me/96892966649?text=Hello,%20I%20have%20inquiry%20about%20gas%20storage"
+                                    target="_blank" class="btn-card-learn">
                                     <span>Learn More</span> <i class="fas fa-arrow-right"></i>
                                 </a>
                             </div>
@@ -678,36 +916,58 @@
 
     <!-- ── 4. WHY CHOOSE SAMAD GAS? YOUR SAFETY, OUR PRIORITY ── -->
     <section class="why-choose-section">
-        <div class="container">
+
+        <div class="why-bg-overlay"></div>
+
+        <div class="container position-relative">
+
             <div class="row align-items-center g-4">
-                <!-- Left Text Column -->
+
+                <!-- Left Text -->
                 <div class="col-lg-4">
-                    <div class="d-flex align-items-center gap-2 mb-2">
+
+                    <div class="d-flex align-items-center gap-2 mb-3">
                         <span class="why-title-pill"></span>
-                        <span class="why-header-label">Why Choose Samad Gas?</span>
+                        <span class="why-header-label">
+                            Why Choose Samad Gas?
+                        </span>
                     </div>
+
+
                     <h2 class="why-main-heading">
                         Your Safety, <br>
                         Our Priority
                     </h2>
+
+
                     <p class="why-main-desc">
                         We are committed to delivering safe, reliable and affordable LPG gas services across Oman.
                     </p>
+
+
                     <a href="{{ route('public.about') }}" class="btn-explore-serv">
-                        <span>Learn More</span> <i class="fas fa-arrow-right"></i>
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
                     </a>
+
                 </div>
 
-                <!-- Center 3 Feature Cards Grid -->
+
+
+                <!-- Cards -->
                 <div class="col-lg-5">
+
                     <div class="row g-3">
+
                         <div class="col-6">
                             <div class="why-feature-card">
                                 <i class="fas fa-shield-halved"></i>
                                 <h6>Safety First</h6>
-                                <p>Your safety is our station priority</p>
+                                <p>Your safety is our priority</p>
                             </div>
                         </div>
+
+
                         <div class="col-6">
                             <div class="why-feature-card">
                                 <i class="fas fa-gem"></i>
@@ -715,6 +975,8 @@
                                 <p>Top-grade LPG gas</p>
                             </div>
                         </div>
+
+
                         <div class="col-6">
                             <div class="why-feature-card">
                                 <i class="far fa-clock"></i>
@@ -722,6 +984,8 @@
                                 <p>Always on schedule</p>
                             </div>
                         </div>
+
+
                         <div class="col-6">
                             <div class="why-feature-card">
                                 <i class="fas fa-handshake"></i>
@@ -729,17 +993,28 @@
                                 <p>Your trust matters</p>
                             </div>
                         </div>
+
+
                     </div>
+
                 </div>
 
-                <!-- Right Cylinders Photo -->
+
+
+                <!-- Image -->
                 <div class="col-lg-3">
+
                     <div class="why-right-img">
-                        <img src="{{ asset('images/design/serv_why_cylinders.jpg') }}" alt="Samad Gas Safety Cylinders" class="img-fluid">
+                        <img src="{{ asset('images/design/serv_why_cylinders.jpg') }}">
                     </div>
+
                 </div>
+
+
             </div>
+
         </div>
+
     </section>
 
     <!-- ── 5. BOTTOM DARK BLUE CONTACT STRIP (Exact Match To Uploaded Image) ── -->
@@ -748,12 +1023,14 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <!-- Left: Headset + Need LPG Gas Services? -->
                 <div class="d-flex align-items-center gap-3">
-                    <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.12); font-size: 24px; color: #fff;">
+                    <div class="d-flex align-items-center justify-content-center"
+                        style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.12); font-size: 24px; color: #fff;">
                         <i class="fas fa-headset"></i>
                     </div>
                     <div>
                         <h4 class="fw-bold mb-0 text-white" style="font-size: 20px;">Need LPG Gas Services?</h4>
-                        <small style="color: #cbd5e1; font-size: 13px;">Contact us today for fast and reliable service.</small>
+                        <small style="color: #cbd5e1; font-size: 13px;">Contact us today for fast and reliable
+                            service.</small>
                     </div>
                 </div>
 
@@ -763,7 +1040,8 @@
                         <i class="fas fa-phone-volume"></i>
                     </div>
                     <div>
-                        <a href="tel:+96892966649" class="text-white text-decoration-none fw-bold" style="font-size: 20px; letter-spacing: 0.5px;">
+                        <a href="tel:+96892966649" class="text-white text-decoration-none fw-bold"
+                            style="font-size: 20px; letter-spacing: 0.5px;">
                             +968 9296 6649
                         </a>
                         <small class="d-block" style="color: #94a3b8; font-size: 11px;">Call Us Now</small>

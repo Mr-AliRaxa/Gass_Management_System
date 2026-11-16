@@ -731,11 +731,11 @@
                     </div>
                     <!-- Language Switcher -->
                     @if(app()->getLocale() == 'ar')
-                        <a href="{{ route('lang.switch', 'en') }}" class="lang-switch-link ms-2">
+                        <a href="{{ route('lang.switch', 'en') }}" class="lang-switch-link bg-dark ms-2">
                             <i class="fas fa-globe"></i> English
                         </a>
                     @else
-                        <a href="{{ route('lang.switch', 'ar') }}" class="lang-switch-link ms-2">
+                        <a href="{{ route('lang.switch', 'ar') }}" class="lang-switch-link bg-dark ms-2">
                             <i class="fas fa-globe"></i> العربية
                         </a>
                     @endif
