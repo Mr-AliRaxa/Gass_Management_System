@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +9,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap 5 CSS & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +33,9 @@
         }
 
         body {
-            font-family: {{ app()->getLocale() == 'ar' ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }};
+            font-family:
+                {{ app()->getLocale() == 'ar' ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }}
+            ;
             color: var(--text-dark);
             background-color: #ffffff;
             overflow-x: hidden;
@@ -71,7 +76,8 @@
             font-size: 15px;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--primary-blue) !important;
             background: rgba(0, 86, 179, 0.06);
         }
@@ -119,8 +125,8 @@
             display: flex;
             align-items: center;
             padding: 140px 0 90px;
-            background: linear-gradient(135deg, rgba(7, 42, 77, 0.94) 0%, rgba(0, 86, 179, 0.88) 100%), 
-                        url("{{ asset('images/login-bg.png') }}") center center / cover no-repeat;
+            background: linear-gradient(135deg, rgba(7, 42, 77, 0.94) 0%, rgba(0, 86, 179, 0.88) 100%),
+                url("{{ asset('images/login-bg.png') }}") center center / cover no-repeat;
             color: #ffffff;
             overflow: hidden;
         }
@@ -467,8 +473,15 @@
 
         /* Smooth floating animation */
         @keyframes floatAnim {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .floating-element {
@@ -476,6 +489,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- ── NAVIGATION BAR ── -->
@@ -493,13 +507,15 @@
                 </div>
             </a>
 
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navMenu">
                 <i class="fas fa-bars-staggered text-primary fs-4"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#home">{{ __('messages.home') ?? 'Home' }}</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#home">{{ __('messages.home') ?? 'Home' }}</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#products">Cylinders (Products)</a></li>
@@ -540,7 +556,9 @@
                         <span class="highlight">We Refill Clean &amp; Safe LPG</span> In Minutes!
                     </h1>
                     <p class="hero-desc">
-                        Welcome to <strong>Samad Al Shan Gas</strong>, your trusted LPG refilling and cylinder provider in the Sultanate of Oman. Clients walk in with their empty gas cylinders and get certified, precise, leak-tested LPG refilled instantly at the official approved prices.
+                        Welcome to <strong>Samad Al Shan Gas</strong>, your trusted LPG refilling and cylinder provider
+                        in the Sultanate of Oman. Clients walk in with their empty gas cylinders and get certified,
+                        precise, leak-tested LPG refilled instantly at the official approved prices.
                     </p>
 
                     <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
@@ -590,7 +608,8 @@
                             </div>
                             <!-- 22KG -->
                             <div class="cylinder-pillar text-center">
-                                <div class="cylinder-icon-box" style="width: 75px; height: 120px; background: linear-gradient(135deg, #007aff, #00c4cc);">
+                                <div class="cylinder-icon-box"
+                                    style="width: 75px; height: 120px; background: linear-gradient(135deg, #007aff, #00c4cc);">
                                     <i class="fas fa-fire fs-1"></i>
                                 </div>
                                 <span class="fw-bold text-white fs-5">22 KG</span>
@@ -598,7 +617,8 @@
                             </div>
                             <!-- 44KG -->
                             <div class="cylinder-pillar text-center">
-                                <div class="cylinder-icon-box" style="width: 85px; height: 145px; background: linear-gradient(135deg, #10b981, #059669);">
+                                <div class="cylinder-icon-box"
+                                    style="width: 85px; height: 145px; background: linear-gradient(135deg, #10b981, #059669);">
                                     <i class="fas fa-shield-heart fs-1"></i>
                                 </div>
                                 <span class="fw-bold text-white fs-6">44 KG</span>
@@ -610,7 +630,8 @@
                             <div class="text-white fw-bold mb-1">
                                 <i class="fas fa-check-circle text-success me-1"></i> Pressure &amp; Valve Leak-Tested
                             </div>
-                            <small class="text-white-50">Every filled cylinder undergoes automatic digital scale verification before delivery.</small>
+                            <small class="text-white-50">Every filled cylinder undergoes automatic digital scale
+                                verification before delivery.</small>
                         </div>
                     </div>
                 </div>
@@ -677,7 +698,8 @@
                 <span class="section-tag">Easy 4-Step Walk-In Process</span>
                 <h2 class="section-heading">How Our LPG Cylinder Refill Works</h2>
                 <p class="section-desc">
-                    Clients visit our agency in Muscat / Oman with empty cylinders. Here is our simple, safe, and fast step-by-step refilling workflow.
+                    Clients visit our agency in Muscat / Oman with empty cylinders. Here is our simple, safe, and fast
+                    step-by-step refilling workflow.
                 </p>
             </div>
 
@@ -691,7 +713,8 @@
                         </div>
                         <h5 class="fw-bold mb-2">Bring Empty Cylinder</h5>
                         <p class="text-muted small mb-0">
-                            Visit our agency counter with your empty 11kg, 22kg, or 44kg domestic or restaurant gas cylinder.
+                            Visit our agency counter with your empty 11kg, 22kg, or 44kg domestic or restaurant gas
+                            cylinder.
                         </p>
                     </div>
                 </div>
@@ -705,7 +728,8 @@
                         </div>
                         <h5 class="fw-bold mb-2">Safety &amp; Valve Inspection</h5>
                         <p class="text-muted small mb-0">
-                            Our certified technicians inspect cylinder validity, tare weight, body condition, and safety seal integrity.
+                            Our certified technicians inspect cylinder validity, tare weight, body condition, and safety
+                            seal integrity.
                         </p>
                     </div>
                 </div>
@@ -719,7 +743,8 @@
                         </div>
                         <h5 class="fw-bold mb-2">Precision LPG Filling</h5>
                         <p class="text-muted small mb-0">
-                            Filled with high-purity, blue-flame LPG gas using calibrated digital dispensing scales for exact net weight.
+                            Filled with high-purity, blue-flame LPG gas using calibrated digital dispensing scales for
+                            exact net weight.
                         </p>
                     </div>
                 </div>
@@ -733,7 +758,8 @@
                         </div>
                         <h5 class="fw-bold mb-2">Instant Pickup &amp; Pay</h5>
                         <p class="text-muted small mb-0">
-                            Take your fresh, sealed gas cylinder with computer-generated invoice receipt in OMR. Cash and card accepted!
+                            Take your fresh, sealed gas cylinder with computer-generated invoice receipt in OMR. Cash
+                            and card accepted!
                         </p>
                     </div>
                 </div>
@@ -748,7 +774,8 @@
                 <span class="section-tag">Official Cylinder Sizes</span>
                 <h2 class="section-heading">LPG Gas Cylinders Available For Refill &amp; Sale</h2>
                 <p class="section-desc">
-                    Whether you need a refill for your existing empty cylinder or want to purchase a brand-new complete cylinder package.
+                    Whether you need a refill for your existing empty cylinder or want to purchase a brand-new complete
+                    cylinder package.
                 </p>
             </div>
 
@@ -784,7 +811,8 @@
                                 </div>
                             </div>
                             <div class="mt-4 pt-3 border-top">
-                                <a href="https://wa.me/96890000000?text=Hello,%20I%20want%2011kg%20gas%20refill" target="_blank" class="btn btn-outline-primary w-100 rounded-pill fw-bold">
+                                <a href="https://wa.me/96890000000?text=Hello,%20I%20want%2011kg%20gas%20refill"
+                                    target="_blank" class="btn btn-outline-primary w-100 rounded-pill fw-bold">
                                     <i class="fab fa-whatsapp me-1"></i> Order 11KG Refill
                                 </a>
                             </div>
@@ -795,8 +823,10 @@
                 <!-- 22 KG Cylinder (Featured) -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="cylinder-card border-primary" style="box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);">
-                        <div class="cylinder-header" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);">
-                            <span class="cylinder-tag" style="background: var(--flame-orange);">Most Popular in Oman</span>
+                        <div class="cylinder-header"
+                            style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);">
+                            <span class="cylinder-tag" style="background: var(--flame-orange);">Most Popular in
+                                Oman</span>
                             <div class="my-3">
                                 <i class="fas fa-fire-flame-curved text-danger" style="font-size: 80px;"></i>
                             </div>
@@ -823,7 +853,8 @@
                                 </div>
                             </div>
                             <div class="mt-4 pt-3 border-top">
-                                <a href="https://wa.me/96890000000?text=Hello,%20I%20want%2022kg%20gas%20refill" target="_blank" class="btn btn-flame w-100 justify-content-center">
+                                <a href="https://wa.me/96890000000?text=Hello,%20I%20want%2022kg%20gas%20refill"
+                                    target="_blank" class="btn btn-flame w-100 justify-content-center">
                                     <i class="fab fa-whatsapp me-1"></i> Order 22KG Refill
                                 </a>
                             </div>
@@ -862,7 +893,8 @@
                                 </div>
                             </div>
                             <div class="mt-4 pt-3 border-top">
-                                <a href="https://wa.me/96890000000?text=Hello,%20I%20want%2044kg%20commercial%20gas%20refill" target="_blank" class="btn btn-outline-primary w-100 rounded-pill fw-bold">
+                                <a href="https://wa.me/96890000000?text=Hello,%20I%20want%2044kg%20commercial%20gas%20refill"
+                                    target="_blank" class="btn btn-outline-primary w-100 rounded-pill fw-bold">
                                     <i class="fab fa-whatsapp me-1"></i> Order 44KG Refill
                                 </a>
                             </div>
@@ -880,55 +912,64 @@
                 <span class="section-tag">What We Offer</span>
                 <h2 class="section-heading">Our Comprehensive Gas Solutions</h2>
                 <p class="section-desc">
-                    Serving households, catering companies, and commercial kitchens across Muscat &amp; surrounding wilayats.
+                    Serving households, catering companies, and commercial kitchens across Muscat &amp; surrounding
+                    wilayats.
                 </p>
             </div>
 
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
-                        <div class="trust-icon bg-primary bg-opacity-10 text-primary mb-3" style="width: 60px; height: 60px;">
+                        <div class="trust-icon bg-primary bg-opacity-10 text-primary mb-3"
+                            style="width: 60px; height: 60px;">
                             <i class="fas fa-arrows-rotate fs-3"></i>
                         </div>
                         <h5 class="fw-bold mb-2">Empty Cylinder Refill</h5>
                         <p class="text-muted">
-                            Bring any empty 11kg, 22kg, or 44kg gas cylinder. We will inspect, purge air if needed, refill with pure gas, and deliver it sealed.
+                            Bring any empty 11kg, 22kg, or 44kg gas cylinder. We will inspect, purge air if needed,
+                            refill with pure gas, and deliver it sealed.
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-card">
-                        <div class="trust-icon bg-warning bg-opacity-10 text-warning mb-3" style="width: 60px; height: 60px;">
+                        <div class="trust-icon bg-warning bg-opacity-10 text-warning mb-3"
+                            style="width: 60px; height: 60px;">
                             <i class="fas fa-cart-plus fs-3"></i>
                         </div>
                         <h5 class="fw-bold mb-2">New Cylinder Sale</h5>
                         <p class="text-muted">
-                            Need an additional or replacement cylinder? Buy brand-new, factory-certified cylinders with valid stamps and warranty in Oman.
+                            Need an additional or replacement cylinder? Buy brand-new, factory-certified cylinders with
+                            valid stamps and warranty in Oman.
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-card">
-                        <div class="trust-icon bg-success bg-opacity-10 text-success mb-3" style="width: 60px; height: 60px;">
+                        <div class="trust-icon bg-success bg-opacity-10 text-success mb-3"
+                            style="width: 60px; height: 60px;">
                             <i class="fas fa-building-columns fs-3"></i>
                         </div>
                         <h5 class="fw-bold mb-2">Commercial &amp; Hotel Contracts</h5>
                         <p class="text-muted">
-                            Dedicated recurring supply for cafeterias, restaurants, bakeries, and food trucks with regular scheduled refills.
+                            Dedicated recurring supply for cafeterias, restaurants, bakeries, and food trucks with
+                            regular scheduled refills.
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-card">
-                        <div class="trust-icon bg-danger bg-opacity-10 text-danger mb-3" style="width: 60px; height: 60px;">
+                        <div class="trust-icon bg-danger bg-opacity-10 text-danger mb-3"
+                            style="width: 60px; height: 60px;">
                             <i class="fas fa-screwdriver-wrench fs-3"></i>
                         </div>
                         <h5 class="fw-bold mb-2">Valve &amp; Regulator Replacement</h5>
                         <p class="text-muted">
-                            Safety first: We check worn out valves, replace old O-rings, and supply high-quality LPG low and high pressure regulators.
+                            Safety first: We check worn out valves, replace old O-rings, and supply high-quality LPG low
+                            and high pressure regulators.
                         </p>
                     </div>
                 </div>
@@ -940,19 +981,22 @@
                         </div>
                         <h5 class="fw-bold mb-2">Bulk Gas Supply &amp; Transport</h5>
                         <p class="text-muted">
-                            Certified delivery vehicles equipped with safety cages to safely transport filled cylinders directly to your location.
+                            Certified delivery vehicles equipped with safety cages to safely transport filled cylinders
+                            directly to your location.
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                     <div class="service-card">
-                        <div class="trust-icon bg-purple bg-opacity-10 text-primary mb-3" style="width: 60px; height: 60px;">
+                        <div class="trust-icon bg-purple bg-opacity-10 text-primary mb-3"
+                            style="width: 60px; height: 60px;">
                             <i class="fas fa-receipt fs-3"></i>
                         </div>
                         <h5 class="fw-bold mb-2">Official Computerized Billing</h5>
                         <p class="text-muted">
-                            Transparent invoicing with breakdown in OMR (Omani Rial with 3 decimal precision) for clear accounting and tax receipts.
+                            Transparent invoicing with breakdown in OMR (Omani Rial with 3 decimal precision) for clear
+                            accounting and tax receipts.
                         </p>
                     </div>
                 </div>
@@ -971,7 +1015,9 @@
                         </span>
                         <h2 class="fw-bold mb-3 text-white">Experience Certified LPG Refilling In Action</h2>
                         <p class="text-light opacity-75 mb-4" style="line-height: 1.8;">
-                            At Samad Al Shan Gas, every cylinder brought by clients is handled under rigorous safety protocols. Watch how our technicians test, digitally weigh, and fill each unit to ensure 100% blue-flame cooking efficiency for your home and business.
+                            At Samad Al Shan Gas, every cylinder brought by clients is handled under rigorous safety
+                            protocols. Watch how our technicians test, digitally weigh, and fill each unit to ensure
+                            100% blue-flame cooking efficiency for your home and business.
                         </p>
 
                         <div class="row g-3">
@@ -1008,7 +1054,8 @@
                                 <i class="fas fa-shield-halved text-warning" style="font-size: 64px;"></i>
                             </div>
                             <h5 class="fw-bold text-white mb-2">Safety Standard ISO Compliant</h5>
-                            <p class="small text-white-50 mb-3">Always check the cap seal before connecting your cylinder at home.</p>
+                            <p class="small text-white-50 mb-3">Always check the cap seal before connecting your
+                                cylinder at home.</p>
                             <a href="#contact" class="btn btn-warning rounded-pill px-4 fw-bold">
                                 <i class="fas fa-location-dot me-1"></i> Visit Filling Station
                             </a>
@@ -1025,20 +1072,24 @@
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="section-tag">Customer Trust</span>
                 <h2 class="section-heading">What Our Clients in Oman Say</h2>
-                <p class="section-desc">Reliable gas refilling trusted by hundreds of families and commercial kitchens daily.</p>
+                <p class="section-desc">Reliable gas refilling trusted by hundreds of families and commercial kitchens
+                    daily.</p>
             </div>
 
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="review-card">
                         <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="text-muted">
-                            "I bring my 22kg empty cylinder every month. The refill is super quick, never takes more than 3 minutes, and the flame at home is strong and blue!"
+                            "I bring my 22kg empty cylinder every month. The refill is super quick, never takes more
+                            than 3 minutes, and the flame at home is strong and blue!"
                         </p>
                         <div class="d-flex align-items-center gap-3 mt-4 pt-3 border-top">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px;">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                style="width: 44px; height: 44px;">
                                 AK
                             </div>
                             <div>
@@ -1052,13 +1103,16 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="review-card">
                         <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="text-muted">
-                            "We run a restaurant in Muscat and need 44kg cylinders filled regularly. Samad Al Shan Gas has always provided accurate weights and clean safety seals."
+                            "We run a restaurant in Muscat and need 44kg cylinders filled regularly. Samad Al Shan Gas
+                            has always provided accurate weights and clean safety seals."
                         </p>
                         <div class="d-flex align-items-center gap-3 mt-4 pt-3 border-top">
-                            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px;">
+                            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                style="width: 44px; height: 44px;">
                                 MR
                             </div>
                             <div>
@@ -1072,13 +1126,16 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="review-card">
                         <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="text-muted">
-                            "Excellent customer service and very honest digital weighing scales. Best LPG agency in Mazoon Street area."
+                            "Excellent customer service and very honest digital weighing scales. Best LPG agency in
+                            Mazoon Street area."
                         </p>
                         <div class="d-flex align-items-center gap-3 mt-4 pt-3 border-top">
-                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px;">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                style="width: 44px; height: 44px;">
                                 SB
                             </div>
                             <div>
@@ -1100,7 +1157,8 @@
                     <span class="section-tag">Get In Touch</span>
                     <h2 class="section-heading">Visit Our Agency Or Call For Gas Refill</h2>
                     <p class="section-desc mb-4">
-                        Bring your cylinders directly to our filling branch or reach out via WhatsApp/Phone for commercial orders and queries.
+                        Bring your cylinders directly to our filling branch or reach out via WhatsApp/Phone for
+                        commercial orders and queries.
                     </p>
 
                     <div class="d-flex flex-column gap-3 mb-4">
@@ -1120,7 +1178,8 @@
                             </div>
                             <div>
                                 <strong class="d-block text-dark">Phone &amp; WhatsApp:</strong>
-                                <a href="https://wa.me/96890000000" target="_blank" class="text-decoration-none fw-bold text-success">+968 (Oman Hotline)</a>
+                                <a href="https://wa.me/96890000000" target="_blank"
+                                    class="text-decoration-none fw-bold text-success">+968 (Oman Hotline)</a>
                             </div>
                         </div>
 
@@ -1130,7 +1189,8 @@
                             </div>
                             <div>
                                 <strong class="d-block text-dark">Working Hours:</strong>
-                                <span class="text-muted">Saturday - Thursday: 7:00 AM - 10:00 PM | Friday: 3:00 PM - 10:00 PM</span>
+                                <span class="text-muted">Saturday - Thursday: 7:00 AM - 10:00 PM | Friday: 3:00 PM -
+                                    10:00 PM</span>
                             </div>
                         </div>
                     </div>
@@ -1143,17 +1203,21 @@
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white">
                         <h4 class="fw-bold mb-3 text-primary">Send Quick Message / Request</h4>
-                        <p class="text-muted small mb-4">Fill out this quick form and our agency team will connect with you.</p>
+                        <p class="text-muted small mb-4">Fill out this quick form and our agency team will connect with
+                            you.</p>
 
-                        <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been received. Our team will contact you shortly.');">
+                        <form
+                            onsubmit="event.preventDefault(); alert('Thank you! Your message has been received. Our team will contact you shortly.');">
                             <div class="mb-3">
                                 <label class="form-label fw-bold small">Your Full Name</label>
-                                <input type="text" class="form-control rounded-3" placeholder="e.g. Salim Al-Harthy" required>
+                                <input type="text" class="form-control rounded-3" placeholder="e.g. Salim Al-Harthy"
+                                    required>
                             </div>
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small">Phone Number</label>
-                                    <input type="tel" class="form-control rounded-3" placeholder="+968 9XXXXXXX" required>
+                                    <input type="tel" class="form-control rounded-3" placeholder="+968 9XXXXXXX"
+                                        required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small">Cylinder Size Needed</label>
@@ -1167,7 +1231,8 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label fw-bold small">Notes / Questions</label>
-                                <textarea class="form-control rounded-3" rows="3" placeholder="Tell us if you are walking in or need bulk delivery..."></textarea>
+                                <textarea class="form-control rounded-3" rows="3"
+                                    placeholder="Tell us if you are walking in or need bulk delivery..."></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold">
                                 <i class="fas fa-paper-plane me-1"></i> Send Request
@@ -1188,15 +1253,19 @@
                         <div class="cylinder-icon-box" style="width: 36px; height: 36px; font-size: 18px;">
                             <i class="fas fa-fire-flame-curved"></i>
                         </div>
-                        <span class="fs-5 fw-bold text-white">SAMAD AL SHAN GAS</span>
+                        <span class="fs-5 fw-bold text-white">SAMAD AL SHAN GAS </span>
                     </div>
                     <p class="text-white-50 small mb-4" style="line-height: 1.8;">
-                        Your premier authorized LPG cylinder refilling and gas solutions provider in the Sultanate of Oman. Dedicated to customer safety, precise digital weights, and blue-flame cooking efficiency.
+                        Your premier authorized LPG cylinder refilling and gas solutions provider in the Sultanate of
+                        Oman. Dedicated to customer safety, precise digital weights, and blue-flame cooking efficiency.
                     </p>
                     <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle" style="width:36px;height:36px;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle" style="width:36px;height:36px;"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/96890000000" class="btn btn-sm btn-outline-light rounded-circle" style="width:36px;height:36px;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"
+                            style="width:36px;height:36px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"
+                            style="width:36px;height:36px;"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/96890000000" class="btn btn-sm btn-outline-light rounded-circle"
+                            style="width:36px;height:36px;"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
@@ -1258,7 +1327,7 @@
         });
 
         // Sticky Navbar shadow effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const nav = document.querySelector('.navbar-custom');
             if (window.scrollY > 40) {
                 nav.style.padding = '12px 0';
@@ -1270,4 +1339,5 @@
         });
     </script>
 </body>
+
 </html>
