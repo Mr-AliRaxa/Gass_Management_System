@@ -16,7 +16,7 @@
                         <span class="text-gold">LPG Gas</span> Partner
                     </h1>
 
-                    <p class="hero-subtext">
+                    <p class="hero-subtext text-dark">
                         From empty cylinder to full service –
                         <br>
                         for homes, businesses and industries in Oman.

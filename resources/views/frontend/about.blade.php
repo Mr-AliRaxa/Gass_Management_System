@@ -3,258 +3,259 @@
 @section('title', 'About Us | Reliable Energy for a Growing Oman - Samad Gas')
 
 @section('content')
-<style>
-    /* ── About Hero Banner ── */
-    .about-hero-section {
-        background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
-        padding: 40px 0 30px;
-        position: relative;
-    }
+    <style>
+        /* ── About Hero Banner ── */
+        .about-hero-section {
+            background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+            padding: 40px 0 30px;
+            position: relative;
+        }
 
-    .about-pill-tag {
-        display: inline-block;
-        width: 34px;
-        height: 4px;
-        background-color: #f59e0b;
-        border-radius: 2px;
-        margin-bottom: 8px;
-    }
+        .about-pill-tag {
+            display: inline-block;
+            width: 34px;
+            height: 4px;
+            background-color: #f59e0b;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
 
-    .about-hero-title {
-        font-size: 44px;
-        font-weight: 900;
-        line-height: 1.15;
-        color: #0b2742;
-        letter-spacing: -1px;
-        margin-bottom: 14px;
-    }
+        .about-hero-title {
+            font-size: 44px;
+            font-weight: 900;
+            line-height: 1.15;
+            color: #0b2742;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
 
-    .about-hero-title .text-gold {
-        color: #f59e0b;
-    }
+        .about-hero-title .text-gold {
+            color: #f59e0b;
+        }
 
-    .about-hero-desc {
-        font-size: 14.5px;
-        color: #475569;
-        line-height: 1.6;
-        margin-bottom: 22px;
-        max-width: 460px;
-    }
+        .about-hero-desc {
+            font-size: 14.5px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            max-width: 460px;
+        }
 
-    .about-hero-img-wrap {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 15px 35px rgba(9, 37, 64, 0.12);
-    }
+        .about-hero-img-wrap {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(9, 37, 64, 0.12);
+        }
 
-    .about-hero-img-wrap img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-    }
+        .about-hero-img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
 
-    /* ── Core Values & Mission Grid ── */
-    .about-story-section {
-        padding: 40px 0 50px;
-        background: #ffffff;
-    }
+        /* ── Core Values & Mission Grid ── */
+        .about-story-section {
+            padding: 40px 0 50px;
+            background: #ffffff;
+        }
 
-    .story-card-box {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 30px 24px;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
-        height: 100%;
-        transition: all 0.3s ease;
-    }
+        .story-card-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px 24px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+            height: 100%;
+            transition: all 0.3s ease;
+        }
 
-    .story-card-box:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 14px 30px rgba(9, 47, 86, 0.08);
-        border-color: #bfdbfe;
-    }
+        .story-card-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(9, 47, 86, 0.08);
+            border-color: #bfdbfe;
+        }
 
-    .story-card-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        background-color: #0b5fa5;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        margin-bottom: 16px;
-    }
+        .story-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background-color: #0b5fa5;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
 
-    .story-card-title {
-        font-size: 18px;
-        font-weight: 800;
-        color: #092540;
-        margin-bottom: 10px;
-    }
+        .story-card-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #092540;
+            margin-bottom: 10px;
+        }
 
-    .story-card-desc {
-        font-size: 13px;
-        color: #64748b;
-        line-height: 1.65;
-        margin: 0;
-    }
+        .story-card-desc {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.65;
+            margin: 0;
+        }
 
-    /* ── Detailed Quality / Safety Standards Strip ── */
-    .safety-standards-box {
-        background-color: #f0f7ff;
-        border-radius: 20px;
-        padding: 40px 30px;
-        margin: 20px 0 50px;
-    }
+        /* ── Detailed Quality / Safety Standards Strip ── */
+        .safety-standards-box {
+            background-color: #f0f7ff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin: 20px 0 50px;
+        }
 
-    .standard-badge-item {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        padding: 22px 18px;
-        text-align: center;
-        height: 100%;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
-    }
+        .standard-badge-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 22px 18px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+        }
 
-    .standard-badge-item i {
-        font-size: 30px;
-        color: #08213b;
-        margin-bottom: 10px;
-    }
+        .standard-badge-item i {
+            font-size: 30px;
+            color: #08213b;
+            margin-bottom: 10px;
+        }
 
-    .standard-badge-item h5 {
-        font-size: 15px;
-        font-weight: 800;
-        color: #092540;
-        margin-bottom: 4px;
-    }
+        .standard-badge-item h5 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #092540;
+            margin-bottom: 4px;
+        }
 
-    .standard-badge-item p {
-        font-size: 11.5px;
-        color: #64748b;
-        margin: 0;
-        line-height: 1.45;
-    }
+        .standard-badge-item p {
+            font-size: 11.5px;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.45;
+        }
 
-    /* ── Leader / Vision Row ── */
-    .vision-row-wrap {
-        padding: 30px 0 60px;
-    }
+        /* ── Leader / Vision Row ── */
+        .vision-row-wrap {
+            padding: 30px 0 60px;
+        }
 
-    .vision-image-card {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        border: 1px solid #e2e8f0;
-    }
+        .vision-image-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
 
-    .vision-image-card img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-    }
+        .vision-image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
 
-    .vision-content h2 {
-        font-size: 36px;
-        font-weight: 900;
-        color: #092540;
-        line-height: 1.2;
-        margin-bottom: 16px;
-    }
+        .vision-content h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #092540;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
 
-    .vision-content p {
-        font-size: 13.5px;
-        color: #475569;
-        line-height: 1.7;
-        margin-bottom: 20px;
-    }
+        .vision-content p {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
 
-    .vision-checklist {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 24px 0;
-    }
+        .vision-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+        }
 
-    .vision-checklist li {
-        font-size: 13px;
-        font-weight: 700;
-        color: #092540;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+        .vision-checklist li {
+            font-size: 13px;
+            font-weight: 700;
+            color: #092540;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .vision-checklist li i {
-        color: #f59e0b;
-        font-size: 15px;
-    }
+        .vision-checklist li i {
+            color: #f59e0b;
+            font-size: 15px;
+        }
 
-    /* ── Dark Blue Stats Strip ── */
-    .stats-dark-strip {
-        background-color: #08213b;
-        color: #ffffff;
-        padding: 24px 0;
-    }
+        /* ── Dark Blue Stats Strip ── */
+        .stats-dark-strip {
+            background-color: #08213b;
+            color: #ffffff;
+            padding: 24px 0;
+            margin-bottom: 20px;
+        }
 
-    .stat-item-block {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        justify-content: center;
-    }
+        .stat-item-block {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            justify-content: center;
+        }
 
-    .stat-item-icon {
-        font-size: 26px;
-        color: #f59e0b;
-    }
+        .stat-item-icon {
+            font-size: 26px;
+            color: #f59e0b;
+        }
 
-    .stat-item-info h4 {
-        font-size: 18px;
-        font-weight: 800;
-        margin: 0;
-        line-height: 1.1;
-    }
+        .stat-item-info h4 {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+        }
 
-    .stat-item-info p {
-        font-size: 11.5px;
-        color: #94a3b8;
-        margin: 2px 0 0;
-    }
+        .stat-item-info p {
+            font-size: 11.5px;
+            color: #94a3b8;
+            margin: 2px 0 0;
+        }
 
-    /* ── Bottom Dark Blue Contact Bar ── */
-    .bottom-cta-strip {
-        background-color: #08213b;
-        color: #ffffff;
-        padding: 22px 0;
-    }
+        /* ── Bottom Dark Blue Contact Bar ── */
+        .bottom-cta-strip {
+            background-color: #08213b;
+            color: #ffffff;
+            padding: 22px 0;
+        }
 
-    .btn-get-support-cta {
-        background-color: #f7a400;
-        color: #0c233c !important;
-        font-weight: 700;
-        font-size: 13.5px;
-        padding: 10px 26px;
-        border-radius: 25px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        box-shadow: 0 4px 14px rgba(247, 164, 0, 0.35);
-        transition: all 0.2s;
-    }
+        .btn-get-support-cta {
+            background-color: #f7a400;
+            color: #0c233c !important;
+            font-weight: 700;
+            font-size: 13.5px;
+            padding: 10px 26px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 14px rgba(247, 164, 0, 0.35);
+            transition: all 0.2s;
+        }
 
-    .btn-get-support-cta:hover {
-        background-color: #e69500;
-        transform: translateY(-1px);
-    }
-</style>
+        .btn-get-support-cta:hover {
+            background-color: #e69500;
+            transform: translateY(-1px);
+        }
+    </style>
 
     <!-- ── 1. ABOUT HERO BANNER (Matches Home/Services Style) ── -->
     <section class="about-hero-section">
@@ -271,14 +272,17 @@
                         <span class="text-gold">Growing Oman</span>
                     </h1>
                     <p class="about-hero-desc">
-                        Samad Gas is a premier LPG provider in the Sultanate of Oman. We empower homes, restaurants, commercial facilities, and industries with clean, safe, and certified LPG gas solutions.
+                        Samad Gas is a premier LPG provider in the Sultanate of Oman. We empower homes, restaurants,
+                        commercial facilities, and industries with clean, safe, and certified LPG gas solutions.
                     </p>
 
                     <div class="d-flex align-items-center gap-3 flex-wrap">
-                        <a href="{{ route('public.services') }}" class="btn btn-hero-primary" style="background-color: #08213b; color: #fff; border-radius: 20px; padding: 10px 22px; font-weight: 700; font-size: 13.5px; text-decoration: none;">
+                        <a href="{{ route('public.services') }}" class="btn btn-hero-primary"
+                            style="background-color: #08213b; color: #fff; border-radius: 20px; padding: 10px 22px; font-weight: 700; font-size: 13.5px; text-decoration: none;">
                             <span>Our Services</span> <i class="fas fa-arrow-right ms-1"></i>
                         </a>
-                        <a href="https://wa.me/96892966649" target="_blank" class="btn btn-hero-video" style="background-color: #fff; color: #08213b; border: 1.5px solid #cbd5e1; border-radius: 20px; padding: 10px 20px; font-weight: 700; font-size: 13.5px; text-decoration: none;">
+                        <a href="https://wa.me/96892966649" target="_blank" class="btn btn-hero-video"
+                            style="background-color: #fff; color: #08213b; border: 1.5px solid #cbd5e1; border-radius: 20px; padding: 10px 20px; font-weight: 700; font-size: 13.5px; text-decoration: none;">
                             <i class="fas fa-phone-volume text-primary me-1"></i> <span>Contact Team</span>
                         </a>
                     </div>
@@ -287,7 +291,8 @@
                 <!-- Right Visual: Clean Modern Station & Fleet -->
                 <div class="col-lg-7">
                     <div class="about-hero-img-wrap">
-                        <img src="{{ asset('images/design/services_hero_station.jpg') }}" alt="Samad Gas Oman Filling Station" class="img-fluid">
+                        <img src="{{ asset('images/design/services_hero_station.jpg') }}"
+                            alt="Samad Gas Oman Filling Station" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -306,7 +311,8 @@
                         </div>
                         <h4 class="story-card-title">Our Mission</h4>
                         <p class="story-card-desc">
-                            To deliver safe, reliable, and accurately weighed LPG gas to every household and business in Oman through fast walk-in filling and efficient commercial delivery.
+                            To deliver safe, reliable, and accurately weighed LPG gas to every household and business in
+                            Oman through fast walk-in filling and efficient commercial delivery.
                         </p>
                     </div>
                 </div>
@@ -319,7 +325,8 @@
                         </div>
                         <h4 class="story-card-title">Our Vision</h4>
                         <p class="story-card-desc">
-                            To be Oman's most customer-focused and technologically advanced LPG network, known for absolute safety, digital precision, and environmental stewardship.
+                            To be Oman's most customer-focused and technologically advanced LPG network, known for absolute
+                            safety, digital precision, and environmental stewardship.
                         </p>
                     </div>
                 </div>
@@ -332,7 +339,8 @@
                         </div>
                         <h4 class="story-card-title">Our Commitment</h4>
                         <p class="story-card-desc">
-                            Zero tolerance for gas leaks, transparent computerized OMR billing, certified cylinder maintenance, and 24/7 dedicated customer assistance.
+                            Zero tolerance for gas leaks, transparent computerized OMR billing, certified cylinder
+                            maintenance, and 24/7 dedicated customer assistance.
                         </p>
                     </div>
                 </div>
@@ -344,9 +352,12 @@
     <div class="container">
         <div class="safety-standards-box">
             <div class="text-center mb-4">
-                <span style="display:inline-block; width:34px; height:4px; background:#f59e0b; border-radius:2px; margin-bottom:6px;"></span>
-                <h3 class="fw-bold mb-1" style="color: #092540; font-size: 26px;">Highest Safety &amp; Engineering Standards</h3>
-                <p class="small text-muted mb-0">Every cylinder at Samad Gas goes through strict multi-point verification</p>
+                <span
+                    style="display:inline-block; width:34px; height:4px; background:#f59e0b; border-radius:2px; margin-bottom:6px;"></span>
+                <h3 class="fw-bold mb-1" style="color: #092540; font-size: 26px;">Highest Safety &amp; Engineering Standards
+                </h3>
+                <p class="small text-muted mb-0">Every cylinder at Samad Gas goes through strict multi-point verification
+                </p>
             </div>
 
             <div class="row g-3">
@@ -389,7 +400,8 @@
                 <!-- Left: Stacked Cylinders Photo -->
                 <div class="col-lg-5">
                     <div class="vision-image-card">
-                        <img src="{{ asset('images/design/about_cylinders.jpg') }}" alt="Samad Gas Storage & Refilling Facility">
+                        <img src="{{ asset('images/design/about_cylinders.jpg') }}"
+                            alt="Samad Gas Storage & Refilling Facility">
                     </div>
                 </div>
 
@@ -402,7 +414,10 @@
                         </div>
                         <h2>Built On Trust, Precision &amp; Customer Care</h2>
                         <p>
-                            From our prime station location on Mazoon Street in Al Khoud, Muscat, Samad Gas serves hundreds of residential and commercial customers daily. Whether you are bringing your empty 11kg or 22kg domestic cylinder for an instant 3-minute refill, or require bulk 44kg supplies for a busy restaurant kitchen, our certified technicians ensure seamless service every time.
+                            From our prime station location on Mazoon Street in Al Khoud, Muscat, Samad Gas serves hundreds
+                            of residential and commercial customers daily. Whether you are bringing your empty 11kg or 22kg
+                            domestic cylinder for an instant 3-minute refill, or require bulk 44kg supplies for a busy
+                            restaurant kitchen, our certified technicians ensure seamless service every time.
                         </p>
 
                         <ul class="vision-checklist">
@@ -416,15 +431,18 @@
                             </li>
                             <li>
                                 <i class="fas fa-circle-check"></i>
-                                <span>Large dedicated fleet of safety-caged delivery vehicles for commercial contracts.</span>
+                                <span>Large dedicated fleet of safety-caged delivery vehicles for commercial
+                                    contracts.</span>
                             </li>
                             <li>
                                 <i class="fas fa-circle-check"></i>
-                                <span>Trained technical staff providing free cylinder valve and regulator inspections.</span>
+                                <span>Trained technical staff providing free cylinder valve and regulator
+                                    inspections.</span>
                             </li>
                         </ul>
 
-                        <a href="{{ route('public.contact') }}" class="btn-explore-serv" style="background-color: #f7a400; color: #0c233c; font-weight: 700; font-size: 13.5px; padding: 9px 24px; border-radius: 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                        <a href="{{ route('public.contact') }}" class="btn-explore-serv"
+                            style="background-color: #f7a400; color: #0c233c; font-weight: 700; font-size: 13.5px; padding: 9px 24px; border-radius: 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                             <span>Visit Our Station</span> <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -498,12 +516,14 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <!-- Left: Headset + Need LPG Gas Services? -->
                 <div class="d-flex align-items-center gap-3">
-                    <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.12); font-size: 24px; color: #fff;">
+                    <div class="d-flex align-items-center justify-content-center"
+                        style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.12); font-size: 24px; color: #fff;">
                         <i class="fas fa-headset"></i>
                     </div>
                     <div>
                         <h4 class="fw-bold mb-0 text-white" style="font-size: 20px;">Need LPG Gas Services?</h4>
-                        <small style="color: #cbd5e1; font-size: 13px;">Contact us today for fast and reliable service.</small>
+                        <small style="color: #cbd5e1; font-size: 13px;">Contact us today for fast and reliable
+                            service.</small>
                     </div>
                 </div>
 
@@ -513,7 +533,8 @@
                         <i class="fas fa-phone-volume"></i>
                     </div>
                     <div>
-                        <a href="tel:+96892966649" class="text-white text-decoration-none fw-bold" style="font-size: 20px; letter-spacing: 0.5px;">
+                        <a href="tel:+96892966649" class="text-white text-decoration-none fw-bold"
+                            style="font-size: 20px; letter-spacing: 0.5px;">
                             +968 9296 6649
                         </a>
                         <small class="d-block" style="color: #94a3b8; font-size: 11px;">Call Us Now</small>

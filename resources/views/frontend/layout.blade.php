@@ -195,6 +195,7 @@
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 25px;
+            color: #12336b !important;
         }
 
         .text-gold {
@@ -212,6 +213,7 @@
             list-style: none;
             padding: 0;
             margin: 0 0 40px;
+            color: black !important;
         }
 
         .hero-checklist li {
@@ -717,7 +719,7 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div class="d-flex align-items-center gap-3 gap-md-4 flex-wrap">
-                    <span><i class="fas fa-location-dot me-1"></i> Muscat, Oman</span>
+                    <span><i class="fas fa-location-dot me-1"></i> Al Mudhaibi, North Sharqiyah OMAN</span>
                     <a href="tel:+96892966649"><i class="fas fa-phone me-1"></i> +968 9296 6649</a>
                     <a href="mailto:info@samadgas.com"><i class="fas fa-envelope me-1"></i> info@samadgas.com</a>
                 </div>
