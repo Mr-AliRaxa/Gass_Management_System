@@ -84,6 +84,7 @@
                 padding: 6px 0;
                 font-size: 11px;
             }
+
             .top-hide-sm {
                 display: none !important;
             }
@@ -747,6 +748,7 @@
                 padding: 20px 16px !important;
                 border-radius: 16px !important;
             }
+
             .stat-item-block {
                 justify-content: flex-start !important;
             }
@@ -801,12 +803,15 @@
                 padding: 20px !important;
                 background: rgba(9, 37, 64, 0.6);
             }
+
             .cta-banner-overlay h2 {
                 font-size: 22px !important;
             }
+
             .cta-banner-overlay p {
                 font-size: 13px !important;
             }
+
             .cta-banner-img {
                 min-height: 180px;
             }
@@ -912,17 +917,19 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div class="d-flex align-items-center gap-3 gap-md-4 flex-wrap">
-                    <span class="top-hide-sm"><i class="fas fa-location-dot me-1"></i> Al Mudhaibi, North Sharqiyah OMAN</span>
+                    <span class="top-hide-sm"><i class="fas fa-location-dot me-1"></i> Al Mudhaibi, North Sharqiyah
+                        OMAN</span>
                     <a href="tel:+96892966649"><i class="fas fa-phone me-1"></i> +968 9296 6649</a>
-                    <a href="mailto:info@samadgas.com" class="top-hide-sm"><i class="fas fa-envelope me-1"></i> info@samadgas.com</a>
+                    <a href="mailto:info@samadgas.com" class="top-hide-sm"><i class="fas fa-envelope me-1"></i>
+                        info@samadgas.com</a>
                 </div>
                 <div class="d-flex align-items-center gap-2 gap-md-3">
                     <span class="top-hide-sm"><i class="far fa-clock me-1"></i> Mon - Sat: 7:00 AM - 10:00 PM</span>
                     <div class="d-flex align-items-center gap-1">
                         <a href="#" class="top-social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="top-social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/96892966649" target="_blank" class="top-social-icon"><i
-                                class="fab fa-whatsapp"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=96892966649" target="_blank"
+                            class="top-social-icon"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     <!-- Language Switcher -->
                     @if(app()->getLocale() == 'ar')
@@ -944,17 +951,17 @@
         <div class="container">
             <!-- Brand Logo -->
             <a href="{{ route('landing') }}" class="brand-logo-area">
-                <img src="{{ asset('images/design/logo_flame.jpg') }}" alt="Samad Gas Logo"
-                    class="brand-logo-img">
-                <div class="brand-title-wrap">
+                <img src="{{ asset('images/design/logo_flame.png') }}" alt="Samad Gas Logo" class="brand-logo-img">
+                <!-- <div class="brand-title-wrap">
                     <h2>Samad Gas</h2>
                     <p>Safe Energy. Better Tomorrow</p>
-                </div>
+                </div> -->
             </a>
 
             <!-- Mobile Action Controls (Support + Hamburger Toggle) -->
             <div class="d-flex align-items-center gap-2 d-lg-none">
-                <a href="https://wa.me/96892966649" target="_blank" class="btn-get-support mobile-support-btn" title="Get Support">
+                <a href="https://wa.me/96892966649" target="_blank" class="btn-get-support mobile-support-btn"
+                    title="Get Support">
                     <i class="fas fa-headset"></i> <span>Support</span>
                 </a>
                 <button class="navbar-toggler custom-nav-toggler collapsed" type="button" data-bs-toggle="collapse"
@@ -1009,11 +1016,13 @@
                     <li class="nav-item d-lg-none mt-3 pt-3 border-top">
                         <div class="d-flex align-items-center justify-content-between gap-2 flex-wrap">
                             @if(app()->getLocale() == 'ar')
-                                <a href="{{ route('lang.switch', 'en') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                <a href="{{ route('lang.switch', 'en') }}"
+                                    class="btn btn-sm btn-outline-primary rounded-pill px-3">
                                     <i class="fas fa-globe me-1"></i> English
                                 </a>
                             @else
-                                <a href="{{ route('lang.switch', 'ar') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                <a href="{{ route('lang.switch', 'ar') }}"
+                                    class="btn btn-sm btn-outline-primary rounded-pill px-3">
                                     <i class="fas fa-globe me-1"></i> العربية
                                 </a>
                             @endif
@@ -1024,7 +1033,8 @@
                                         <i class="fas fa-gauge me-1"></i> Dashboard
                                     </a>
                                 @else
-                                    <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold">
+                                    <a href="{{ route('login') }}"
+                                        class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold">
                                         <i class="fas fa-right-to-bracket me-1"></i> Login
                                     </a>
                                 @endauth
@@ -1044,8 +1054,7 @@
                                 Dashboard
                             </a>
                         @else
-                            <a href="{{ route('login') }}"
-                                class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold">
+                            <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold">
                                 Login
                             </a>
                         @endauth

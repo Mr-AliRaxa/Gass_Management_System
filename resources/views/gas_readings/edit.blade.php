@@ -44,8 +44,10 @@
                     <div class="form-group">
                         <label class="form-label"><strong>{{ __('messages.start_image') }}:</strong></label>
                         <input type="file" name="start_image" class="form-control mb-2">
-                        @if($gasReading->start_image)
-                            <img src="{{ asset('storage/'.$gasReading->start_image) }}" width="100px">
+                         @if($gasReading->start_image)
+                            <a href="{{ asset('storage/'.$gasReading->start_image) }}" target="_blank" rel="noopener noreferrer" title="Click to view full size in new tab">
+                                <img src="{{ asset('storage/'.$gasReading->start_image) }}" width="100px" class="rounded border shadow-sm mt-1" style="cursor: pointer;">
+                            </a>
                         @endif
                     </div>
                 </div>
@@ -60,7 +62,9 @@
                         <label class="form-label"><strong>{{ __('messages.end_image') }}:</strong></label>
                         <input type="file" name="end_image" class="form-control mb-2">
                          @if($gasReading->end_image)
-                            <img src="{{ asset('storage/'.$gasReading->end_image) }}" width="100px">
+                            <a href="{{ asset('storage/'.$gasReading->end_image) }}" target="_blank" rel="noopener noreferrer" title="Click to view full size in new tab">
+                                <img src="{{ asset('storage/'.$gasReading->end_image) }}" width="100px" class="rounded border shadow-sm mt-1" style="cursor: pointer;">
+                            </a>
                         @endif
                     </div>
                 </div>
